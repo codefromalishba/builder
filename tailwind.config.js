@@ -24,16 +24,17 @@ module.exports = {
         mcontainer: "20px 20px 85px",
       },
       padding: {
-        pcon: "80px",
-        tcon: "25px",
-        mpcon: "20px",
         btn: "10px 15px",
         sbtn: "5px",
         header: "24px 15px",
+        bussinessbox: "55px 25px",
+        helpPlaning: "80px 25px",
+        mhelpplaning: "40px 15px",
       },
       fontSize: {
         h1: "42px",
-        p: "16px",
+        h2: "40px",
+        p: "17px",
       },
       borderRadius: {
         8: "10px",
