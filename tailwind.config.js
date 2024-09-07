@@ -30,15 +30,20 @@ module.exports = {
         bussinessbox: "55px 25px",
         helpPlaning: "80px 25px",
         mhelpplaning: "40px 15px",
+        dreambuilder: "0px 86px 0px 0px",
+        aiuse: "0px 0px 0px 100px",
       },
       fontSize: {
+        val: "120px",
         h1: "42px",
         h2: "40px",
         p: "17px",
+        pai: "14px",
       },
       borderRadius: {
         8: "10px",
         7: "5px",
+        6: "50%",
       },
       margin: {
         img: "0 115px",
@@ -46,6 +51,16 @@ module.exports = {
       boxShadow: {
         box: "0px 1px 2px 0px #1018280D",
       },
+      plugins: [
+        function ({ addUtilities }) {
+          const newUtilities = {
+            ".text-stroke": {
+              "-webkit-text-stroke": "1.2px #000",
+            },
+          };
+          addUtilities(newUtilities, ["responsive", "hover"]);
+        },
+      ],
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
