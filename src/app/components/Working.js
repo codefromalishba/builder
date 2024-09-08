@@ -5,7 +5,7 @@ const Working = () => {
     <section class="py-17 px-5 bg-white">
       <div class="container mx-auto text-center">
         <h2 class="sm:text-4xl font-semibold text-2xl sm:font-bold py-10 mb-0 sm:mb-8">
-          Here's How It Works
+          Here&rsquo;s How It Works
         </h2>
 
         <div class="grid lg:grid-cols-2 xl:grid-cols-4  gap-3 2xl:gap-10 items-center">
