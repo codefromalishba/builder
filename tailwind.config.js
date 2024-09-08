@@ -5,6 +5,9 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  rules: {
+    "@next/next/no-img-element": "off",
+  },
   theme: {
     extend: {
       screens: {
