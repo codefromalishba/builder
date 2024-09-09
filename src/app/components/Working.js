@@ -4,7 +4,7 @@ const Working = () => {
   return (
     <section class="py-17 px-5 bg-white">
       <div class="container mx-auto text-center">
-        <h2 class="sm:text-4xl font-semibold text-2xl sm:font-bold py-10 mb-0 sm:mb-8">
+        <h2 class="text-4xl font-bold py-10 sm:mb-8  text-center">
           Here&rsquo;s How It Works
         </h2>
 

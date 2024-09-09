@@ -7,6 +7,9 @@ import Working from "./Working";
 import DeployDesign from "./DeployDesign";
 import DreamBuilder from "./DreamBuilder";
 import AiUse from "./AiUse";
+import AppPlatform from "./AppPlatform";
+import FAQs from "./FAQs";
+import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
@@ -19,6 +22,9 @@ const LandingPage = () => {
       {/* <DeployDesign /> */}
       <DreamBuilder />
       <AiUse />
+      <AppPlatform />
+      {/* <FAQs /> */}
+      <Footer />
     </div>
   );
 };

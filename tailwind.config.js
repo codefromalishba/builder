@@ -20,6 +20,8 @@ module.exports = {
       },
       colors: {
         demo: "#05cd99",
+        footerbg: "#6060607d",
+        btnbg: "linear-gradient(116deg,#02e9f9,#0ff57b 99.07%)",
       },
       spacing: {
         container: "32px 80px 85px",
