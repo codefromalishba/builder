@@ -19,7 +19,7 @@ const LandingPage = () => {
       <BussinessNeed />
       <HelpInPlaning />
       <Working />
-      {/* <DeployDesign /> */}
+      <DeployDesign />
       <DreamBuilder />
       <AiUse />
       <AppPlatform />

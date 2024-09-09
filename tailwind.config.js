@@ -37,6 +37,9 @@ module.exports = {
         mhelpplaning: "40px 15px",
         dreambuilder: "0px 86px 0px 0px",
         aiuse: "0px 0px 0px 100px",
+        deploy1: "0px 0px 100px 57px",
+        deploy2: "0px 0px 0px 57px",
+        pdeploy: "100px 15px",
       },
       fontSize: {
         val: "120px",
