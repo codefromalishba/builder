@@ -60,13 +60,17 @@ const Working = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row  justify-center py-7 sm:py-12 gap-4 sm:gap-9">
-          <div className="border w-max p-btn bg-black text-white rounded-8 hover:bg-demo cursor-pointer">
-            <p>Speak To An Expert</p>
+        <div className="flex justify-center">
+          <div className="flex flex-col xs:flex-row  justify-center py-7 sm:py-12 gap-4 sm:gap-9">
+            <div className="flex justify-center">
+              <div className="border flex justify-center w-max p-btn bg-black text-white rounded-8 hover:bg-demo cursor-pointer">
+                <p>Speak To An Expert</p>
+              </div>
+            </div>
+            <p className=" border rounded-8 p-btn border-black w-fit">
+              See Solution And Pricing
+            </p>
           </div>
-          <p className=" border rounded-8 p-btn border-black w-fit">
-            See Solution And Pricing
-          </p>
         </div>
       </div>
     </section>

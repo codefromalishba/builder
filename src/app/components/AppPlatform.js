@@ -7,7 +7,7 @@ const AppPlatform = () => {
         An app platform for every type of business
       </h2>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4 items-center ">
-        <div>
+        <div className="xs:text-left text-center">
           <h2 class="text-lg font-bold mb-4 ">Your Dream App, Made Real</h2>
           <p className="pb-4 text-pai">
             It takes weeks, not months to turn your idea into reality using
@@ -17,13 +17,13 @@ const AppPlatform = () => {
             Learn More
           </a>
         </div>
-        <div className="flex md:justify-center">
+        <div className="flex justify-center">
           <img
-            className="w-[248px] h-[360px]"
+            className="xs:w-[248px] xs:h-[360px] w-[250px] h-[250px]"
             src="./images/platformImg.avif"
           />
         </div>
-        <div>
+        <div className="xs:text-left text-center">
           <p className="pb-4 text-pai">
             Our team will help throughout the process of customization so that
             the app meets your vision. You now own everything including code,

@@ -23,7 +23,7 @@ const LandingPage = () => {
       <DreamBuilder />
       <AiUse />
       <AppPlatform />
-      {/* <FAQs /> */}
+      <FAQs />
       <Footer />
     </div>
   );

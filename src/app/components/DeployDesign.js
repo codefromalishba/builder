@@ -11,7 +11,7 @@ const DeployDesign = () => {
     >
       <div className="grid md:grid-cols-2 grid-cols-1 gap-20">
         <div>
-          <div className="sm:p-deploy1">
+          <div className="sm:p-deploy1 sm:text-left text-center">
             <h3 className="text-p font-bold ">
               Create and submit app store-ready builds
             </h3>
@@ -21,7 +21,7 @@ const DeployDesign = () => {
             </p>
             <img src="./images/DeployImg2.avif" />
           </div>
-          <div className="sm:p-deploy2  pt-7">
+          <div className="sm:p-deploy2  pt-7 sm:text-left text-center">
             <h3 className="text-p font-bold ">
               Dashboards to keep your team on track
             </h3>
@@ -33,7 +33,7 @@ const DeployDesign = () => {
           </div>
         </div>
         <div>
-          <div className="sm:p-deploy1">
+          <div className="sm:p-deploy1 sm:text-left text-center">
             <h3 className="text-p font-bold ">Publish bug fixes in minutes</h3>
             <p className="font-sm py-4">
               Found a typo on your home screen? Don’t sweat: fix it, then
@@ -42,7 +42,7 @@ const DeployDesign = () => {
             </p>
             <img src="./images/DeployImg4.avif" />
           </div>
-          <div className="sm:p-deploy2 pt-7">
+          <div className="sm:p-deploy2 pt-7 sm:text-left text-center">
             <h3 className="text-p font-bold ">Iterate with confidence</h3>
             <p className="font-sm py-4">
               With flexible deployment patterns and the ability to rollback in

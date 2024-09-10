@@ -9,7 +9,7 @@ const DreamBuilder = () => {
           src="./images/DreamBuildImg.avif"
         />
       </div>
-      <div className="sm:p-dreambuilder">
+      <div className="sm:p-dreambuilder xs:text-left text-center">
         <h2 class="text-4xl font-bold mb-4 ">
           Build Your Dream App, No Coding Required
         </h2>
