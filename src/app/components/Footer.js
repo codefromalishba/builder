@@ -78,11 +78,11 @@ const Footer = () => {
           </h3>
           <div className="flex items-center">
             <input
-              className="bg-footerbg color-white rounded-md px-3  h-12"
+              className="bg-footerbg color-white rounded-l-md px-3  h-12"
               type="email"
               placeholder="Email address"
             />
-            <button className="color-white bg-demo rounded-md px-4 h-12 text-xl">
+            <button className="color-white bg-demo rounded-r-md px-4 h-12 text-xl">
               <svg
                 className="color-white"
                 stroke="currentColor"

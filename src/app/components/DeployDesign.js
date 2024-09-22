@@ -21,7 +21,7 @@ const DeployDesign = () => {
             </p>
             <img src="./images/DeployImg2.avif" />
           </div>
-          <div className="sm:p-deploy2  pt-7 sm:text-left text-center">
+          <div className="  pt-7 sm:text-left text-center">
             <h3 className="text-p font-bold ">
               Dashboards to keep your team on track
             </h3>
@@ -33,7 +33,7 @@ const DeployDesign = () => {
           </div>
         </div>
         <div>
-          <div className="sm:p-deploy1 sm:text-left text-center">
+          <div className="sm:p-deploy3 sm:text-left text-center">
             <h3 className="text-p font-bold ">Publish bug fixes in minutes</h3>
             <p className="font-sm py-4">
               Found a typo on your home screen? Don’t sweat: fix it, then
@@ -42,7 +42,7 @@ const DeployDesign = () => {
             </p>
             <img src="./images/DeployImg4.avif" />
           </div>
-          <div className="sm:p-deploy2 pt-7 sm:text-left text-center">
+          <div className="py-12 sm:text-left text-center">
             <h3 className="text-p font-bold ">Iterate with confidence</h3>
             <p className="font-sm py-4">
               With flexible deployment patterns and the ability to rollback in
