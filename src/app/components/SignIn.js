@@ -6,7 +6,7 @@ const SignIn = ({ handleClosePopup }) => {
 
   return (
     <div className="fixed inset-0 w-full h-full z-40 bg-black bg-opacity-60 flex justify-center items-center">
-      <div className=" grid sm:grid-cols-2 w-4/6 sm:w-3/6 h-3/4 z-50 bg-white rounded-lg shadow-lg">
+      <div className=" grid sm:grid-cols-2 w-5/6 sm:w-3/6 h-3/4 z-50 bg-white rounded-lg shadow-lg">
         <div className="bg-gray-100 hidden sm:block">
           <img
             src="./images/SignInImg.avif"
