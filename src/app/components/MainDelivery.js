@@ -1,12 +1,14 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { BsInfoCircle } from "react-icons/bs";
 import { TfiAndroid } from "react-icons/tfi";
 import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
-import { IoIosCheckmarkCircle } from "react-icons/io";
+import ProductPhase from "./ProductPhase";
 
 const MainDelivery = () => {
+  const [isOn, setIsOn] = useState(false);
   return (
     <div className="pt-4">
       <div className="flex justify-between items-center px-10 ">
@@ -53,153 +55,21 @@ const MainDelivery = () => {
         <p className="font-md">Select phases for your product</p>
         <div className="flex items-center gap-2">
           <p>Advanced</p>
-          <button className="relative w-12 h-6 bg-gray-400 rounded-full">
-            <div className="absloute ml-1 w-5 h-5 bg-white rounded-full"></div>
+          <button
+            onClick={() => setIsOn(!isOn)}
+            className={`relative w-12 h-6 rounded-full ${
+              isOn ? "bg-demo" : "bg-gray-400"
+            }`}
+          >
+            <div
+              className={`absolute bottom-[2px] left-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 ${
+                isOn ? "translate-x-6" : "translate-x-0"
+              }`}
+            ></div>
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-5 px-10 py-5 gap-5">
-        <div className=" relative border-[1px] border-demo rounded-md p-5 ">
-          <div className="absolute top-2 right-2 ">
-            <div className="">
-              <IoIosCheckmarkCircle className="text-2xl text-demo" />
-            </div>
-          </div>
-          <div className=" flex gap-2 ">
-            <div className="w-12 h-12 ">
-              <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
-            </div>
-            <div>
-              <div className="flex gap-1 py-1">
-                <p className="font-bold text-demo max-w-[100px] text-sm">
-                  Product Roadmap
-                </p>
-                <BsInfoCircle className="text-gray-400" />
-              </div>
-              <p className="font-bold text-xs pb-1">
-                Estimated Duration:
-                <span className="font-normal">1 Weeks</span>
-              </p>
-              <p className="font-bold text-xs">
-                Estimated Delivery Date:
-                <span className="font-normal"> 05-Oct-2024</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className=" relative border-[1px] border-demo rounded-md p-5 ">
-          <div className="absolute top-2 right-2 ">
-            <div className="">
-              <IoIosCheckmarkCircle className="text-2xl text-demo" />
-            </div>
-          </div>
-          <div className=" flex gap-2 ">
-            <div className="w-12 h-12 ">
-              <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
-            </div>
-            <div>
-              <div className="flex gap-1 py-1">
-                <p className="font-bold text-demo max-w-[100px] text-sm">
-                  Product Roadmap
-                </p>
-                <BsInfoCircle className="text-gray-400" />
-              </div>
-              <p className="font-bold text-xs pb-1">
-                Estimated Duration:
-                <span className="font-normal">1 Weeks</span>
-              </p>
-              <p className="font-bold text-xs">
-                Estimated Delivery Date:
-                <span className="font-normal"> 05-Oct-2024</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className=" relative border-[1px] border-demo rounded-md p-5 ">
-          <div className="absolute top-2 right-2 ">
-            <div className="">
-              <IoIosCheckmarkCircle className="text-2xl text-demo" />
-            </div>
-          </div>
-          <div className=" flex gap-2 ">
-            <div className="w-12 h-12 ">
-              <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
-            </div>
-            <div>
-              <div className="flex gap-1 py-1">
-                <p className="font-bold text-demo max-w-[100px] text-sm">
-                  Product Roadmap
-                </p>
-                <BsInfoCircle className="text-gray-400" />
-              </div>
-              <p className="font-bold text-xs pb-1">
-                Estimated Duration:
-                <span className="font-normal">1 Weeks</span>
-              </p>
-              <p className="font-bold text-xs">
-                Estimated Delivery Date:
-                <span className="font-normal"> 05-Oct-2024</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className=" relative border-[1px] border-demo rounded-md p-5 ">
-          <div className="absolute top-2 right-2 ">
-            <div className="">
-              <IoIosCheckmarkCircle className="text-2xl text-demo" />
-            </div>
-          </div>
-          <div className=" flex gap-2 ">
-            <div className="w-12 h-12 ">
-              <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
-            </div>
-            <div>
-              <div className="flex gap-1 py-1">
-                <p className="font-bold text-demo max-w-[100px] text-sm">
-                  Product Roadmap
-                </p>
-                <BsInfoCircle className="text-gray-400" />
-              </div>
-              <p className="font-bold text-xs pb-1">
-                Estimated Duration:
-                <span className="font-normal">1 Weeks</span>
-              </p>
-              <p className="font-bold text-xs">
-                Estimated Delivery Date:
-                <span className="font-normal"> 05-Oct-2024</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className=" relative border-[1px] border-demo rounded-md p-5 ">
-          <div className="absolute top-2 right-2 ">
-            <div className="">
-              <IoIosCheckmarkCircle className="text-2xl text-demo" />
-            </div>
-          </div>
-          <div className=" flex gap-2 ">
-            <div className="w-12 h-12 ">
-              <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
-            </div>
-            <div>
-              <div className="flex gap-1 py-1">
-                <p className="font-bold text-demo max-w-[100px] text-sm">
-                  Product Roadmap
-                </p>
-                <BsInfoCircle className="text-gray-400" />
-              </div>
-              <p className="font-bold text-xs pb-1">
-                Estimated Duration:
-                <span className="font-normal">1 Weeks</span>
-              </p>
-              <p className="font-bold text-xs">
-                Estimated Delivery Date:
-                <span className="font-normal"> 05-Oct-2024</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ProductPhase isOn={isOn} />
     </div>
   );
 };
