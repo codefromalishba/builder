@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 
 const AppName = ({ handleCloseAppNamePopup }) => {
+  const [name, setName] = useState("");
+
+  const handleInputChange = (e) => {
+    setName(e.target.value);
+  };
   return (
     <div className="fixed inset-0 w-full h-full z-40 bg-black bg-opacity-60 flex justify-center items-center">
       <div className=" w-96 h-auto z-50 bg-white rounded-lg shadow-lg">
@@ -17,16 +22,18 @@ const AppName = ({ handleCloseAppNamePopup }) => {
             First, please name your Launch Swift
           </p>
           <input
-            className="my-2 outline-none border-[1px] w-full border-gray-300  rounded-md p-2"
+            className="my-2 outline-none border-[1px] w-full border-gray-300 rounded-md p-2"
             type="text"
             placeholder="eg.Booking.com"
+            onChange={handleInputChange}
           />
-          <div
+          <button
             onClick={handleCloseAppNamePopup}
             className="flex justify-center items-center h-10 px-2 py-1 bg-gray-400 w-full rounded-md"
+            disabled={name.trim() === ""}
           >
             <p className="text-white text-sm">SAVE</p>
-          </div>
+          </button>
         </div>
       </div>
     </div>

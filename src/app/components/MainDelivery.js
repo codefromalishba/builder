@@ -62,7 +62,9 @@ const MainDelivery = () => {
             }`}
           >
             <div
-              className={`absolute bottom-[2px] left-1 w-5 h-5 bg-white rounded-full transition-transform duration-200 ${
+              className={`absolute bottom-[2px] ${
+                !isOn && "left-1"
+              } w-5 h-5 bg-white rounded-full transition-transform duration-200 ${
                 isOn ? "translate-x-6" : "translate-x-0"
               }`}
             ></div>
