@@ -21,6 +21,7 @@ const AppPlatform = () => {
           <img
             className="xs:w-[248px] xs:h-[360px] w-[250px] h-[250px]"
             src="./images/platformImg.avif"
+            alt="Platform Img"
           />
         </div>
         <div className="xs:text-left text-center">

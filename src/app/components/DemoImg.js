@@ -6,6 +6,7 @@ const DemoImg = () => {
       <img
         className=" absolute -top-1/3  rounded-7 shadow-xl"
         src="./images/demoimg.avif"
+        alt="Demo Img"
       />
     </div>
   );

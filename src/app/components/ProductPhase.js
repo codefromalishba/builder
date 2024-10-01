@@ -20,7 +20,10 @@ const ProductPhase = ({ isOn }) => {
             </div>
             <div className=" flex gap-2 ">
               <div className="w-12 h-12 ">
-                <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
+                <img
+                  src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png"
+                  alt="ProductPhase"
+                />
               </div>
               <div>
                 <div className="flex gap-1 py-1">
@@ -48,7 +51,10 @@ const ProductPhase = ({ isOn }) => {
             </div>
             <div className=" flex gap-2 ">
               <div className="w-12 h-12 ">
-                <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
+                <img
+                  src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png"
+                  alt="ProductPhase"
+                />
               </div>
               <div>
                 <div className="flex gap-1 py-1">
@@ -76,7 +82,10 @@ const ProductPhase = ({ isOn }) => {
             </div>
             <div className=" flex gap-2 ">
               <div className="w-12 h-12 ">
-                <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
+                <img
+                  src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png"
+                  alt="ProductPhase"
+                />
               </div>
               <div>
                 <div className="flex gap-1 py-1">
@@ -104,7 +113,10 @@ const ProductPhase = ({ isOn }) => {
             </div>
             <div className=" flex gap-2 ">
               <div className="w-12 h-12 ">
-                <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
+                <img
+                  src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png"
+                  alt="ProductPhase"
+                />
               </div>
               <div>
                 <div className="flex gap-1 py-1">
@@ -132,7 +144,10 @@ const ProductPhase = ({ isOn }) => {
             </div>
             <div className=" flex gap-2 ">
               <div className="w-12 h-12 ">
-                <img src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png" />
+                <img
+                  src="https://statestreetdebating.site/lauchswift/icons/login-with-google.png"
+                  alt="ProductPhase"
+                />
               </div>
               <div>
                 <div className="flex gap-1 py-1">

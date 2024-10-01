@@ -7,6 +7,7 @@ const DreamBuilder = () => {
         <img
           className="rounded-7 shadow-xl"
           src="./images/DreamBuildImg.avif"
+          alt="DreamBuilderImg"
         />
       </div>
       <div className="sm:p-dreambuilder xs:text-left text-center">

@@ -19,7 +19,7 @@ const DeployDesign = () => {
               Kick off a build. Then well submit it to te App Store and Play
               Store automatically if you like.
             </p>
-            <img src="./images/DeployImg2.avif" />
+            <img src="./images/DeployImg2.avif" alt="DeployImg" />
           </div>
           <div className="  pt-7 sm:text-left text-center">
             <h3 className="text-p font-bold ">
@@ -29,7 +29,7 @@ const DeployDesign = () => {
               We keep track of all of your builds, submissions, and deployments,
               organized on web dashboards for your whole team.
             </p>
-            <img src="./images/DeployImg3.avif" />
+            <img src="./images/DeployImg3.avif" alt="DeployImg" />
           </div>
         </div>
         <div>
@@ -40,7 +40,7 @@ const DeployDesign = () => {
               publish an update that your users will receive the next time they
               launch your app.
             </p>
-            <img src="./images/DeployImg4.avif" />
+            <img src="./images/DeployImg4.avif" alt="DeployImg" />
           </div>
           <div className="py-12 sm:text-left text-center">
             <h3 className="text-p font-bold ">Iterate with confidence</h3>
@@ -48,7 +48,7 @@ const DeployDesign = () => {
               With flexible deployment patterns and the ability to rollback in
               seconds, you can iterate faster than ever before..
             </p>
-            <img src="./images/DeployImg5.avif" />
+            <img src="./images/DeployImg5.avif" alt="DeployImg" />
           </div>
         </div>
       </div>

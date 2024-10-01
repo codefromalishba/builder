@@ -8,6 +8,7 @@ import { FaCheck } from "react-icons/fa6";
 import { IoEyeOutline } from "react-icons/io5";
 import Cart from "./Cart";
 import FeatureView from "./FeatureView";
+import { GoPlus } from "react-icons/go";
 
 const MainDashboard = () => {
   const [openDropDown, setOpenDropDown] = useState();
@@ -60,6 +61,7 @@ const MainDashboard = () => {
                             <div className="flex gap-2">
                               <img
                                 src={item.icon}
+                                alt="iconImg"
                                 className="w-5 h-5 mt-2 opacity-50"
                               />
                               <div>

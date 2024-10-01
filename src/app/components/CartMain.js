@@ -11,6 +11,7 @@ const CartMain = ({ isMobile }) => {
               <img
                 className="p-1 h-full rounded-lg"
                 src="https://statestreetdebating.site/lauchswift/mobile/login-with-google.png"
+                alt="cartImg 1"
               />
             </div>
             <div className="">
@@ -35,6 +36,7 @@ const CartMain = ({ isMobile }) => {
               <img
                 className="p-1 h-full rounded-lg"
                 src="https://statestreetdebating.site/lauchswift/mobile/login-with-google.png"
+                alt="cartImg 2"
               />
             </div>
             <div className="">
@@ -59,6 +61,7 @@ const CartMain = ({ isMobile }) => {
               <img
                 className="p-1 h-full rounded-lg"
                 src="https://statestreetdebating.site/lauchswift/mobile/login-with-google.png"
+                alt="cartImg 3"
               />
             </div>
             <div className="">
@@ -83,6 +86,7 @@ const CartMain = ({ isMobile }) => {
               <img
                 className="p-1 h-full rounded-lg"
                 src="https://statestreetdebating.site/lauchswift/mobile/login-with-google.png"
+                alt="cartImg 4"
               />
             </div>
             <div className="">

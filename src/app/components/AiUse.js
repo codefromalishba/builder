@@ -20,6 +20,7 @@ const AiUse = () => {
         <img
           className="rounded-7 shadow-xl"
           src="./images/AiSupportiveImg.avif"
+          alt="Ai Img"
         />
       </div>
     </div>
