@@ -10,11 +10,16 @@ import Cart from "./Cart";
 import FeatureView from "./FeatureView";
 import { GoPlus } from "react-icons/go";
 import { useDispatch } from "react-redux";
-import { setSelectedFeature } from "../store/featureSlice";
+import { addFeature, setSelectedFeature } from "../store/featureSlice";
 
 const MainDashboard = () => {
   const dispatch = useDispatch();
   const [openDropDown, setOpenDropDown] = useState();
+
+  const handleAddFeature = (item) => {
+    dispatch(setSelectedFeature(item));
+    dispatch(addFeature(item));
+  };
 
   const handleDispatchFeature = (item) => {
     console.log("clicked");
@@ -93,7 +98,9 @@ const MainDashboard = () => {
                                 <IoEyeOutline />
                               </div>
                               <div className="border-[1px] cursor-pointer p-1 border-gray-600 rounded-full hover:bg-demo hover:text-slate-100 hover:border-demo">
-                                <GoPlus />
+                                <GoPlus
+                                  onClick={() => handleAddFeature(item)}
+                                />
                               </div>
                             </div>
                           </div>
