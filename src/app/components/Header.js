@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import SignIn from "./SignIn";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const profile = useSelector((state) => state.profile);
   // Step 1: Set up state to track the popup visibility
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 

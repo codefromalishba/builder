@@ -20,11 +20,11 @@ const SummaryMain = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-4.5rem)]       ">
+    <div className="w-full h-[calc(100vh-4.5rem)]">
       <div className="grid grid-cols-3">
         <div className="col-span-2">
           <div className="py-5 px-10 flex flex-col">
-            <p className="font-medium">Hi, malikafaq788@gmail.com</p>
+            <p className="font-medium">Hi, malikalishba788@gmail.com</p>
             <div className="flex justify-between items-center py-2">
               <p className="font-semibold">Here is your Launch Swift</p>
               <p className="text-gray-900 text-sm">Last edited: Oct 01, 2024</p>

@@ -9,9 +9,17 @@ import { IoEyeOutline } from "react-icons/io5";
 import Cart from "./Cart";
 import FeatureView from "./FeatureView";
 import { GoPlus } from "react-icons/go";
+import { useDispatch } from "react-redux";
+import { setSelectedFeature } from "../store/featureSlice";
 
 const MainDashboard = () => {
+  const dispatch = useDispatch();
   const [openDropDown, setOpenDropDown] = useState();
+
+  const handleDispatchFeature = (item) => {
+    console.log("clicked");
+    dispatch(setSelectedFeature(item));
+  };
 
   const handleShowFeatures = (index) => {
     if (openDropDown === index) {
@@ -30,12 +38,12 @@ const MainDashboard = () => {
             />
           </div>
           {sidebarData.map((item, index) => (
-            <div>
+            <div key={index}>
               <div
                 onClick={() => handleShowFeatures(index)}
-                className="group p-4 hover:bg-slate-200  duration-300 ease-in-out "
+                className="group p-4 hover:bg-slate-200 cursor-pointer  duration-300 ease-in-out "
               >
-                <div className="  flex justify-between items-center hover:bg-slate-200 duration-300">
+                <div className="  flex justify-between items-center  hover:bg-slate-200 duration-300">
                   <div className="flex items-center gap-3">
                     <Image
                       src={item.img}
@@ -55,30 +63,36 @@ const MainDashboard = () => {
                   </div>
                   <div className="overflow-y-auto custom-scrollbar max-h-[180px]">
                     {item.dropDown.map((item, index) => (
-                      <div className="flex flex-col  w-full">
+                      <div
+                        key={index}
+                        onClick={() => handleDispatchFeature(item)}
+                        className="flex flex-col  w-full cursor-pointer"
+                      >
                         <div className="bg-slate-100 flex justify-between items-center p-4 border-l-demo border-l-4 border-b-[1px]  ">
                           <div className="flex justify-between w-full">
                             <div className="flex gap-2">
                               <img
                                 src={item.icon}
                                 alt="iconImg"
-                                className="w-5 h-5 mt-2 opacity-50"
+                                className="w-5 h-5 cursor-pointer mt-2 opacity-50"
                               />
                               <div>
-                                <p className="text-sm">{item.name} </p>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-sm cursor-pointer">
+                                  {item.name}
+                                </p>
+                                <p className="text-xs cursor-pointer text-gray-500">
                                   from {item.price}
                                 </p>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs cursor-pointer text-gray-500">
                                   from {item.timeline} days
                                 </p>
                               </div>
                             </div>
-                            <div className="flex gap-2 items-center justify-between ">
+                            <div className="flex gap-2 cursor-pointer items-center justify-between ">
                               <div className="border-[1px] p-1 border-gray-600 rounded-full hover:bg-demo hover:text-slate-100 hover:border-demo">
                                 <IoEyeOutline />
                               </div>
-                              <div className="border-[1px] p-1 border-gray-600 rounded-full hover:bg-demo hover:text-slate-100 hover:border-demo">
+                              <div className="border-[1px] cursor-pointer p-1 border-gray-600 rounded-full hover:bg-demo hover:text-slate-100 hover:border-demo">
                                 <GoPlus />
                               </div>
                             </div>

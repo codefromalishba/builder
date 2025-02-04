@@ -15,7 +15,7 @@ const SignIn = ({ handleClosePopup }) => {
           />
         </div>
 
-        <div className="w-full p-4 bg-white flex flex-col relative overflow-y-auto">
+        <div className="w-full p-4 bg-white flex flex-col relative custom-scrollbar overflow-y-auto">
           <button
             onClick={handleClosePopup}
             className="absolute top-4 right-4 text-gray-500"
@@ -55,7 +55,7 @@ const SignIn = ({ handleClosePopup }) => {
                     id="text"
                     name="text"
                     placeholder="Name"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-green-500"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring ring-[1px] focus:ring-demo"
                     required
                   />
                 </div>
@@ -70,7 +70,7 @@ const SignIn = ({ handleClosePopup }) => {
                   id="email"
                   name="email"
                   placeholder="Company Email"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-green-500"
+                  className="w-full p-2 border  border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring- focus:ring-demo"
                   required
                 />
               </div>
@@ -84,7 +84,7 @@ const SignIn = ({ handleClosePopup }) => {
                   id="password"
                   name="password"
                   placeholder="Enter password"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-green-500"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-demo"
                   required
                 />
               </div>

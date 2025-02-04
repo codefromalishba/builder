@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const DashboardHeader = () => {
+  const profile = useSelector((state) => state.profile);
   return (
     <div>
       <div className="bg-black p-3 h-[4.5rem] flex items-center justify-between">
@@ -16,14 +19,12 @@ const DashboardHeader = () => {
         </div>
 
         <div className=" flex gap-2">
-          <div className="flex flex-col items-end justify-center">
-            <p className="text-white font-normal">malikafaq788@gmail.com</p>
-            <p className="text-white font-medium text-xs">
-              malikafaq788@gmail.com
-            </p>
+          <div className="w-11 h-10 rounded-md  bg-demo flex items-center justify-center">
+            <p className="text-white px-1 font-semibold text-xl">MA</p>
           </div>
-          <div className="w-10 h-10 rounded-full bg-demo flex items-center justify-center">
-            <p className="text-white font-semibold text-2xl">m</p>
+          <div className="flex flex-col justify-center">
+            <p className="text-white font-normal">{profile.name}</p>
+            <p className="text-white font-medium text-xs">{profile.email}</p>
           </div>
         </div>
       </div>
