@@ -15,8 +15,15 @@ const featureSlice = createSlice({
       console.log("Adding feature:", action.payload);
       state.allFeatures.push(action.payload);
     },
+    removeFeature: (state, action) => {
+      console.log("Removing feature with ID:", action.payload);
+      state.allFeatures = state.allFeatures.filter(
+        (feature) => feature.id !== action.payload
+      );
+    },
   },
 });
 
-export const { setSelectedFeature, addFeature } = featureSlice.actions;
+export const { setSelectedFeature, addFeature, removeFeature } =
+  featureSlice.actions;
 export default featureSlice.reducer;

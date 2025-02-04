@@ -22,7 +22,6 @@ const MainDashboard = () => {
   };
 
   const handleDispatchFeature = (item) => {
-    console.log("clicked");
     dispatch(setSelectedFeature(item));
   };
 

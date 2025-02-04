@@ -1,15 +1,25 @@
 import React from "react";
 import { MdOutlineDelete } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFeature, setSelectedFeature } from "../store/featureSlice";
 
 const CartMain = ({ isMobile }) => {
+  const dispatch = useDispatch();
   const { allFeatures } = useSelector((state) => state.feature);
+
+  const handleRemoveFeature = (featureId) => {
+    console.log("featureId", featureId);
+    dispatch(removeFeature(featureId));
+  };
 
   return (
     <div>
       {allFeatures.map((feature) => (
         <div className="px-5 pb-5 pt-5">
-          <div className="flex pb-4 border-b border-b-gray-[#A6A6A6]  cursor-pointer group">
+          <div
+            onClick={() => dispatch(setSelectedFeature(feature))}
+            className="flex pb-4 border-b border-b-gray-[#A6A6A6]  cursor-pointer group"
+          >
             <div className="flex justify-between  items-center gap-3">
               <div className="border-2 w-12 rounded-lg  border-demo">
                 <img
@@ -21,8 +31,11 @@ const CartMain = ({ isMobile }) => {
               <div className="">
                 <div className="flex items-center gap-2 w-20">
                   <p className="text-sm">{feature?.name}</p>
-                  <div className="w-7 p-[5px] h-7 cursor-pointer rounded-full border-[1px] bg-white hover-bg-slate-50 items-center justify-center flex ">
-                    <MdOutlineDelete className="    " />
+                  <div
+                    onClick={() => handleRemoveFeature(feature?.id)}
+                    className="w-7 p-[5px] h-7 cursor-pointer rounded-full border-[1px] bg-white hover-bg-slate-50 items-center justify-center flex "
+                  >
+                    <MdOutlineDelete />
                   </div>
                 </div>
                 <div className="py-1">
