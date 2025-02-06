@@ -1,11 +1,32 @@
 import Image from "next/image";
 import React from "react";
 import { MdOutlineDelete } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { GoPlus } from "react-icons/go";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addFeature,
+  removeFeature,
+  setSelectedFeature,
+} from "../store/featureSlice";
 
 const FeatureMain = ({ isMobile }) => {
-  const selectedFeature = useSelector((state) => state.feature.selectedFeature);
-  console.log(selectedFeature);
+  const dispatch = useDispatch();
+  const { selectedFeature, allFeatures } = useSelector(
+    (state) => state.feature
+  );
+  const isSelected = allFeatures.some((f) => f.id === selectedFeature?.id);
+  const isUnderView = selectedFeature?.id && !isSelected;
+
+  const handleFeatureAction = (e) => {
+    e.stopPropagation(); // Prevent parent click events
+
+    if (isSelected) {
+      dispatch(removeFeature(selectedFeature?.id)); // Remove from cart
+    } else {
+      dispatch(addFeature(selectedFeature)); // Add to cart
+    }
+  };
+
   return selectedFeature ? (
     <div
       className={`flex bg-slate-100 rounded-lg ${
@@ -20,8 +41,11 @@ const FeatureMain = ({ isMobile }) => {
           <div className="w-1/3 pt-3">
             <div className="flex gap-2">
               <p className="text-2xl font-semibold">{selectedFeature?.name}</p>
-              <div className="w-7 p-[5px] h-7 rounded-full border-[1px] bg-white hover-bg-slate-50 items-center justify-center flex">
-                <MdOutlineDelete />
+              <div
+                className="w-7 p-[5px] h-7 rounded-full border-[1px] bg-white hover:bg-slate-50 items-center justify-center flex cursor-pointer"
+                onClick={handleFeatureAction}
+              >
+                {isSelected ? <MdOutlineDelete /> : <GoPlus />}
               </div>
             </div>
             <div className="py-2">
@@ -46,8 +70,11 @@ const FeatureMain = ({ isMobile }) => {
           <div className=" pt-3">
             <div className="flex gap-2">
               <p className="text-2xl font-semibold">{selectedFeature?.name}</p>
-              <div className="bg-white cursor-pointer hover-bg-slate-50 w-7 h-7 rounded-md items-center justify-center flex border-[1px]">
-                <MdOutlineDelete />
+              <div
+                className="w-7 p-[5px] h-7 rounded-full border-[1px] bg-white hover:bg-slate-50 items-center justify-center flex cursor-pointer"
+                onClick={handleFeatureAction}
+              >
+                {isSelected ? <MdOutlineDelete /> : <GoPlus />}
               </div>
             </div>
             <div className="py-2">
