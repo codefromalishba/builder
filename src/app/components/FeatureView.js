@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import FeatureHeader from "./FeatureHeader";
 import FeatureMain from "./FeatureMain";
 import FeatureFooter from "./FeatureFooter";
+import { useSelector } from "react-redux";
 
 const FeatureView = () => {
   const [isMobile, setIsMobile] = useState(true);
+  const { allFeatures, selectedFeature } = useSelector(
+    (state) => state.feature
+  );
 
   const handleDeviceSelection = (device) => {
     setIsMobile(device);
@@ -18,7 +22,7 @@ const FeatureView = () => {
         />
         <FeatureMain isMobile={isMobile} />
       </div>
-      <FeatureFooter />
+      {(allFeatures.length > 0 || selectedFeature) && <FeatureFooter />}
     </div>
   );
 };

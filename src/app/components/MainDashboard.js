@@ -88,7 +88,11 @@ const MainDashboard = () => {
                 <div className="max-h-[207px]">
                   <div className="bg-slate-100 flex justify-between items-center py-3 px-4">
                     <p className="text-gray-500 text-xs">
-                      {`${allFeatures.length}/${item.dropDown.length} features`}
+                      {`${
+                        allFeatures.filter((feature) =>
+                          item.dropDown.some((f) => f.id === feature.id)
+                        ).length
+                      }/${item.dropDown.length} features`}
                     </p>
                     <p
                       className="text-gray-500 text-xs cursor-pointer hover:underline"
