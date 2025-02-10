@@ -8,7 +8,50 @@ import { IoDesktop } from "react-icons/io5";
 import ProductPhase from "./ProductPhase";
 
 const MainDelivery = () => {
+  const [selectedPhase, setSelectedPhase] = useState(null);
   const [isOn, setIsOn] = useState(false);
+  const [selectedPlatforms, setSelectedPlatforms] = useState(["android"]); // Default at least one selected
+
+  const handlePlatformClick = (platform) => {
+    setSelectedPlatforms((prevSelected) => {
+      if (prevSelected.includes(platform)) {
+        // If only one option is left, prevent deselecting it
+        return prevSelected.length > 1
+          ? prevSelected.filter((p) => p !== platform)
+          : prevSelected;
+      } else {
+        return [...prevSelected, platform]; // Add if not selected
+      }
+    });
+  };
+  const icons = [
+    { id: "android", icon: <TfiAndroid className="text-4xl" /> },
+    { id: "apple", icon: <FaApple className="text-4xl" /> },
+    { id: "web", icon: <MdWeb className="text-4xl" /> },
+    { id: "desktop", icon: <IoDesktop className="text-4xl" /> },
+  ];
+
+  const phaseInfo = {
+    name: "Devices",
+    description: `Our apps are designed for the last 3 versions of iOS & Android (at the time your project kicks off). 
+    We test on flagship Apple, Samsung & Google devices.
+
+    (Need testing for a specific device? Ask your delivery team.)
+
+    Browsers
+    For web apps, our testing process covers the last 3 major versions of these browsers:
+    - Chrome
+    - Safari
+    - Firefox
+    - Edge
+
+    Responsiveness
+    - **Desktop displays:** (1280 x 720) to (1920 x 1080)
+    - **Mobile displays:** (360 x 640) to (414 x 896)
+    - **Tablet displays:** (601 x 962) to (1280 x ?)
+    `,
+  };
+
   return (
     <div className="pt-4">
       <div className="flex justify-between items-center px-10 ">
@@ -16,20 +59,71 @@ const MainDelivery = () => {
           <p className="font-bold text-2xl">Decide your deliverables</p>
           <div className="flex items-center gap-2">
             <p className="font-md">Select platform for your product</p>
-            <BsInfoCircle className="text-gray-400" />
+            <BsInfoCircle
+              className="text-gray-400 cursor-pointer"
+              onClick={() => setSelectedPhase(phaseInfo)}
+            />
           </div>
         </div>
         <div className="flex flex-col items-end gap-2">
           <div className="flex items-center gap-2">
             <p>Expected kick-off date</p>
-            <BsInfoCircle className="text-gray-400" />
+            <BsInfoCircle
+              className="text-gray-400 cursor-pointer"
+              onClick={() => setSelectedPhase(phaseInfo)}
+            />
           </div>
           <div>
             <p className="text-xs">28 Sep 2024 (Today)</p>
           </div>
         </div>
       </div>
-      <div className="flex justify-start items-center  py-4 px-10 gap-4">
+      {selectedPhase && (
+        <div className="fixed z-20 inset-0 flex items-center justify-center">
+          <div className="bg-gray-800 text-white px-6 py-4 rounded-lg shadow-lg w-96 relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedPhase(null)}
+              className="absolute top-3 right-3 text-white text-lg"
+            >
+              ✖
+            </button>
+
+            {/* Modal Title */}
+            <p className="font-bold text-lg text-center">
+              {selectedPhase.name}
+            </p>
+
+            {/* Modal Description */}
+            <p className="text-gray-400 text-xs py-2 whitespace-pre-line">
+              {selectedPhase.description}
+            </p>
+          </div>
+        </div>
+      )}
+      <div className="flex justify-start items-center py-4 px-10 gap-4">
+        {icons.map(({ id, icon }) => (
+          <div
+            key={id}
+            className={`border-[1px] h-20 w-20 cursor-pointer rounded-md flex justify-center items-center border-gray-300 ${
+              selectedPlatforms.includes(id) ? "bg-black" : ""
+            }`}
+            onClick={() => handlePlatformClick(id)}
+          >
+            <div className="p-3">
+              {React.cloneElement(icon, {
+                className: `text-4xl flex justify-center items-center ${
+                  selectedPlatforms.includes(id)
+                    ? "text-white"
+                    : "text-[#B4B6B7]"
+                }`,
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* <div className="flex justify-start items-center  py-4 px-10 gap-4">
         <div className="border-[1px] h-20 w-20 cursor-pointer rounded-md flex justify-center items-center border-gray-300">
           <div className="p-3 ">
             <TfiAndroid className="text-[#B4B6B7] flex justify-center items-center text-4xl " />
@@ -50,7 +144,7 @@ const MainDelivery = () => {
             <IoDesktop className="text-[#B4B6B7] flex justify-center items-center text-4xl " />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="flex justify-between items-center px-10 pt-6">
         <p className="font-md">Select phases for your product</p>
         <div className="flex items-center gap-2">

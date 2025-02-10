@@ -2783,7 +2783,7 @@ export const initialPhases = [
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",
-    icon: <GoChecklist className="text-4xl text-black" />,
+    icon: <GoChecklist className="text-3xl text-black" />,
     selected: false,
     description:
       "Why do you need a product roadmap? Add it and we help you define the use cases for every feature in your Buildcard. If you skip it, you’ll need to know exactly what you expect each feature to do before we can start building your app.It also gives you an in-depth view of where your product is going. Includes a product timeline so everyone can see all the key dates on the way to get you there.",
@@ -2825,7 +2825,7 @@ export const initialPhases = [
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",
-    icon: <IoCodeSlashOutline className="text-4xl text-black" />,
+    icon: <IoCodeSlashOutline className="text-3xl text-black" />,
     selected: true,
     description:
       "Ship the first build of your idea and get early adopters to try out your product",
@@ -2841,7 +2841,7 @@ export const initialPhases = [
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",
-    icon: <GoRocket className="text-4xl text-black" />,
+    icon: <GoRocket className="text-3xl text-black" />,
     selected: false,
     description:
       "We will do end to end designing and development of your idea. Get a market-ready product",

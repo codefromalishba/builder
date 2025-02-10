@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineDelete } from "react-icons/md";
 import { GoPlus } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,7 @@ const FeatureMain = ({ isMobile }) => {
   );
   const isSelected = allFeatures.some((f) => f.id === selectedFeature?.id);
   const isUnderView = selectedFeature?.id && !isSelected;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleFeatureAction = (e) => {
     e.stopPropagation(); // Prevent parent click events
@@ -25,6 +26,11 @@ const FeatureMain = ({ isMobile }) => {
     } else {
       dispatch(addFeature(selectedFeature)); // Add to cart
     }
+  };
+
+  // Function to toggle the description view
+  const toggleDescription = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return selectedFeature ? (
@@ -53,7 +59,20 @@ const FeatureMain = ({ isMobile }) => {
               <p className="text-lg">{selectedFeature?.timeline} days</p>
             </div>
             <div>
-              <p className="text-md py-1">{selectedFeature?.description}</p>
+              <div className="text-md py-1">
+                <p className="whitespace-pre-line">
+                  {isExpanded
+                    ? selectedFeature?.description
+                    : `${selectedFeature?.description.slice(0, 100)}... `}
+
+                  <button
+                    className=" cursor-pointer font-bold hover:underline text-sm"
+                    onClick={toggleDescription}
+                  >
+                    {isExpanded ? " see less" : " see more"}
+                  </button>
+                </p>
+              </div>
             </div>
           </div>
         </>
@@ -82,7 +101,20 @@ const FeatureMain = ({ isMobile }) => {
               <p className="text-lg">{selectedFeature?.timeline} days</p>
             </div>
             <div>
-              <p className="text-md py-1">{selectedFeature?.description}</p>
+              <div className="text-md py-1">
+                <p className="whitespace-pre-line">
+                  {isExpanded
+                    ? selectedFeature?.description
+                    : `${selectedFeature?.description.slice(0, 100)}... `}
+
+                  <button
+                    className=" cursor-pointer font-bold hover:underline text-sm"
+                    onClick={toggleDescription}
+                  >
+                    {isExpanded ? " see less" : " see more"}
+                  </button>
+                </p>
+              </div>
             </div>
           </div>
         </>

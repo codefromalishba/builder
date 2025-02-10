@@ -11,6 +11,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.8",
     "css": "^3.0.0",
+    "framer-motion": "^12.4.1",
     "icons": "^1.0.0",
     "next": "14.2.7",
     "react": "^18.3.1",
