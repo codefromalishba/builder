@@ -2778,6 +2778,7 @@ export const priceDuration = [
 
 export const initialPhases = [
   {
+    id: "1",
     name: "Product Roadmap",
     duration: "---",
     fixedCost: 0,
@@ -2792,6 +2793,7 @@ export const initialPhases = [
     sliderValue: 2,
   },
   {
+    id: "2",
     name: "Design",
     duration: "---",
     fixedCost: 0,
@@ -2806,6 +2808,7 @@ export const initialPhases = [
     sliderValue: 1,
   },
   {
+    id: "3",
     name: "Professional Prototype",
     duration: "---",
     fixedCost: 0,
@@ -2820,6 +2823,7 @@ export const initialPhases = [
     sliderValue: 3,
   },
   {
+    id: "4",
     name: "MVP",
     duration: "---",
     fixedCost: 0,
@@ -2836,6 +2840,7 @@ export const initialPhases = [
     sliderValue: 4,
   },
   {
+    id: "5",
     name: "Full Build",
     duration: "---",
     fixedCost: 0,

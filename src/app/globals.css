@@ -74,7 +74,7 @@ body {
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 15px;
+  height: 3px;
   border-radius: 5px;
   background: #d3d3d3;
   outline: none;
@@ -86,16 +86,16 @@ body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: #04aa6d;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: #04aa6d;
   cursor: pointer;

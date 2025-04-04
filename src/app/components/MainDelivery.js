@@ -9,6 +9,7 @@ import ProductPhase from "./ProductPhase";
 
 const MainDelivery = () => {
   const [selectedPhase, setSelectedPhase] = useState(null);
+  const [selectedPhase2, setSelectedPhase2] = useState(null);
   const [isOn, setIsOn] = useState(false);
   const [selectedPlatforms, setSelectedPlatforms] = useState(["android"]); // Default at least one selected
 
@@ -31,6 +32,10 @@ const MainDelivery = () => {
     { id: "desktop", icon: <IoDesktop className="text-4xl" /> },
   ];
 
+  const phaseInfo2 = {
+    description: `Essential meeting that kicks off your project. We set everyone's roles, understand your objectives and make sure the app will be exactly how you want it.
+    `,
+  };
   const phaseInfo = {
     name: "Devices",
     description: `Our apps are designed for the last 3 versions of iOS & Android (at the time your project kicks off). 
@@ -70,7 +75,7 @@ const MainDelivery = () => {
             <p>Expected kick-off date</p>
             <BsInfoCircle
               className="text-gray-400 cursor-pointer"
-              onClick={() => setSelectedPhase(phaseInfo)}
+              onClick={() => setSelectedPhase2(phaseInfo2)}
             />
           </div>
           <div>
@@ -78,6 +83,24 @@ const MainDelivery = () => {
           </div>
         </div>
       </div>
+      {selectedPhase2 && (
+        <div className="fixed z-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-100 pointer-events-auto w-80 h-auto rounded-lg bg-gray-700 p-4 transition-opacity duration-1000 ease-in-out">
+          <div className=" text-white px-6 py-4 rounded-lg shadow-lg  relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedPhase2(null)}
+              className="absolute top-3 right-3 text-white text-sm"
+            >
+              ✖
+            </button>
+
+            {/* Modal Description */}
+            <p className="text-white text-sm py-2 whitespace-pre-line">
+              {selectedPhase2.description}
+            </p>
+          </div>
+        </div>
+      )}
       {selectedPhase && (
         <div className="fixed z-20 inset-0 flex items-center justify-center">
           <div className="bg-gray-800 text-white px-6 py-4 rounded-lg shadow-lg w-96 relative">
@@ -90,9 +113,7 @@ const MainDelivery = () => {
             </button>
 
             {/* Modal Title */}
-            <p className="font-bold text-lg text-center">
-              {selectedPhase.name}
-            </p>
+            <p className="font-bold text-lg ">{selectedPhase.name}</p>
 
             {/* Modal Description */}
             <p className="text-gray-400 text-xs py-2 whitespace-pre-line">

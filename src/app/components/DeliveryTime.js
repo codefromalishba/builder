@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaRegCircle } from "react-icons/fa";
 
 const DeliveryTime = () => {
+  const [step, setStep] = useState(3); // Default step is "Standard"
+
+  const [step2, setStep2] = useState(4); // Default step is "50k+"
+
+  const speedOptions = [
+    { label: "Relaxed", price: "$2,052", duration: "8 Weeks" },
+    { label: "Slow", price: "$2,308", duration: "7 Weeks" },
+    { label: "Standard", price: "$2,565", duration: "6 Weeks" },
+    { label: "Fast", price: "$2,821", duration: "5 Weeks" },
+    { label: "Speedy", price: "$3,078", duration: "4 Weeks" },
+  ];
+
+  const handleChange = (event) => {
+    setStep(Number(event.target.value));
+  };
+
+  const userRanges = [
+    { label: "0-500", value: "0-500" },
+    { label: "500-5k", value: "500-5k" },
+    { label: "5k-50k", value: "5k-50k" },
+    { label: "50k+", value: "50k+" },
+  ];
+
+  const handleChange2 = (event) => {
+    setStep2(Number(event.target.value));
+  };
+
   return (
     <div className="bg-slate-100 mt-10 grid grid-cols-3">
       <div className="col-span-2 p-10">
@@ -11,34 +38,46 @@ const DeliveryTime = () => {
             <div className="w-3/4">
               <div className="bg-white p-5 rounded-md h-40">
                 <div className="h-10 flex justify-between">
-                  <p className="text-xs mt-4">Relaxed</p>
-                  <p className="text-xs mt-4">Slow</p>
-                  <p className="text-xs mt-4 text-demo">Standard</p>
-                  <p className="text-xs mt-4">Fast</p>
-                  <p className="text-xs mt-4">Speedy</p>
+                  {speedOptions.map((option, index) => (
+                    <p
+                      key={index}
+                      className={`text-xs mt-4 ${
+                        step === index + 1
+                          ? "text-demo font-semibold"
+                          : "text-black"
+                      }`}
+                    >
+                      {option.label}
+                    </p>
+                  ))}
                 </div>
-                <div className="border-[1px] border-black mt-4"></div>
+
+                <div className="flex flex-col items-center justify-center gap-4 mt-4">
+                  <input
+                    type="range"
+                    min="1"
+                    max="5"
+                    step="1"
+                    value={step}
+                    onChange={handleChange}
+                    className="slider w-full outline-none border-none rounded-md cursor-pointer bg-gray-300 relative"
+                  />
+                </div>
+
                 <div className="h-10 flex justify-between">
-                  <div className="text-xs mt-4 text-center">
-                    <p>$2,052</p>
-                    <p className="pt-1">8 Weeks</p>
-                  </div>
-                  <div className="text-xs mt-4 text-center">
-                    <p>$2,308</p>
-                    <p className="pt-1">7 Weeks</p>
-                  </div>
-                  <div className="text-xs mt-4 text-demo text-center">
-                    <p>$2,565</p>
-                    <p className="pt-1">6 Weeks</p>
-                  </div>
-                  <div className="text-xs mt-4 text-center">
-                    <p>$2,821</p>
-                    <p className="pt-1">5 Weeks</p>
-                  </div>
-                  <div className="text-xs mt-4 text-center">
-                    <p>$3,078</p>
-                    <p className="pt-1">4 Weeks</p>
-                  </div>
+                  {speedOptions.map((option, index) => (
+                    <div
+                      key={index}
+                      className={`text-xs mt-4 text-center ${
+                        step === index + 1
+                          ? "text-demo font-semibold"
+                          : "text-black"
+                      }`}
+                    >
+                      <p>{option.price}</p>
+                      <p className="pt-1">{option.duration}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -100,7 +139,41 @@ const DeliveryTime = () => {
             </li>
           </ul>
         </div>
-        <div className="bg-slate-200 mt-3 h-30 p-5 w-full rounded-md">
+        <div className="bg-slate-200 mt-3 p-5 w-full rounded-md">
+          {/* Header with selected range */}
+          <div className="flex justify-between items-center h-8">
+            <p className="font-bold">Number of users</p>
+            <p className="font-bold">{userRanges[step2 - 1].value}</p>
+          </div>
+
+          {/* Slider */}
+          <div className="flex flex-col items-center justify-center gap-4 mt-2 py-3">
+            <input
+              type="range"
+              min="1"
+              max="4"
+              step="1"
+              value={step2}
+              onChange={handleChange2}
+              className="slider w-full outline-none border-none rounded-md cursor-pointer bg-gray-300 relative"
+            />
+          </div>
+
+          {/* User Ranges */}
+          <div className="flex justify-between items-center h-8">
+            {userRanges.map((range, index) => (
+              <p
+                key={index}
+                className={`text-xs mt-4 text-center ${
+                  step2 === index + 1 ? "text-demo font-semibold" : "text-black"
+                }`}
+              >
+                {range.label}
+              </p>
+            ))}
+          </div>
+        </div>
+        {/* <div className="bg-slate-200 mt-3 h-30 p-5 w-full rounded-md">
           <div className="flex justify-between items-center h-8">
             <p className="font-bold">Number of users</p>
             <p className="font-bold">50k+</p>
@@ -112,7 +185,7 @@ const DeliveryTime = () => {
             <p className="text-xs mt-4 text-center">5k-50k</p>
             <p className="text-xs mt-4 text-center">50k+</p>
           </div>
-        </div>
+        </div> */}
         <div className="mt-4">
           <p className=" text-2xl">
             <span className="font-bold"> $1,000 + * </span> /month
