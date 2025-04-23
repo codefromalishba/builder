@@ -5,12 +5,14 @@ import { selectTotalCost } from "../store/featureSlice";
 
 const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
-  const { fixedCost, totalTimeline, customizationCost } =
+  const { fixedCost, totalTimeline, customizationCost, phasesCost } =
     useSelector(selectTotalCost);
 
   const grandTotal = (
-    parseFloat(fixedCost) + parseFloat(customizationCost)
-  ).toFixed(2);
+    parseFloat(fixedCost) +
+    parseFloat(customizationCost) +
+    parseFloat(phasesCost)
+  ).toFixed(0);
 
   const handleOpenAppNamePopup = () => {
     setIsAppNamePopupOpen(true);
@@ -23,12 +25,12 @@ const DeliveryFooter = () => {
   };
   return (
     <>
-      <div className=" grid grid-cols-4 h-16">
-        <div className=" flex justify-between gap-7 col-span-3 pt-4 px-20">
+      <div className=" grid grid-cols-4  h-[80px]">
+        <div className=" flex justify-between gap-7 col-span-3 pt-4 mb-4 px-20">
           <div className="flex flex-col gap-2 px-2 justify-start ">
             <p className="text-xs">Customization Cost</p>
             <p className="font-extrabold text-xl">
-              {customizationCost.toFixed(2)} $
+              {customizationCost.toFixed(0)} $
             </p>
           </div>
           <div>
@@ -36,7 +38,7 @@ const DeliveryFooter = () => {
           </div>
           <div className="flex flex-col gap-2 px-2 justify-start ">
             <p className="text-xs">Fixed Cost</p>
-            <p className="font-extrabold text-xl">{fixedCost.toFixed(2)} $</p>
+            <p className="font-extrabold text-xl">{fixedCost.toFixed(0)} $</p>
           </div>
           <div>
             <p className="text-2xl text-[#A6A6A6] ">=</p>
