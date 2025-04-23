@@ -7,11 +7,11 @@ const DeliveryTime = () => {
   const [step2, setStep2] = useState(4); // Default step is "50k+"
 
   const speedOptions = [
-    { label: "Relaxed", price: "$2,052", duration: "8 Weeks" },
-    { label: "Slow", price: "$2,308", duration: "7 Weeks" },
-    { label: "Standard", price: "$2,565", duration: "6 Weeks" },
-    { label: "Fast", price: "$2,821", duration: "5 Weeks" },
-    { label: "Speedy", price: "$3,078", duration: "4 Weeks" },
+    { label: "Relaxed", price: "$2,052", duration: "4 Weeks" },
+    { label: "Slow", price: "$2,308", duration: "3 Weeks" },
+    { label: "Standard", price: "$2,565", duration: "2 Weeks" },
+    { label: "Fast", price: "$2,821", duration: "1 Weeks" },
+    { label: "Speedy", price: "$3,078", duration: "0 Weeks" },
   ];
 
   const handleChange = (event) => {

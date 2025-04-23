@@ -2780,7 +2780,7 @@ export const initialPhases = [
   {
     id: "1",
     name: "Product Roadmap",
-    duration: "---",
+    duration: 1,
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",
@@ -2795,7 +2795,7 @@ export const initialPhases = [
   {
     id: "2",
     name: "Design",
-    duration: "---",
+    duration: 2,
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",
@@ -2810,7 +2810,7 @@ export const initialPhases = [
   {
     id: "3",
     name: "Professional Prototype",
-    duration: "---",
+    duration: 1,
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",
@@ -2825,7 +2825,7 @@ export const initialPhases = [
   {
     id: "4",
     name: "MVP",
-    duration: "---",
+    duration: 3,
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",
@@ -2842,7 +2842,7 @@ export const initialPhases = [
   {
     id: "5",
     name: "Full Build",
-    duration: "---",
+    duration: 2,
     fixedCost: 0,
     customizationCost: 0,
     delivery: "---",

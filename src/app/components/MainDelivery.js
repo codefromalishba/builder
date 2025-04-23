@@ -47,7 +47,7 @@ const MainDelivery = () => {
   // };
   const icons = [
     { id: "android", icon: <TfiAndroid className="text-4xl" /> },
-    { id: "ios  ", icon: <FaApple className="text-4xl" /> },
+    { id: "ios", icon: <FaApple className="text-4xl" /> },
     { id: "web", icon: <MdWeb className="text-4xl" /> },
     { id: "desktop", icon: <IoDesktop className="text-4xl" /> },
   ];

@@ -6,6 +6,7 @@ import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
+import moment from "moment";
 // import { initialPhases } from "@/data";
 import { useDispatch } from "react-redux";
 import { addPhase, removePhase } from "../store/featureSlice";
@@ -100,11 +101,24 @@ const ProductPhase = ({ isOn, initialPhases }) => {
                     <>
                       <p className="font-bold text-xs pb-1">
                         Estimated Duration:
-                        <span className="font-normal"> 1 Week</span>
+                        <span className="font-normal">
+                          {expandedCards[phase.id]
+                            ? `${phase.duration} ${
+                                phase.duration === 1 ? "Week" : "Weeks"
+                              }`
+                            : "---"}
+                        </span>
                       </p>
                       <p className="font-bold text-xs">
                         Estimated Delivery Date:
-                        <span className="font-normal"> 05-Oct-2024</span>
+                        <span className="font-normal">
+                          {" "}
+                          {expandedCards[phase.id]
+                            ? moment()
+                                .add(phase.duration, "weeks")
+                                .format("DD-MMM-YYYY")
+                            : "---"}
+                        </span>
                       </p>
                     </>
                   )}
@@ -264,17 +278,17 @@ const ProductPhase = ({ isOn, initialPhases }) => {
                 <div className="flex p-5 justify-between pt-5">
                   <p className="text-xs font-bold">Platform</p>
                 </div>
-                <div className="flex px-5 justify-start py-4 gap-4">
-                  {phase.platform.includes("ios") && (
-                    <div className="flex flex-col items-center">
-                      <FaApple className="text-2xl" />
-                      <p className="text-xs text-gray-400 pt-2">iOS</p>
-                    </div>
-                  )}
+                <div className="flex px-4 justify-start py-4 gap-3">
                   {phase.platform.includes("android") && (
                     <div className="flex flex-col items-center">
                       <TfiAndroid className="text-2xl" />
                       <p className="text-xs text-gray-400 pt-2">Android</p>
+                    </div>
+                  )}
+                  {phase.platform.includes("ios") && (
+                    <div className="flex flex-col items-center">
+                      <FaApple className="text-2xl" />
+                      <p className="text-xs text-gray-400 pt-2">iOS</p>
                     </div>
                   )}
                   {phase.platform.includes("web") && (
@@ -298,11 +312,24 @@ const ProductPhase = ({ isOn, initialPhases }) => {
                 </div>
                 <div className="p-5">
                   <p className="font-bold text-xs">Estimated Duration:</p>
-                  <p className="text-xs">1 Weeks</p>
+                  <p className="text-xs">
+                    {expandedCards[phase.id]
+                      ? `${phase.duration} ${
+                          phase.duration === 1 ? "Week" : "Weeks"
+                        }`
+                      : "---"}
+                  </p>
+
                   <p className="font-bold text-xs pt-2">
                     Estimated Delivery Date:
                   </p>
-                  <p className="text-xs">06-Oct-2024</p>
+                  <p className="text-xs">
+                    {expandedCards[phase.id]
+                      ? moment()
+                          .add(phase.duration, "weeks")
+                          .format("DD-MMM-YYYY")
+                      : "---"}
+                  </p>
                 </div>
               </div>
             </div>

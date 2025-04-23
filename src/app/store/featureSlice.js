@@ -7,6 +7,7 @@ const featureSlice = createSlice({
     allFeatures: [],
     selectedPhases: [], // NEW
   },
+
   reducers: {
     setSelectedFeature: (state, action) => {
       state.selectedFeature = action.payload;
