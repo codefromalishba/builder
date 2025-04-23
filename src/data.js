@@ -2789,7 +2789,7 @@ export const initialPhases = [
     description:
       "Why do you need a product roadmap? Add it and we help you define the use cases for every feature in your Buildcard. If you skip it, you’ll need to know exactly what you expect each feature to do before we can start building your app.It also gives you an in-depth view of where your product is going. Includes a product timeline so everyone can see all the key dates on the way to get you there.",
     more: "Can help you secure funding, improve collaboration and streamline the whole app building process. Also useful for making long-term strategic decisions and planning a successful launch.",
-    platform: ["ios"],
+    platform: ["ios", "android"],
     sliderValue: 2,
   },
   {
@@ -2804,7 +2804,7 @@ export const initialPhases = [
     description:
       "Trust us to do the wireframing of your concept and design a seamless experience. Get a fully scalable UI/UX",
     more: "We combine visual principles, data, color psychology, and decades worth of experience to create aesthetic interfaces that will drive the growth of your product. We are experts in creating human-centric designs that allow customers to intuitively use your product and have a great product experience.",
-    platform: ["ios"],
+    platform: ["web"],
     sliderValue: 1,
   },
   {
@@ -2819,7 +2819,7 @@ export const initialPhases = [
     description:
       "Get a fully functional design prototype to test the design hypothesis and end-user journey. This includes designs for prototypes.",
     more: "Prototypes are realistic design representations of your ideas. We design interactive prototypes for iPhone, iPad, Android, and Web. Creation of prototypes is more specific, measurable, quick, and intensive than just describing the design. Test how the user will interact with an environment comparable to the final product.",
-    platform: ["ios"],
+    platform: ["desktop"],
     sliderValue: 3,
   },
   {
@@ -2834,7 +2834,7 @@ export const initialPhases = [
     description:
       "Ship the first build of your idea and get early adopters to try out your product",
     more: "We help design a Minimum Viable Product as a proof of concept to satisfy early customers and provide feedback for future development. It’s an easy way to build a product with a minimum set of features to test the market. Collect the maximum amount of validated learning about your customers with the least effort.",
-    platform: ["ios"],
+    platform: ["android"],
     showPlatform: true,
     features: 0,
     sliderValue: 4,

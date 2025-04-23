@@ -265,14 +265,30 @@ const ProductPhase = ({ isOn }) => {
                   <p className="text-xs font-bold">Platform</p>
                 </div>
                 <div className="flex px-5 justify-start py-4 gap-4">
-                  <div className="flex flex-col items-center">
-                    <FaApple className="text-2xl" />
-                    <p className="text-xs text-gray-400 pt-2">iOS</p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <MdWeb className="text-2xl" />
-                    <p className="text-xs text-gray-400 pt-2">Web</p>
-                  </div>
+                  {phase.platform.includes("ios") && (
+                    <div className="flex flex-col items-center">
+                      <FaApple className="text-2xl" />
+                      <p className="text-xs text-gray-400 pt-2">iOS</p>
+                    </div>
+                  )}
+                  {phase.platform.includes("android") && (
+                    <div className="flex flex-col items-center">
+                      <TfiAndroid className="text-2xl" />
+                      <p className="text-xs text-gray-400 pt-2">Android</p>
+                    </div>
+                  )}
+                  {phase.platform.includes("web") && (
+                    <div className="flex flex-col items-center">
+                      <MdWeb className="text-2xl" />
+                      <p className="text-xs text-gray-400 pt-2">Web</p>
+                    </div>
+                  )}
+                  {phase.platform.includes("desktop") && (
+                    <div className="flex flex-col items-center">
+                      <IoDesktop className="text-2xl" />
+                      <p className="text-xs text-gray-400 pt-2">Desktop</p>
+                    </div>
+                  )}
                 </div>
                 <div className="p-5 border-t-[1px] border-b-[1px]">
                   <p className="font-bold text-xs">Features</p>
