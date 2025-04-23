@@ -6,28 +6,48 @@ import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
 import ProductPhase from "./ProductPhase";
+import { initialPhases } from "@/data";
 
 const MainDelivery = () => {
   const [selectedPhase, setSelectedPhase] = useState(null);
   const [selectedPhase2, setSelectedPhase2] = useState(null);
   const [isOn, setIsOn] = useState(false);
   const [selectedPlatforms, setSelectedPlatforms] = useState(["android"]); // Default at least one selected
+  const [phases, setPhases] = useState(initialPhases);
 
   const handlePlatformClick = (platform) => {
     setSelectedPlatforms((prevSelected) => {
-      if (prevSelected.includes(platform)) {
-        // If only one option is left, prevent deselecting it
-        return prevSelected.length > 1
+      const updated = prevSelected.includes(platform)
+        ? prevSelected.length > 1
           ? prevSelected.filter((p) => p !== platform)
-          : prevSelected;
-      } else {
-        return [...prevSelected, platform]; // Add if not selected
-      }
+          : prevSelected
+        : [...prevSelected, platform];
+
+      // Update platforms in all phases (or filter based on condition if needed)
+      const updatedPhases = phases.map((phase) => ({
+        ...phase,
+        platform: updated,
+      }));
+
+      setPhases(updatedPhases);
+      return updated;
     });
   };
+  // const handlePlatformClick = (platform) => {
+  //   setSelectedPlatforms((prevSelected) => {
+  //     if (prevSelected.includes(platform)) {
+
+  //       return prevSelected.length > 1
+  //         ? prevSelected.filter((p) => p !== platform)
+  //         : prevSelected;
+  //     } else {
+  //       return [...prevSelected, platform];
+  //     }
+  //   });
+  // };
   const icons = [
     { id: "android", icon: <TfiAndroid className="text-4xl" /> },
-    { id: "apple", icon: <FaApple className="text-4xl" /> },
+    { id: "ios  ", icon: <FaApple className="text-4xl" /> },
     { id: "web", icon: <MdWeb className="text-4xl" /> },
     { id: "desktop", icon: <IoDesktop className="text-4xl" /> },
   ];
@@ -95,7 +115,7 @@ const MainDelivery = () => {
             </button>
 
             {/* Modal Description */}
-            <p className="text-white text-sm py-2 whitespace-pre-line">
+            <p className="text-white text-sm  whitespace-pre-line">
               {selectedPhase2.description}
             </p>
           </div>
@@ -186,7 +206,7 @@ const MainDelivery = () => {
           </button>
         </div>
       </div>
-      <ProductPhase isOn={isOn} />
+      <ProductPhase isOn={isOn} initialPhases={phases} />
     </div>
   );
 };

@@ -2789,7 +2789,7 @@ export const initialPhases = [
     description:
       "Why do you need a product roadmap? Add it and we help you define the use cases for every feature in your Buildcard. If you skip it, you’ll need to know exactly what you expect each feature to do before we can start building your app.It also gives you an in-depth view of where your product is going. Includes a product timeline so everyone can see all the key dates on the way to get you there.",
     more: "Can help you secure funding, improve collaboration and streamline the whole app building process. Also useful for making long-term strategic decisions and planning a successful launch.",
-    platform: ["ios", "android"],
+    platform: ["android"],
     sliderValue: 2,
   },
   {
@@ -2804,7 +2804,7 @@ export const initialPhases = [
     description:
       "Trust us to do the wireframing of your concept and design a seamless experience. Get a fully scalable UI/UX",
     more: "We combine visual principles, data, color psychology, and decades worth of experience to create aesthetic interfaces that will drive the growth of your product. We are experts in creating human-centric designs that allow customers to intuitively use your product and have a great product experience.",
-    platform: ["web"],
+    platform: ["android"],
     sliderValue: 1,
   },
   {
@@ -2819,7 +2819,7 @@ export const initialPhases = [
     description:
       "Get a fully functional design prototype to test the design hypothesis and end-user journey. This includes designs for prototypes.",
     more: "Prototypes are realistic design representations of your ideas. We design interactive prototypes for iPhone, iPad, Android, and Web. Creation of prototypes is more specific, measurable, quick, and intensive than just describing the design. Test how the user will interact with an environment comparable to the final product.",
-    platform: ["desktop"],
+    platform: ["android"],
     sliderValue: 3,
   },
   {
@@ -2851,7 +2851,7 @@ export const initialPhases = [
     description:
       "We will do end to end designing and development of your idea. Get a market-ready product",
     more: "We build a full-fledged product based on the product roadmap and the features laid out in the specification document. We will also perfect the product based on user feedback received on the Minimum Viable Product. We will ship a fully mature, responsive, scalable, business-ready and a user-friendly product.",
-    platform: ["ios"],
+    platform: ["android"],
     sliderValue: 5,
   },
 ];

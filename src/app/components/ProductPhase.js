@@ -6,11 +6,11 @@ import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
-import { initialPhases } from "@/data";
+// import { initialPhases } from "@/data";
 import { useDispatch } from "react-redux";
 import { addPhase, removePhase } from "../store/featureSlice";
 
-const ProductPhase = ({ isOn }) => {
+const ProductPhase = ({ isOn, initialPhases }) => {
   // const [selectedPhase, setSelectedPhase] = useState(null);
   // const [expandedCards, setExpandedCards] = useState({});
   // const dispatch = useDispatch();
@@ -293,7 +293,7 @@ const ProductPhase = ({ isOn }) => {
                 <div className="p-5 border-t-[1px] border-b-[1px]">
                   <p className="font-bold text-xs">Features</p>
                   <p className="text-gray-400 text-xs pt-2">
-                    4 Features Selected{" "}
+                    1 Features Selected{" "}
                   </p>
                 </div>
                 <div className="p-5">
