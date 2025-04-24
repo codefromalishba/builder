@@ -24,14 +24,6 @@ const ProductPhase = ({ isOn, initialPhases }) => {
     return initialState;
   });
 
-  // useEffect(() => {
-  //   initialPhases.forEach((phase) => {
-  //     if (phase.name === "Design" || phase.name === "MVP") {
-  //       dispatch(addPhase(phase.id));
-  //     }
-  //   });
-  // }, [dispatch, initialPhases]);
-
   const toggleCard = (id) => {
     const isCurrentlySelected = expandedCards[id];
     const selectedCount = Object.values(expandedCards).filter(Boolean).length;
@@ -55,21 +47,6 @@ const ProductPhase = ({ isOn, initialPhases }) => {
       return newState;
     });
   };
-
-  // const toggleCard = (id) => {
-  //   const isCurrentlySelected = expandedCards[id];
-
-  //   // Count how many are currently selected
-  //   const selectedCount = Object.values(expandedCards).filter(Boolean).length;
-
-  //   // Prevent deselecting the last remaining card
-  //   if (isCurrentlySelected && selectedCount === 1) return;
-
-  //   setExpandedCards((prev) => ({
-  //     ...prev,
-  //     [id]: !isCurrentlySelected,
-  //   }));
-  // };
 
   return (
     <>
