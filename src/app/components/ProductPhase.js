@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { IoIosCheckmarkCircle, IoIosRadioButtonOff } from "react-icons/io";
 import { TfiAndroid } from "react-icons/tfi";
 import { FaApple } from "react-icons/fa";
@@ -12,27 +13,8 @@ import { useDispatch } from "react-redux";
 import { addPhase, removePhase } from "../store/featureSlice";
 
 const ProductPhase = ({ isOn, initialPhases }) => {
-  // const [selectedPhase, setSelectedPhase] = useState(null);
-  // const [expandedCards, setExpandedCards] = useState({});
-  // const dispatch = useDispatch();
-
-  // const toggleCard = (id) => {
-  //   setExpandedCards((prev) => {
-  //     const isNowExpanded = !prev[id];
-  //     if (isNowExpanded) {
-  //       dispatch(addPhase(id));
-  //     } else {
-  //       dispatch(removePhase(id));
-  //     }
-  //     return {
-  //       ...prev,
-  //       [id]: isNowExpanded,
-  //     };
-  //   });
-  // };
-
   const [selectedPhase, setSelectedPhase] = useState(null);
-
+  const dispatch = useDispatch();
   // Initialize expandedCards with default selected: Design and MVP
   const [expandedCards, setExpandedCards] = useState(() => {
     const initialState = {};
@@ -42,20 +24,52 @@ const ProductPhase = ({ isOn, initialPhases }) => {
     return initialState;
   });
 
+  // useEffect(() => {
+  //   initialPhases.forEach((phase) => {
+  //     if (phase.name === "Design" || phase.name === "MVP") {
+  //       dispatch(addPhase(phase.id));
+  //     }
+  //   });
+  // }, [dispatch, initialPhases]);
+
   const toggleCard = (id) => {
     const isCurrentlySelected = expandedCards[id];
-
-    // Count how many are currently selected
     const selectedCount = Object.values(expandedCards).filter(Boolean).length;
 
     // Prevent deselecting the last remaining card
     if (isCurrentlySelected && selectedCount === 1) return;
 
-    setExpandedCards((prev) => ({
-      ...prev,
-      [id]: !isCurrentlySelected,
-    }));
+    setExpandedCards((prev) => {
+      const newState = {
+        ...prev,
+        [id]: !isCurrentlySelected,
+      };
+
+      // Dispatch Redux actions
+      if (!isCurrentlySelected) {
+        dispatch(addPhase(id));
+      } else {
+        dispatch(removePhase(id));
+      }
+
+      return newState;
+    });
   };
+
+  // const toggleCard = (id) => {
+  //   const isCurrentlySelected = expandedCards[id];
+
+  //   // Count how many are currently selected
+  //   const selectedCount = Object.values(expandedCards).filter(Boolean).length;
+
+  //   // Prevent deselecting the last remaining card
+  //   if (isCurrentlySelected && selectedCount === 1) return;
+
+  //   setExpandedCards((prev) => ({
+  //     ...prev,
+  //     [id]: !isCurrentlySelected,
+  //   }));
+  // };
 
   return (
     <>

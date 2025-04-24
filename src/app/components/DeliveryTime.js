@@ -3,7 +3,6 @@ import { FaRegCircle } from "react-icons/fa";
 
 const DeliveryTime = () => {
   const [step, setStep] = useState(3); // Default step is "Standard"
-
   const [step2, setStep2] = useState(4); // Default step is "50k+"
 
   const speedOptions = [
