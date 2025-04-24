@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth } from "../firebase";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -13,15 +15,49 @@ const SignIn = ({ handleClosePopup }) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const router = useRouter();
+  const db = getFirestore();
+  const dispatch = useDispatch();
+
+  const clearAllFields = () => {
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
+
+  const createUser = (user) => {
+    const userData = {
+      uid: user.uid,
+      name: name,
+      email: email,
+      buildCards: [],
+    };
+
+    setDoc(doc(db, "users", user.uid), userData)
+      .then(() => {
+        console.log("Success");
+        dispatch(setUser(userData));
+        router.push(`/${params.lang}/features`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (isSignIn) {
         await signInWithEmailAndPassword(auth, email, password);
+
         alert("Signed in!");
       } else {
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(auth, email, password).then(
+          async (authUser) => {
+            console.log("test", authUser);
+            clearAllFields();
+            createUser({ uid: authUser.user.uid });
+          }
+        );
         alert("Account created!");
       }
 

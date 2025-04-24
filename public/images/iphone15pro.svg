@@ -61,13 +61,13 @@
 </g>
 <g clip-path="url(#clip4_707_1088)">
 <rect x="10" width="1280" height="2642" rx="210" fill="black"/>
-<rect x="21.5" y="11.5" width="1257" height="2619" rx="198.5" stroke="#515868" stroke-width="13"/>
-<rect x="12.5" y="2.5" width="1275" height="2637" rx="207.5" stroke="#303640" stroke-width="5"/>
+<rect x="21.5" y="11.5" width="1257" height="2619" rx="198.5" stroke="#515868" strokeWidth="13"/>
+<rect x="12.5" y="2.5" width="1275" height="2637" rx="207.5" stroke="#303640" strokeWidth="5"/>
 <g opacity="0.9" filter="url(#filter16_f_707_1088)">
-<rect x="15" y="6" width="1270" height="2631" rx="206" stroke="#717989" stroke-width="5"/>
+<rect x="15" y="6" width="1270" height="2631" rx="206" stroke="#717989" strokeWidth="5"/>
 </g>
 <g opacity="0.8" filter="url(#filter17_f_707_1088)">
-<rect x="32" y="22" width="1236" height="2598" rx="188" stroke="#646464" stroke-width="2"/>
+<rect x="32" y="22" width="1236" height="2598" rx="188" stroke="#646464" strokeWidth="2"/>
 </g>
 <g clip-path="url(#clip5_707_1088)">
 <rect x="65" y="55" width="1170" height="2532" rx="165" fill="white"/>
@@ -87,14 +87,14 @@
 <path d="M1024.95 146.825C1020.79 142.611 1015 140 1008.6 140C1002.18 140 996.366 142.635 992.192 146.884L997.85 152.542C1000.57 149.74 1004.39 148 1008.6 148C1012.79 148 1016.58 149.715 1019.3 152.482L1024.95 146.825Z" fill="white"/>
 <path d="M1015.76 156.018C1013.95 154.156 1011.41 153 1008.6 153C1005.77 153 1003.21 154.181 1001.39 156.078L1008.54 163.235L1015.76 156.018Z" fill="white"/>
 </g>
-<rect opacity="0.6" x="1063.5" y="129.5" width="67" height="32" rx="6.5" stroke="white" stroke-width="3"/>
+<rect opacity="0.6" x="1063.5" y="129.5" width="67" height="32" rx="6.5" stroke="white" strokeWidth="3"/>
 <rect opacity="0.9" x="1067" y="133" width="60" height="25" rx="4" fill="white"/>
 <path opacity="0.6" d="M1134 141C1136.21 141 1138 142.791 1138 145V146C1138 148.209 1136.21 150 1134 150V141Z" fill="white"/>
 <rect opacity="0.6" x="929" y="184" width="163" height="7" rx="3.5" fill="white"/>
 <rect x="465" y="95" width="370" height="108" rx="54" fill="black"/>
 <g opacity="0.75">
 <rect x="736" y="124" width="50" height="50" rx="25" fill="#121212"/>
-<rect x="736" y="124" width="50" height="50" rx="25" stroke="#0E0E0E" stroke-width="2"/>
+<rect x="736" y="124" width="50" height="50" rx="25" stroke="#0E0E0E" strokeWidth="2"/>
 <g filter="url(#filter18_f_707_1088)">
 <path d="M755.429 137.857C746.981 140.333 744.166 154.571 755.429 160.143C752.613 152.714 752.613 145.905 755.429 137.857Z" fill="#50A99A"/>
 </g>
