@@ -62,7 +62,7 @@ const SignIn = ({ handleClosePopup }) => {
       }
 
       handleClosePopup(); // optional — if you want to close modal first
-      router.push("/dashboard");
+      router.push("/feature");
     } catch (error) {
       alert(error.message);
     }

@@ -2,20 +2,20 @@ import React from "react";
 
 const Working = () => {
   return (
-    <section class="py-17 px-5 bg-white">
-      <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-bold py-10 sm:mb-8  text-center">
+    <section className="py-17 px-5 bg-white">
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold py-10 sm:mb-8  text-center">
           Here&rsquo;s How It Works
         </h2>
 
-        <div class="grid lg:grid-cols-2 xl:grid-cols-4  gap-3 2xl:gap-10 items-center">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-4  gap-3 2xl:gap-10 items-center">
           <div className="flex gap-2 items-center">
             <div>
               <h1 className="text-val font-bold ">1</h1>
             </div>
-            <div class="  text-left bg-white">
-              <h3 class="font-semibold text-p">Match with an expert</h3>
-              <p class="text-gray-600 text-sm">
+            <div className="  text-left bg-white">
+              <h3 className="font-semibold text-p">Match with an expert</h3>
+              <p className="text-gray-600 text-sm">
                 We connect you with a dedicated Launch Swift specialist to guide
                 you through the app creation process.
               </p>
@@ -25,9 +25,9 @@ const Working = () => {
             <div>
               <h1 className="text-val font-bold">2</h1>
             </div>
-            <div class="  text-left bg-white">
-              <h3 class="font-semibold text-p">Share your app idea</h3>
-              <p class="text-gray-600 text-sm">
+            <div className="  text-left bg-white">
+              <h3 className="font-semibold text-p">Share your app idea</h3>
+              <p className="text-gray-600 text-sm">
                 Describe your vision, and our team will help translate it into a
                 real-world application.
               </p>
@@ -37,9 +37,9 @@ const Working = () => {
             <div>
               <h1 className="text-val font-bold">3</h1>
             </div>
-            <div class="  text-left bg-white">
-              <h3 class="font-semibold text-p">AI assembles your app</h3>
-              <p class="text-gray-600 text-sm">
+            <div className="  text-left bg-white">
+              <h3 className="font-semibold text-p">AI assembles your app</h3>
+              <p className="text-gray-600 text-sm">
                 We automate the development processes using AI, saving you
                 valuable time and resources.
               </p>
@@ -49,11 +49,11 @@ const Working = () => {
             <div>
               <h1 className="text-val font-bold">4</h1>
             </div>
-            <div class="  text-left bg-white">
-              <h3 class="font-semibold text-p ">
+            <div className="  text-left bg-white">
+              <h3 className="font-semibold text-p ">
                 Specialists customize your app
               </h3>
-              <p class="text-gray-600 text-sm">
+              <p className="text-gray-600 text-sm">
                 A team of experienced developers further customize it to make it
                 unique, polished, personalized, and ready for launch.
               </p>

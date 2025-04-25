@@ -1,13 +1,17 @@
+"use client";
 import React from "react";
 import DashboardHeader from "../components/DashboardHeader";
 import MainDashboard from "../components/MainDashboard";
+import HeaderLayout from "../components/HeaderLayout";
 
 const page = () => {
   return (
-    <div>
-      <DashboardHeader />
-      <MainDashboard />
-    </div>
+    <HeaderLayout>
+      <div>
+        {/* <DashboardHeader /> */}
+        <MainDashboard />
+      </div>
+    </HeaderLayout>
   );
 };
 

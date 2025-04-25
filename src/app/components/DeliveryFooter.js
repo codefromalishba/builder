@@ -16,12 +16,12 @@ const DeliveryFooter = () => {
 
   const handleOpenAppNamePopup = () => {
     setIsAppNamePopupOpen(true);
-    document.body.classList.add("overflow-hidden"); // Prevent scrolling
+    document.body.classNameList.add("overflow-hidden"); // Prevent scrolling
   };
 
   const handleCloseAppNamePopup = () => {
     setIsAppNamePopupOpen(false);
-    document.body.classList.remove("overflow-hidden"); // Re-enable scrolling
+    document.body.classNameList.remove("overflow-hidden"); // Re-enable scrolling
   };
   return (
     <>

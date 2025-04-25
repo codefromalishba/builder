@@ -11,7 +11,7 @@ const DreamBuilder = () => {
         />
       </div>
       <div className="sm:p-dreambuilder xs:text-left text-center">
-        <h2 class="text-4xl font-bold mb-4 ">
+        <h2 className="text-4xl font-bold mb-4 ">
           Build Your Dream App, No Coding Required
         </h2>
         <p className="text-pai">

@@ -129,11 +129,11 @@ const DeliveryTime = () => {
               Our customers saved over $4.5m, last year.
             </li>
             <li className="py-1 text-black text-xs">
-              <span className="font-bold">World-class analytics: </span>
+              <span className="font-bold">World-className analytics: </span>
               Optimise your software and infrastructure.
             </li>
             <li className="py-1 text-black text-xs">
-              <span className="font-bold">Best-in-class multi-cloud: </span>
+              <span className="font-bold">Best-in-className multi-cloud: </span>
               Azure, AWS, and more. Just one bill (for a lot less).
             </li>
           </ul>

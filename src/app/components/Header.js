@@ -10,12 +10,12 @@ const Header = () => {
 
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
-    document.body.classList.add("overflow-hidden"); // Prevent scrolling
+    document.body.classNameList.add("overflow-hidden"); // Prevent scrolling
   };
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
-    document.body.classList.remove("overflow-hidden"); // Re-enable scrolling
+    document.body.classNameList.remove("overflow-hidden"); // Re-enable scrolling
   };
 
   return (

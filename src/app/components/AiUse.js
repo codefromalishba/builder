@@ -4,7 +4,7 @@ const AiUse = () => {
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-12 items-center p-header sm:p-helpPlaning">
       <div className="sm:p-aiuse xs:text-left text-center">
-        <h2 class="text-4xl font-bold mb-4 ">AI at Your Fingertips</h2>
+        <h2 className="text-4xl font-bold mb-4 ">AI at Your Fingertips</h2>
         <p className="pb-4 text-pai">
           We bring in AI with Launch Swift for fast and affordable app
           development. AI provides reusable capabilities from the selected
