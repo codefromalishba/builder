@@ -39,7 +39,7 @@ const SignIn = ({ handleClosePopup }) => {
         console.log("Success");
 
         // Only pass name and email to setProfile
-        dispatch(setProfile({ name: userData.name, email: userData.email }));
+        dispatch(setProfile(userData));
 
         router.push("/feature");
       })
@@ -185,7 +185,7 @@ const SignIn = ({ handleClosePopup }) => {
             <button
               // type="submit"
               onClick={handleSubmit}
-              className="w-full bg-gray-400 text-white py-3 rounded-lg hover:bg-demo"
+              className="w-full bg-gray-400 text-white mt-3 py-3 rounded-lg hover:bg-demo"
             >
               {isSignIn ? "Sign In" : "Create Account"}
             </button>

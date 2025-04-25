@@ -197,23 +197,19 @@ const HeaderLayout = ({ children, lang }) => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setIsLoading(false);
-        console.log("autherized data", authUser);
+        // console.log("autherized data", authUser);
         const userDocRef = doc(db, "users", authUser.uid);
-        console.log("userDocRef", userDocRef);
+        // console.log("userDocRef", userDocRef);
 
         getDoc(userDocRef)
           .then(async (docSnapshot) => {
             if (docSnapshot.exists()) {
               const userData = docSnapshot.data();
+
               console.log("data of user", userData);
 
               // ✅ Set name/email in profile state
-              dispatch(
-                setProfile({
-                  name: userData.name || "User",
-                  email: userData.email || authUser.email,
-                })
-              );
+              dispatch(setProfile(userData));
 
               const incompleteItem = await userData.buildCards.find(
                 (item) => item.status === "incomplete"
@@ -227,25 +223,15 @@ const HeaderLayout = ({ children, lang }) => {
                   pathname.endsWith("summary")
                 ) {
                   router.push(`/feature`).then(() => {
-                    dispatch(
-                      setProfile({
-                        name: userData.name || "User",
-                        email: userData.email || authUser.email,
-                      })
-                    );
+                    dispatch(setProfile(userData));
                   });
                   return;
                 } else {
-                  dispatch(
-                    setProfile({
-                      name: userData.name || "User",
-                      email: userData.email || authUser.email,
-                    })
-                  );
+                  dispatch(setProfile(userData));
                 }
               } else {
                 console.log("incomplete build card found");
-                dispatch(setRecentBuildCard(incompleteItem));
+                // dispatch(setRecentBuildCard(incompleteItem));
 
                 const lastFeatureId =
                   incompleteItem.features[incompleteItem.features.length - 1];

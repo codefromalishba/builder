@@ -52,7 +52,8 @@ export const selectTotalCost = (state, initialPhases) => {
     fixedCost = parseFloat(selectedFeature.price);
     totalTimeline = parseFloat(selectedFeature.timeline);
   }
-
+  // 🧠 Convert timeline in days → weeks
+  const totalTimelineInWeeks = Math.ceil(totalTimeline / 7);
   const phaseModifiers = {
     "Product Roadmap": 0.1,
     "Professional Prototype": 0.18,
@@ -77,6 +78,7 @@ export const selectTotalCost = (state, initialPhases) => {
     fixedCost: fixedCost + fixedBonus,
     customizationCost: customizationCost + customizationBonus,
     totalTimeline,
+    totalTimelineInWeeks,
     phasesCost: fixedBonus + customizationBonus,
   };
 };
