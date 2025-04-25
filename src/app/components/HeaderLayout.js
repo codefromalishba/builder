@@ -11,11 +11,12 @@ import spinner from "../../../public/images/spinner1.gif";
 import DashboardHeader from "./DashboardHeader";
 import { sidebarData } from "@/data";
 import { auth } from "../firebase";
+import { setProfile } from "../store/profileSlice";
 
 const HeaderLayout = ({ children, lang }) => {
   const user = useSelector((state) => state.profile);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("user from redux", user);
+  //   console.log("user from redux", user);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
   const db = getFirestore();
@@ -104,20 +105,120 @@ const HeaderLayout = ({ children, lang }) => {
   //     });
   //   };
 
+  //   useEffect(() => {
+  //     const unsubscribe = auth.onAuthStateChanged((authUser) => {
+  //       if (authUser) {
+  //         setIsLoading(false);
+  //         console.log("autherized data", authUser);
+  //         const userDocRef = doc(db, "users", authUser.uid);
+
+  //         getDoc(userDocRef)
+  //           .then(async (docSnapshot) => {
+  //             if (docSnapshot.exists()) {
+  //               const userData = docSnapshot.data();
+  //               const incompleteItem = await userData.buildCards.find(
+  //                 (item) => item.status === "incomplete"
+  //               );
+  //               if (!incompleteItem) {
+  //                 console.log("No incomplete build card");
+
+  //                 if (
+  //                   pathname.endsWith("delivery") ||
+  //                   pathname.endsWith("summary")
+  //                 ) {
+  //                   router.push(`/features`).then(() => {
+  //                     dispatch({ type: "setUser", payload: userData });
+  //                   });
+
+  //                   return;
+  //                 } else {
+  //                   dispatch({ type: "setUser", payload: userData });
+  //                 }
+  //               } else {
+  //                 console.log("incomplete build card found");
+  //                 dispatch(setRecentBuildCard(incompleteItem));
+  //                 const lastFeatureId =
+  //                   incompleteItem.features[incompleteItem.features.length - 1];
+
+  //                 sidebarDataToUse.some((category) => {
+  //                   const selectedItem = category.dropDown?.find(
+  //                     (item) => item.id === lastFeatureId
+  //                   );
+  //                   dispatch(setCurrentFeature(selectedItem));
+  //                   dispatch({ type: "setUser", payload: userData });
+  //                 });
+
+  //                 // console.log(
+  //                 //   "inside HeaderLayout",
+  //                 //   incompleteItem.fixedCost,
+  //                 //   incompleteItem.customizationCost,
+  //                 //   incompleteItem.duration
+  //                 // );
+
+  //                 dispatch({
+  //                   type: "setFeatures",
+  //                   payload: incompleteItem.features,
+  //                 });
+  //                 dispatch({
+  //                   type: "setCustomFeatures",
+  //                   payload: incompleteItem.customFeatures,
+  //                 });
+  //                 updateCostsAndDuration(incompleteItem);
+  //                 // dispatch({
+  //                 //   type: "setFixedCost",
+  //                 //   payload: incompleteItem.fixedCost,
+  //                 // });
+  //                 // dispatch({
+  //                 //   type: "setCustomizationCost",
+  //                 //   payload: incompleteItem.customizationCost,
+  //                 // });
+  //                 // dispatch({
+  //                 //   type: "setDuration",
+  //                 //   payload: incompleteItem.duration,
+  //                 // });
+  //                 dispatch({ type: "setUser", payload: userData });
+  //               }
+  //             } else {
+  //               console.log("User data not found");
+  //             }
+  //           })
+  //           .catch((error) => {
+  //             console.error("Error fetching user data:", error);
+  //           });
+  //       } else {
+  //         router.push("/");
+  //       }
+  //     });
+
+  //     return () => unsubscribe();
+  //   }, [db, dispatch, router]);
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setIsLoading(false);
         console.log("autherized data", authUser);
         const userDocRef = doc(db, "users", authUser.uid);
+        console.log("userDocRef", userDocRef);
 
         getDoc(userDocRef)
           .then(async (docSnapshot) => {
             if (docSnapshot.exists()) {
               const userData = docSnapshot.data();
+              console.log("data of user", userData);
+
+              // ✅ Set name/email in profile state
+              dispatch(
+                setProfile({
+                  name: userData.name || "User",
+                  email: userData.email || authUser.email,
+                })
+              );
+
               const incompleteItem = await userData.buildCards.find(
                 (item) => item.status === "incomplete"
               );
+
               if (!incompleteItem) {
                 console.log("No incomplete build card");
 
@@ -125,17 +226,27 @@ const HeaderLayout = ({ children, lang }) => {
                   pathname.endsWith("delivery") ||
                   pathname.endsWith("summary")
                 ) {
-                  router.push(`/features`).then(() => {
-                    dispatch({ type: "setUser", payload: userData });
+                  router.push(`/feature`).then(() => {
+                    dispatch(
+                      setProfile({
+                        name: userData.name || "User",
+                        email: userData.email || authUser.email,
+                      })
+                    );
                   });
-
                   return;
                 } else {
-                  dispatch({ type: "setUser", payload: userData });
+                  dispatch(
+                    setProfile({
+                      name: userData.name || "User",
+                      email: userData.email || authUser.email,
+                    })
+                  );
                 }
               } else {
                 console.log("incomplete build card found");
                 dispatch(setRecentBuildCard(incompleteItem));
+
                 const lastFeatureId =
                   incompleteItem.features[incompleteItem.features.length - 1];
 
@@ -147,13 +258,6 @@ const HeaderLayout = ({ children, lang }) => {
                   dispatch({ type: "setUser", payload: userData });
                 });
 
-                // console.log(
-                //   "inside HeaderLayout",
-                //   incompleteItem.fixedCost,
-                //   incompleteItem.customizationCost,
-                //   incompleteItem.duration
-                // );
-
                 dispatch({
                   type: "setFeatures",
                   payload: incompleteItem.features,
@@ -162,19 +266,9 @@ const HeaderLayout = ({ children, lang }) => {
                   type: "setCustomFeatures",
                   payload: incompleteItem.customFeatures,
                 });
+
                 updateCostsAndDuration(incompleteItem);
-                // dispatch({
-                //   type: "setFixedCost",
-                //   payload: incompleteItem.fixedCost,
-                // });
-                // dispatch({
-                //   type: "setCustomizationCost",
-                //   payload: incompleteItem.customizationCost,
-                // });
-                // dispatch({
-                //   type: "setDuration",
-                //   payload: incompleteItem.duration,
-                // });
+
                 dispatch({ type: "setUser", payload: userData });
               }
             } else {

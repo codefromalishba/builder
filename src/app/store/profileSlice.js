@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const profileSlice = createSlice({
   name: "profile",
   initialState: {
-    name: "Malik Alishba",
-    email: "dummy@mail.com",
+    name: "",
+    email: "",
   },
   reducers: {
     updateProfile: (state, action) => {
@@ -13,6 +13,7 @@ const profileSlice = createSlice({
       if (email !== undefined) state.email = email;
     },
     setProfile: (state, action) => {
+      console.log("action.payload in setProfile", action.payload);
       const { name, email } = action.payload;
       state.name = name;
       state.email = email;

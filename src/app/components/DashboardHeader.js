@@ -20,7 +20,9 @@ const DashboardHeader = () => {
 
         <div className=" flex gap-2">
           <div className="w-11 h-10 rounded-md  bg-demo flex items-center justify-center">
-            <p className="text-white px-1 font-semibold text-xl">MA</p>
+            <p className="text-white px-1 font-semibold text-xl">
+              {profile?.name[0]?.toUpperCase()}
+            </p>
           </div>
           <div className="flex flex-col justify-center">
             <p className="text-white font-normal">{profile.name}</p>

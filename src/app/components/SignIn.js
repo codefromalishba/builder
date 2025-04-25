@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { setProfile } from "../store/profileSlice";
 
 const SignIn = ({ handleClosePopup }) => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -31,12 +32,16 @@ const SignIn = ({ handleClosePopup }) => {
       email: email,
       buildCards: [],
     };
+    console.log("createUser", createUser);
 
     setDoc(doc(db, "users", user.uid), userData)
       .then(() => {
         console.log("Success");
-        dispatch(setUser(userData));
-        router.push(`/${params.lang}/features`);
+
+        // Only pass name and email to setProfile
+        dispatch(setProfile({ name: userData.name, email: userData.email }));
+
+        router.push("/feature");
       })
       .catch((error) => {
         console.log(error);
