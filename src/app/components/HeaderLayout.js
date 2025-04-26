@@ -24,6 +24,7 @@ const HeaderLayout = ({ children, lang }) => {
   const db = getFirestore();
   const dispatch = useDispatch();
   const pathname = usePathname();
+  const isFeaturePage = pathname.includes("/feature");
   const sidebarDataToUse = sidebarData;
 
   useEffect(() => {
@@ -103,10 +104,16 @@ const HeaderLayout = ({ children, lang }) => {
   return (
     <div>
       {!isLoading && (
-        <DashboardHeader
-          dropdownOpen={dropdownOpen}
-          setDropdownOpen={setDropdownOpen}
-        />
+        <div
+          className={`${
+            isFeaturePage ? "" : "fixed top-0 left-0 right-0 z-50"
+          }`}
+        >
+          <DashboardHeader
+            dropdownOpen={dropdownOpen}
+            setDropdownOpen={setDropdownOpen}
+          />
+        </div>
       )}
       {!isLoading ? (
         <div onClick={() => setDropdownOpen(false)}>{children}</div>

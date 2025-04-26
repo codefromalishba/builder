@@ -26,7 +26,7 @@ const DeliveryFooter = () => {
   return (
     <>
       <div className=" grid grid-cols-4  h-[80px]">
-        <div className=" flex justify-between gap-7 col-span-3 pt-4 mb-4 px-20">
+        <div className=" flex justify-between bg-white gap-7 col-span-3 pt-4 pb-4 px-20">
           <div className="flex flex-col gap-2 px-2 justify-start ">
             <p className="text-xs">Customization Cost</p>
             <p className="font-extrabold text-xl">
