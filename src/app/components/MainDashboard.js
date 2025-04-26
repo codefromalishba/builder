@@ -19,6 +19,7 @@ import {
 } from "../store/featureSlice";
 
 const MainDashboard = () => {
+  const user = useSelector((state) => state.profile);
   const dispatch = useDispatch();
   const { allFeatures, selectedFeature } = useSelector(
     (state) => state.feature
