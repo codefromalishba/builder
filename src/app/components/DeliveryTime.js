@@ -1,18 +1,30 @@
 import React, { useState } from "react";
 import { FaRegCircle } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { selectTotalCost } from "../store/featureSlice";
 
 const DeliveryTime = () => {
   const [step, setStep] = useState(3); // Default step is "Standard"
   const [step2, setStep2] = useState(4); // Default step is "50k+"
+  const { fixedCost, customizationCost, phasesCost } =
+    useSelector(selectTotalCost);
+
+  const grandTotal =
+    parseFloat(fixedCost) +
+    parseFloat(customizationCost) +
+    parseFloat(phasesCost);
+
+  const getAdjustedPrice = (basePrice, adjustment) => {
+    return (basePrice + basePrice * adjustment).toFixed(0);
+  };
 
   const speedOptions = [
-    { label: "Relaxed", price: "$2,052", duration: "4 Weeks" },
-    { label: "Slow", price: "$2,308", duration: "3 Weeks" },
-    { label: "Standard", price: "$2,565", duration: "2 Weeks" },
-    { label: "Fast", price: "$2,821", duration: "1 Weeks" },
-    { label: "Speedy", price: "$3,078", duration: "0 Weeks" },
+    { label: "Relaxed", adjustment: -0.025, duration: "4 Weeks" },
+    { label: "Slow", adjustment: -0.015, duration: "3 Weeks" },
+    { label: "Standard", adjustment: 0, duration: "2 Weeks" },
+    { label: "Fast", adjustment: 0.015, duration: "1 Week" },
+    { label: "Speedy", adjustment: 0.025, duration: "0 Weeks" },
   ];
-
   const handleChange = (event) => {
     setStep(Number(event.target.value));
   };
@@ -73,7 +85,7 @@ const DeliveryTime = () => {
                           : "text-black"
                       }`}
                     >
-                      <p>{option.price}</p>
+                      <p>${getAdjustedPrice(grandTotal, option.adjustment)}</p>
                       <p className="pt-1">{option.duration}</p>
                     </div>
                   ))}
@@ -172,19 +184,6 @@ const DeliveryTime = () => {
             ))}
           </div>
         </div>
-        {/* <div className="bg-slate-200 mt-3 h-30 p-5 w-full rounded-md">
-          <div className="flex justify-between items-center h-8">
-            <p className="font-bold">Number of users</p>
-            <p className="font-bold">50k+</p>
-          </div>
-          <div className="border-[1px] border-demo mt-4"></div>
-          <div className="flex justify-between items-center h-8">
-            <p className="text-xs mt-4 text-center">0-500</p>
-            <p className="text-xs mt-4 text-center">500-5k</p>
-            <p className="text-xs mt-4 text-center">5k-50k</p>
-            <p className="text-xs mt-4 text-center">50k+</p>
-          </div>
-        </div> */}
         <div className="mt-4">
           <p className=" text-2xl">
             <span className="font-bold"> $1,000 + * </span> /month
