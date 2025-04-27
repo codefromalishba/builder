@@ -37,7 +37,7 @@ const CartFooter = () => {
       customizationCost: customizationCost,
       totalCost: totalCost,
       cloudServiceCost: null,
-      platforms: ["ios"],
+      platforms: ["web"],
       speed: 3,
       duration: totalTimelineInWeeks,
       phases: [
@@ -113,7 +113,7 @@ const CartFooter = () => {
             localStorage.setItem("recentBuildCardId", newBuildCard.id);
           }
 
-          updateDoc(userRef, userData)
+          updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
               console.log("Build card added/updated successfully");
               router.push(`/${params.lang}/delivery`);

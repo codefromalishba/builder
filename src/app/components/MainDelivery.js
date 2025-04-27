@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsInfoCircle } from "react-icons/bs";
 import { TfiAndroid } from "react-icons/tfi";
 import { FaApple } from "react-icons/fa";
@@ -7,13 +7,16 @@ import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
 import ProductPhase from "./ProductPhase";
 import { initialPhases } from "@/data";
+import { useSelector } from "react-redux";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const MainDelivery = () => {
   const [selectedPhase, setSelectedPhase] = useState(null);
   const [selectedPhase2, setSelectedPhase2] = useState(null);
   const [isOn, setIsOn] = useState(false);
-  const [selectedPlatforms, setSelectedPlatforms] = useState(["android"]); // Default at least one selected
+  const [selectedPlatforms, setSelectedPlatforms] = useState([]); // Default at least one selected
   const [phases, setPhases] = useState(initialPhases);
+  const user = useSelector((state) => state.profile);
 
   const handlePlatformClick = (platform) => {
     setSelectedPlatforms((prevSelected) => {
@@ -33,18 +36,40 @@ const MainDelivery = () => {
       return updated;
     });
   };
-  // const handlePlatformClick = (platform) => {
-  //   setSelectedPlatforms((prevSelected) => {
-  //     if (prevSelected.includes(platform)) {
 
-  //       return prevSelected.length > 1
-  //         ? prevSelected.filter((p) => p !== platform)
-  //         : prevSelected;
-  //     } else {
-  //       return [...prevSelected, platform];
-  //     }
-  //   });
-  // };
+  useEffect(() => {
+    const fetchSelectedPlatforms = async () => {
+      if (!user?.uid) return; // Wait until user data is loaded
+
+      const db = getFirestore();
+      const userRef = doc(db, "users", user.uid);
+      try {
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          const userData = userSnap.data();
+
+          const recentBuildCardId = localStorage.getItem("recentBuildCardId");
+
+          const buildCard = userData.buildCards.find(
+            (card) => card.id === recentBuildCardId
+          );
+
+          if (buildCard && buildCard.platforms) {
+            console.log("Found saved platforms:", buildCard.platforms);
+            setSelectedPlatforms(buildCard.platforms);
+          } else {
+            console.log("No saved platforms, fallback");
+            setSelectedPlatforms(["ios"]); // fallback default
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user buildCard:", error);
+      }
+    };
+
+    fetchSelectedPlatforms();
+  }, [user]);
+
   const icons = [
     { id: "android", icon: <TfiAndroid className="text-4xl" /> },
     { id: "ios", icon: <FaApple className="text-4xl" /> },

@@ -6,7 +6,8 @@ const featureSlice = createSlice({
   initialState: {
     selectedFeature: null,
     allFeatures: [],
-    selectedPhases: [], // NEW
+    selectedPhases: [],
+    initialPhases: initialPhases, // NEW
   },
   reducers: {
     setSelectedFeature: (state, action) => {
@@ -33,8 +34,9 @@ const featureSlice = createSlice({
   },
 });
 
-export const selectTotalCost = (state, initialPhases) => {
-  const { selectedFeature, allFeatures, selectedPhases } = state.feature;
+export const selectTotalCost = (state) => {
+  const { selectedFeature, allFeatures, selectedPhases, initialPhases } =
+    state.feature;
 
   let fixedCost = 0;
   let totalTimeline = 0;

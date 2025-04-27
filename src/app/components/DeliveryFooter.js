@@ -7,6 +7,7 @@ const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
   const { fixedCost, totalTimeline, customizationCost, phasesCost } =
     useSelector(selectTotalCost);
+  console.log("selectTotalCost", selectTotalCost);
 
   const grandTotal = (
     parseFloat(fixedCost) +

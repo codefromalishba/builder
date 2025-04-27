@@ -9,11 +9,12 @@ import { IoDesktop } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
 import moment from "moment";
 // import { initialPhases } from "@/data";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPhase, removePhase } from "../store/featureSlice";
 
 const ProductPhase = ({ isOn, initialPhases }) => {
   const [selectedPhase, setSelectedPhase] = useState(null);
+  const allFeatures = useSelector((state) => state.feature.allFeatures);
   const dispatch = useDispatch();
   // Initialize expandedCards with default selected: Design and MVP
   const [expandedCards, setExpandedCards] = useState(() => {
@@ -298,7 +299,7 @@ const ProductPhase = ({ isOn, initialPhases }) => {
                 <div className="p-5 border-t-[1px] border-b-[1px]">
                   <p className="font-bold text-xs">Features</p>
                   <p className="text-gray-400 text-xs pt-2">
-                    1 Features Selected{" "}
+                    {allFeatures.length} Features Selected
                   </p>
                 </div>
                 <div className="p-5">
