@@ -10,6 +10,17 @@ const featureSlice = createSlice({
     initialPhases: initialPhases, // NEW
   },
   reducers: {
+    updatePlatforms: (state, action) => {
+      state.initialPhases = state.initialPhases.map((phase, index) => ({
+        ...phase,
+        platform: action.payload,
+      }));
+    },
+
+    updateInitialPhases: (state, action) => {
+      state.initialPhases = action.payload;
+    },
+
     setPhases: (state, action) => {
       state.selectedPhases = action.payload;
     },
@@ -45,8 +56,8 @@ export const calculateFeatureTotals = (
   selectedPhases = [],
   initialPhases = []
 ) => {
-  console.log("selectedPhases", selectedPhases);
-  console.log("initialPhases", initialPhases);
+  // console.log("selectedPhases", selectedPhases);
+  // console.log("initialPhases", initialPhases);
   if (!Array.isArray(features)) {
     console.error("Expected features to be an array but got:", features);
     features = [];
@@ -87,8 +98,8 @@ export const calculateFeatureTotals = (
     }
   });
 
-  console.log("fixedBonus", fixedBonus);
-  console.log("customisationBonus", customizationBonus);
+  // console.log("fixedBonus", fixedBonus);
+  // console.log("customisationBonus", customizationBonus);
   const totalFixedCost = fixedCost + fixedBonus;
   const totalCustomizationCost = customizationCost + customizationBonus;
 
@@ -105,6 +116,8 @@ export const {
   setSelectedFeature,
   addFeature,
   removeFeature,
+  updatePlatforms,
+  updateInitialPhases,
   addPhase,
   setPhases,
   removePhase,

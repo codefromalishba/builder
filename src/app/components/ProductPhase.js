@@ -29,6 +29,8 @@ const ProductPhase = ({ isOn }) => {
     (state) => state.feature
   );
 
+  console.log("initialPhases inside ProductPhases", initialPhases);
+
   useEffect(() => {
     if (initialPhases.length > 0) {
       const initialState = {};

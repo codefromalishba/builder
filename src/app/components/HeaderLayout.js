@@ -16,6 +16,7 @@ import {
   addFeature,
   setPhases,
   setSelectedFeature,
+  updatePlatforms,
 } from "../store/featureSlice";
 import { mapFeatureIdsToSidebarData } from "../utils/mapFeatures";
 
@@ -42,7 +43,7 @@ const HeaderLayout = ({ children, lang }) => {
             if (docSnapshot.exists()) {
               const userData = docSnapshot.data();
 
-              console.log("data of user", userData);
+              // console.log("data of user", userData);
 
               // ✅ Set name/email in profile state
               dispatch(setProfile(userData));
@@ -72,6 +73,11 @@ const HeaderLayout = ({ children, lang }) => {
                   ?.filter((item) => item.selected)
                   ?.map((item) => item.id);
 
+                const defaultPlatforms = incompleteItem.platforms;
+
+                console.log("defaultPlatforms", defaultPlatforms);
+
+                dispatch(updatePlatforms(defaultPlatforms));
                 dispatch(setPhases(defaultPhases));
 
                 const matchedFeatures = mapFeatureIdsToSidebarData(

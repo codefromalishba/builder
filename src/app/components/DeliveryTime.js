@@ -26,7 +26,7 @@ const DeliveryTime = () => {
     return Math.round(price + price * adj).toString(); // returns a string like "123"
   };
 
-  console.log("Total Cost:", totalCost);
+  // console.log("Total Cost:", totalCost);
 
   const speedOptions = [
     { label: "Relaxed", adjustment: -0.025, duration: "4 Weeks" },

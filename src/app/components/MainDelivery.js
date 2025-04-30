@@ -7,8 +7,9 @@ import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
 import ProductPhase from "./ProductPhase";
 import { initialPhases } from "@/data";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { updateInitialPhases } from "../store/featureSlice";
 
 const MainDelivery = () => {
   const [selectedPhase, setSelectedPhase] = useState(null);
@@ -17,9 +18,11 @@ const MainDelivery = () => {
   const [selectedPlatforms, setSelectedPlatforms] = useState([]); // Default at least one selected
   const [phases, setPhases] = useState(initialPhases);
   const user = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
 
   const handlePlatformClick = (platform) => {
     setSelectedPlatforms((prevSelected) => {
+      console.log("prevSelected", prevSelected);
       const updated = prevSelected.includes(platform)
         ? prevSelected.length > 1
           ? prevSelected.filter((p) => p !== platform)
@@ -31,6 +34,8 @@ const MainDelivery = () => {
         ...phase,
         platform: updated,
       }));
+
+      dispatch(updateInitialPhases(updatedPhases));
 
       setPhases(updatedPhases);
       return updated;
@@ -188,29 +193,6 @@ const MainDelivery = () => {
           </div>
         ))}
       </div>
-
-      {/* <div className="flex justify-start items-center  py-4 px-10 gap-4">
-        <div className="border-[1px] h-20 w-20 cursor-pointer rounded-md flex justify-center items-center border-gray-300">
-          <div className="p-3 ">
-            <TfiAndroid className="text-[#B4B6B7] flex justify-center items-center text-4xl " />
-          </div>
-        </div>
-        <div className="border-[1px] h-20 w-20 cursor-pointer bg-black rounded-md flex justify-center items-center border-gray-300">
-          <div className="p-3 ">
-            <FaApple className="text-white flex justify-center items-center text-4xl " />
-          </div>
-        </div>
-        <div className="border-[1px] h-20 w-20 cursor-pointer rounded-md flex justify-center items-center border-gray-300">
-          <div className="p-3 ">
-            <MdWeb className="text-[#B4B6B7] flex justify-center items-center text-4xl " />
-          </div>
-        </div>
-        <div className="border-[1px] h-20 w-20 cursor-pointer rounded-md flex justify-center items-center border-gray-300">
-          <div className="p-3 ">
-            <IoDesktop className="text-[#B4B6B7] flex justify-center items-center text-4xl " />
-          </div>
-        </div>
-      </div> */}
       <div className="flex justify-between items-center px-10 pt-6">
         <p className="font-md">Select phases for your product</p>
         <div className="flex items-center gap-2">
