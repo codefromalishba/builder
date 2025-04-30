@@ -1,3 +1,4 @@
+import { speedOptions } from "@/data";
 import { usePathname } from "next/navigation";
 
 export const calculateFeatureTotals = (
@@ -66,18 +67,28 @@ export const calculateFeatureTotals = (
     }
   });
 
-  const totalFixedCost = fixedCost + fixedBonus - fixedPenalty;
-  const totalCustomizationCost =
+  const baseFixedCost = fixedCost + fixedBonus - fixedPenalty;
+  const baseCustomizationCost =
     customizationCost + customizationBonus - customizationPenalty;
 
+  const speedIndex = Math.max(0, Math.min(speed - 1, 4)); // Ensure valid index
+  const speedAdjustment = speedOptions[speedIndex].adjustment;
+
+  const speedFixedBonus = baseFixedCost * speedAdjustment;
+  const speedCustomizationBonus = baseCustomizationCost * speedAdjustment;
+
+  const finalFixedCost = baseFixedCost + speedFixedBonus;
+  const finalCustomizationCost =
+    baseCustomizationCost + speedCustomizationBonus;
+
   return {
-    fixedCost: isFeaturePage ? fixedCost : totalFixedCost,
+    fixedCost: isFeaturePage ? fixedCost : finalFixedCost,
     customizationCost: isFeaturePage
       ? customizationCost
-      : totalCustomizationCost,
+      : finalCustomizationCost,
     totalCost: isFeaturePage
       ? (fixedCost + customizationCost).toFixed(0)
-      : (totalFixedCost + totalCustomizationCost).toFixed(0),
+      : (finalFixedCost + finalCustomizationCost).toFixed(0),
     indicativeDurationInWeeks,
     phasesCost:
       fixedBonus + customizationBonus - (fixedPenalty + customizationPenalty),
