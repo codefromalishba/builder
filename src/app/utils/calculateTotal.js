@@ -48,7 +48,6 @@ export const calculateFeatureTotals = (
     }
   });
 
-  // 🔻 Penalties for deselected Design or MVP
   const penaltyModifiers = {
     Design: 0.08,
     MVP: 0.05,
@@ -59,21 +58,15 @@ export const calculateFeatureTotals = (
 
   Object.entries(penaltyModifiers).forEach(([phaseName, penalty]) => {
     const isSelected = initialPhases?.some((phase) => {
-      console.log("selectedPhases inside calculate", selectedPhases);
       const result =
         phase.name === phaseName && selectedPhases.includes(String(phase.id));
-      console.log(phase.name, "final result", result);
       return result;
     });
 
-    console.log(phaseName, "Selected :", isSelected);
     if (!isSelected) {
       fixedPenalty += fixedCost * penalty;
       customizationPenalty += customizationCost * penalty;
     }
-
-    console.log("=> fixedPenalty", fixedPenalty);
-    console.log("=> customizationPenalty", customizationPenalty);
   });
 
   const totalFixedCost = fixedCost + fixedBonus - fixedPenalty;
