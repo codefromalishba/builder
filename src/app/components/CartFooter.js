@@ -87,9 +87,10 @@ const CartFooter = () => {
           console.log("incompleteBuildCardIndex", incompleteBuildCardIndex);
           if (incompleteBuildCardIndex !== -1) {
             console.log("updating existing...");
-            // Update existing incomplete build card
+
             userData.buildCards[incompleteBuildCardIndex] = {
               ...userData.buildCards[incompleteBuildCardIndex],
+              platforms: ["ios"],
               features: featureIds,
               customFeatures: "null",
               duration: totalTimelineInWeeks,
@@ -116,7 +117,7 @@ const CartFooter = () => {
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
               console.log("Build card added/updated successfully");
-              router.push(`/${params.lang}/delivery`);
+              router.push(`/delivery`);
               // .then(() => setLoading(false));
               dispatch(setUser(userData));
             })

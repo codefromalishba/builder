@@ -48,7 +48,7 @@ const DeliveryFooter = () => {
             <p className="text-xs">Total Cost</p>
             <p className="font-extrabold text-xl">{grandTotal} $</p>
           </div>
-          <div className="flex flex-col gap-2 px-2 justify-start  border-l-[3px]  pl-10 border-[#A6A6A6]">
+          <div className="flex flex-col gap-2 px-2 justify-start  border-l-[3px]  pl-7 border-[#A6A6A6]">
             <p className="text-xs">Indicative Duration</p>
             <p className="font-extrabold text-xl">
               {`${Math.ceil(totalTimeline / 7)} ${
