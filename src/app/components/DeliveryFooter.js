@@ -18,19 +18,8 @@ const DeliveryFooter = () => {
     (state) => state.feature
   );
 
-  const uniqueFeatures = allFeatures.filter(
-    (feature, index, self) =>
-      index === self.findIndex((f) => f.id === feature.id)
-  );
-
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(
-      uniqueFeatures,
-      false,
-      selectedPhases,
-      initialPhases,
-      speed
-    );
+    calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
 
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"

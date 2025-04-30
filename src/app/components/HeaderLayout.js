@@ -35,7 +35,6 @@ const HeaderLayout = ({ children, lang }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        setIsLoading(false);
         const userDocRef = doc(db, "users", authUser.uid);
 
         getDoc(userDocRef)
@@ -75,8 +74,6 @@ const HeaderLayout = ({ children, lang }) => {
 
                 const defaultPlatforms = incompleteItem.platforms;
 
-                console.log("defaultPlatforms", defaultPlatforms);
-
                 dispatch(setPhases(defaultPhases));
                 dispatch(updatePlatforms(defaultPlatforms));
 
@@ -84,8 +81,6 @@ const HeaderLayout = ({ children, lang }) => {
                   incompleteItem.features,
                   sidebarData
                 );
-
-                console.log("matchedFeatures", matchedFeatures);
 
                 matchedFeatures.forEach((feature) => {
                   dispatch(addFeature(feature));
@@ -105,8 +100,10 @@ const HeaderLayout = ({ children, lang }) => {
             } else {
               console.log("User data not found");
             }
+            setIsLoading(false);
           })
           .catch((error) => {
+            setIsLoading(false);
             console.error("Error fetching user data:", error);
           });
       } else {

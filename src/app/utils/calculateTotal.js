@@ -1,9 +1,17 @@
+import { usePathname } from "next/navigation";
+
 export const calculateFeatureTotals = (
   features,
-  isFeaturePage = false,
   selectedPhases = [],
-  initialPhases = []
+  initialPhases = [],
+  speed = 3
 ) => {
+  const pathname = usePathname();
+  const isFeaturePage = pathname.includes("feature");
+
+  // console.log("features inside calculateFeatureTotals", features);
+  // console.log("selectedPhases inside calculateFeatureTotals", selectedPhases);
+  // console.log("initialPhases inside calcualteFeatureTotals", initialPhases);
   if (!Array.isArray(features)) {
     console.error("Expected features to be an array but got:", features);
     features = [];
@@ -50,14 +58,22 @@ export const calculateFeatureTotals = (
   let customizationPenalty = 0;
 
   Object.entries(penaltyModifiers).forEach(([phaseName, penalty]) => {
-    const isSelected = initialPhases?.some(
-      (phase) =>
-        phase.name === phaseName && selectedPhases.includes(parseInt(phase.id))
-    );
+    const isSelected = initialPhases?.some((phase) => {
+      console.log("selectedPhases inside calculate", selectedPhases);
+      const result =
+        phase.name === phaseName && selectedPhases.includes(String(phase.id));
+      console.log(phase.name, "final result", result);
+      return result;
+    });
+
+    console.log(phaseName, "Selected :", isSelected);
     if (!isSelected) {
       fixedPenalty += fixedCost * penalty;
       customizationPenalty += customizationCost * penalty;
     }
+
+    console.log("=> fixedPenalty", fixedPenalty);
+    console.log("=> customizationPenalty", customizationPenalty);
   });
 
   const totalFixedCost = fixedCost + fixedBonus - fixedPenalty;

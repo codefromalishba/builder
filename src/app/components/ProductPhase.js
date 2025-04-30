@@ -52,9 +52,9 @@ const ProductPhase = ({ isOn }) => {
 
       // Dispatch Redux actions
       if (!isCurrentlySelected) {
-        dispatch(addPhase(parseInt(id)));
+        dispatch(addPhase(String(id)));
       } else {
-        dispatch(removePhase(parseInt(id)));
+        dispatch(removePhase(String(id)));
       }
 
       return newState;
