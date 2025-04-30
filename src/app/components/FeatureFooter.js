@@ -10,6 +10,8 @@ const FeatureFooter = () => {
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;
 
+  console.log("FeatureFooter allFeatures:", allFeatures);
+
   // const grandTotal = (
   //   parseFloat(fixedCost) + parseFloat(customizationCost)
   // ).toFixed(0);

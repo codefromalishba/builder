@@ -14,7 +14,10 @@ const featureSlice = createSlice({
       state.selectedFeature = action.payload;
     },
     addFeature: (state, action) => {
-      state.allFeatures.push(action.payload);
+      const exists = state.allFeatures.some((f) => f.id === action.payload.id);
+      if (!exists) {
+        state.allFeatures.push(action.payload);
+      }
     },
     removeFeature: (state, action) => {
       state.allFeatures = state.allFeatures.filter(

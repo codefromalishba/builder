@@ -6,11 +6,18 @@ import { calculateFeatureTotals } from "../store/featureSlice";
 const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
   const allFeatures = useSelector((state) => state.feature.allFeatures);
+  const uniqueFeatures = allFeatures.filter(
+    (feature, index, self) =>
+      index === self.findIndex((f) => f.id === feature.id)
+  );
+
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(allFeatures);
+    calculateFeatureTotals(uniqueFeatures);
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;
+
+  console.log("DeliveryFooter allFeatures:", allFeatures);
 
   // const grandTotal = (
   //   parseFloat(fixedCost) +
