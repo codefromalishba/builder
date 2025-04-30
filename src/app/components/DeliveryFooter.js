@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import AppName from "./AppName";
 import { useDispatch, useSelector } from "react-redux";
-import { calculateFeatureTotals } from "../store/featureSlice";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { setProfile } from "../store/profileSlice";
+import { calculateFeatureTotals } from "../utils/calculateTotal";
 
 const DeliveryFooter = () => {
   const user = useSelector((state) => state.profile);

@@ -5,9 +5,9 @@ import React, { useState } from "react";
 import delivery from "../delivery/page";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { calculateFeatureTotals } from "../store/featureSlice";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
+import { calculateFeatureTotals } from "../utils/calculateTotal";
 
 const CartFooter = () => {
   const allFeatures = useSelector((state) => state.feature.allFeatures);
@@ -18,7 +18,6 @@ const CartFooter = () => {
   const user = useSelector((state) => state.profile);
   const router = useRouter();
 
-  console.log("user footer", user);
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
     calculateFeatureTotals(allFeatures);
 

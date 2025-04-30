@@ -13,11 +13,7 @@ import { PiShootingStarThin } from "react-icons/pi";
 import { SiStyledcomponents } from "react-icons/si";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addPhase,
-  calculateFeatureTotals,
-  removePhase,
-} from "../store/featureSlice";
+import { addPhase, removePhase } from "../store/featureSlice";
 
 const ProductPhase = ({ isOn }) => {
   const [selectedPhase, setSelectedPhase] = useState(null);

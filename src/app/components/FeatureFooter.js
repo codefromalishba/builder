@@ -1,16 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { calculateFeatureTotals } from "../store/featureSlice";
+import { calculateFeatureTotals } from "../utils/calculateTotal";
 
 const FeatureFooter = () => {
   const allFeatures = useSelector((state) => state.feature.allFeatures);
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(allFeatures);
+    calculateFeatureTotals(allFeatures, true);
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;
-
-  console.log("FeatureFooter allFeatures:", allFeatures);
 
   return (
     <div className="px-5 gap-8 flex pt-4 justify-center">
