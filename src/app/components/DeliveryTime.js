@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { FaRegCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { selectTotalCost } from "../store/featureSlice";
+import { IoIosCheckmarkCircle, IoIosRadioButtonOff } from "react-icons/io";
 
 const DeliveryTime = () => {
+  const [isSelected, setIsSelected] = useState(false);
   const [step, setStep] = useState(3); // Default step is "Standard"
   const [step2, setStep2] = useState(4); // Default step is "50k+"
   const { fixedCost, customizationCost, phasesCost } =
@@ -127,8 +129,15 @@ const DeliveryTime = () => {
               alt="logo"
             />
           </div>
-          <div>
-            <FaRegCircle className="text-gray-400 text-2xl" />
+          <div
+            className="cursor-pointer"
+            onClick={() => setIsSelected((prev) => !prev)}
+          >
+            {isSelected ? (
+              <IoIosCheckmarkCircle className="text-2xl text-demo" />
+            ) : (
+              <FaRegCircle className="text-xl text-gray-400" />
+            )}
           </div>
         </div>
         <div>
