@@ -15,7 +15,7 @@ const FeatureFooter = () => {
       : [];
 
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(featuresToPass, true);
+    calculateFeatureTotals(featuresToPass);
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;
