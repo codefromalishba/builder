@@ -7,9 +7,16 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 const DeliveryTime = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [step, setStep] = useState(3); // Default step is "Standard"
+  const { selectedPhases, initialPhases } = useSelector(
+    (state) => state.feature
+  );
   const [step2, setStep2] = useState(4); // Default step is "50k+"
   const features = useSelector((state) => state.feature.allFeatures);
-  const { totalCost } = calculateFeatureTotals(features);
+  const { totalCost } = calculateFeatureTotals(
+    features,
+    selectedPhases,
+    initialPhases
+  );
 
   const getAdjustedPrice = (basePrice, adjustment) => {
     const price = Number(basePrice);

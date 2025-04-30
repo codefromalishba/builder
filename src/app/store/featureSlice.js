@@ -56,20 +56,10 @@ export const calculateFeatureTotals = (
   selectedPhases = [],
   initialPhases = []
 ) => {
-  // console.log("selectedPhases", selectedPhases);
-  // console.log("initialPhases", initialPhases);
   if (!Array.isArray(features)) {
     console.error("Expected features to be an array but got:", features);
     features = [];
   }
-
-  const phaseModifiers = {
-    "Product Roadmap": 0.1,
-    "Professional Prototype": 0.18,
-    "Full Build": 0.2,
-    Design: 0.08,
-    MVP: 0.05,
-  };
 
   const fixedCost = features.reduce(
     (sum, feature) => sum + parseFloat(feature.price || 0),
@@ -77,38 +67,62 @@ export const calculateFeatureTotals = (
   );
 
   const customizationCost = features.length * 10;
-
   const totalTimeline = features.reduce(
     (sum, feature) => sum + parseFloat(feature.timeline || 0),
     0
   );
-
   const indicativeDurationInWeeks = Math.ceil(totalTimeline / 7);
 
-  // 🧠 Apply Phase Modifiers
+  // ✅ Bonuses for selected phases
+  const bonusModifiers = {
+    "Product Roadmap": 0.1,
+    "Professional Prototype": 0.18,
+    "Full Build": 0.2,
+  };
+
   let fixedBonus = 0;
   let customizationBonus = 0;
 
   selectedPhases.forEach((id) => {
     const phase = initialPhases.find((p) => parseInt(p.id) === id);
-    if (phase) {
-      const modifier = phaseModifiers[phase.name] || 0;
+    if (phase && bonusModifiers[phase.name]) {
+      const modifier = bonusModifiers[phase.name];
       fixedBonus += fixedCost * modifier;
       customizationBonus += customizationCost * modifier;
     }
   });
 
-  // console.log("fixedBonus", fixedBonus);
-  // console.log("customisationBonus", customizationBonus);
-  const totalFixedCost = fixedCost + fixedBonus;
-  const totalCustomizationCost = customizationCost + customizationBonus;
+  // 🔻 Penalties for deselected Design or MVP
+  const penaltyModifiers = {
+    Design: 0.08,
+    MVP: 0.05,
+  };
+
+  let fixedPenalty = 0;
+  let customizationPenalty = 0;
+
+  Object.entries(penaltyModifiers).forEach(([phaseName, penalty]) => {
+    const isSelected = initialPhases.some(
+      (phase) =>
+        phase.name === phaseName && selectedPhases.includes(parseInt(phase.id))
+    );
+    if (!isSelected) {
+      fixedPenalty += fixedCost * penalty;
+      customizationPenalty += customizationCost * penalty;
+    }
+  });
+
+  const totalFixedCost = fixedCost + fixedBonus - fixedPenalty;
+  const totalCustomizationCost =
+    customizationCost + customizationBonus - customizationPenalty;
 
   return {
     fixedCost: totalFixedCost,
     customizationCost: totalCustomizationCost,
     totalCost: (totalFixedCost + totalCustomizationCost).toFixed(0),
     indicativeDurationInWeeks,
-    phasesCost: fixedBonus + customizationBonus,
+    phasesCost:
+      fixedBonus + customizationBonus - (fixedPenalty + customizationPenalty),
   };
 };
 
