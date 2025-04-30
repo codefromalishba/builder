@@ -112,6 +112,8 @@ const DeliveryFooter = () => {
               selected: selectedPhases.includes(parseInt(phase.id)),
             }));
 
+            console.log("initialPhases", initialPhases);
+
             console.log("phasesSelected", phasesSelected);
             userData.buildCards[incompleteBuildCardIndex] = {
               ...userData.buildCards[incompleteBuildCardIndex],

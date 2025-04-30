@@ -52,7 +52,7 @@ const CartFooter = () => {
         {
           id: 3,
           name: "Professional Prototype",
-          selected: false,
+          selected: true,
         },
         {
           id: 4,
