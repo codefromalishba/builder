@@ -21,9 +21,7 @@ const CartFooter = () => {
   console.log("user footer", user);
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
     calculateFeatureTotals(allFeatures);
-  // const totalCost = (
-  //   parseFloat(fixedCost) + parseFloat(customizationCost)
-  // ).toFixed(0);
+
   const addIncompleteBuildCard = () => {
     setLoading(true);
     const userRef = doc(db, "users", user.uid);

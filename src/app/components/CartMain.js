@@ -30,11 +30,11 @@ const CartMain = ({ isMobile }) => {
                     : "border-gray-300"
                 }`}
               >
-                <img
+                {/* <img
                   className="p-1 h-full rounded-lg"
                   src={feature?.mobile}
                   alt="cartImg 1"
-                />
+                /> */}
               </div>
               <div className="">
                 <div className="flex items-center gap-2 w-20">

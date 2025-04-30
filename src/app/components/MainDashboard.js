@@ -147,11 +147,11 @@ const MainDashboard = () => {
                           >
                             <div className="flex justify-between w-full">
                               <div className="flex gap-2">
-                                <img
+                                {/* <img
                                   src={feature.icon}
                                   alt="iconImg"
                                   className="w-5 h-5 cursor-pointer mt-2 opacity-50"
-                                />
+                                /> */}
                                 <div>
                                   <p className="text-sm cursor-pointer">
                                     {feature.name}
