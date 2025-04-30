@@ -85,7 +85,12 @@ const featureSlice = createSlice({
 //   };
 // };
 
-export const calculateFeatureTotals = (features = []) => {
+export const calculateFeatureTotals = (features) => {
+  if (!Array.isArray(features)) {
+    console.error("Expected features to be an array but got:", features);
+    features = [];
+  }
+
   const fixedCost = features.reduce(
     (sum, feature) => sum + parseFloat(feature.price || 0),
     0
@@ -100,7 +105,7 @@ export const calculateFeatureTotals = (features = []) => {
 
   const indicativeDurationInWeeks = Math.ceil(totalTimeline / 7);
 
-  const totalCost = fixedCost + customizationCost;
+  const totalCost = (fixedCost + customizationCost).toFixed(0);
 
   return {
     fixedCost,

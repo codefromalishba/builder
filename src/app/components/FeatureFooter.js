@@ -1,14 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectTotalCost } from "../store/featureSlice";
+import { calculateFeatureTotals } from "../store/featureSlice";
 
 const FeatureFooter = () => {
-  const { fixedCost, totalTimeline, customizationCost } =
-    useSelector(selectTotalCost);
+  const allFeatures = useSelector((state) => state.feature.allFeatures);
+  const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
+    calculateFeatureTotals(allFeatures);
+  const durationLabel = `${indicativeDurationInWeeks} ${
+    indicativeDurationInWeeks === 1 ? "week" : "weeks"
+  }`;
 
-  const grandTotal = (
-    parseFloat(fixedCost) + parseFloat(customizationCost)
-  ).toFixed(0);
+  // const grandTotal = (
+  //   parseFloat(fixedCost) + parseFloat(customizationCost)
+  // ).toFixed(0);
 
   return (
     <div className="px-5 gap-8 flex pt-4 justify-center">
@@ -21,7 +25,7 @@ const FeatureFooter = () => {
       <div>
         <p className="text-2xl text-[#A6A6A6] ">+</p>
       </div>
-      <div className="flex flex-col gap-2 px-2 justify-start ">
+      <div className="flex flex-col gap-2 px-1 justify-start ">
         <p className="text-xs">Fixed Cost</p>
         <p className="font-extrabold text-xl">{fixedCost.toFixed(0)} $</p>
       </div>
@@ -30,15 +34,11 @@ const FeatureFooter = () => {
       </div>
       <div className="flex flex-col gap-2 px-2 justify-start ">
         <p className="text-xs">Total Cost</p>
-        <p className="font-extrabold text-xl">{grandTotal} $</p>
+        <p className="font-extrabold text-xl">{totalCost} $</p>
       </div>
       <div className="flex flex-col gap-2 px-2 justify-start  border-l-[3px]  pl-10 border-[#A6A6A6]">
         <p className="text-xs">Indicative Duration</p>
-        <p className="font-extrabold text-xl">
-          {`${Math.ceil(totalTimeline / 7)} ${
-            Math.ceil(totalTimeline / 7) === 1 ? "week" : "weeks"
-          }`}
-        </p>
+        <p className="font-extrabold text-xl">{durationLabel}</p>
       </div>
     </div>
   );

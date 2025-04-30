@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import AppName from "./AppName";
 import { useSelector } from "react-redux";
-import { selectTotalCost } from "../store/featureSlice";
+import { calculateFeatureTotals } from "../store/featureSlice";
 
 const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
-  const { fixedCost, totalTimeline, customizationCost, phasesCost } =
-    useSelector(selectTotalCost);
-  console.log("selectTotalCost", selectTotalCost);
+  const allFeatures = useSelector((state) => state.feature.allFeatures);
+  const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
+    calculateFeatureTotals(allFeatures);
+  const durationLabel = `${indicativeDurationInWeeks} ${
+    indicativeDurationInWeeks === 1 ? "week" : "weeks"
+  }`;
 
-  const grandTotal = (
-    parseFloat(fixedCost) +
-    parseFloat(customizationCost) +
-    parseFloat(phasesCost)
-  ).toFixed(0);
+  // const grandTotal = (
+  //   parseFloat(fixedCost) +
+  //   parseFloat(customizationCost) +
+  //   parseFloat(phasesCost)
+  // ).toFixed(0);
 
   const handleOpenAppNamePopup = () => {
     setIsAppNamePopupOpen(true);
@@ -46,15 +49,11 @@ const DeliveryFooter = () => {
           </div>
           <div className="flex flex-col gap-2 px-2 justify-start ">
             <p className="text-xs">Total Cost</p>
-            <p className="font-extrabold text-xl">{grandTotal} $</p>
+            <p className="font-extrabold text-xl">{totalCost} $</p>
           </div>
           <div className="flex flex-col gap-2 px-2 justify-start  border-l-[3px]  pl-7 border-[#A6A6A6]">
             <p className="text-xs">Indicative Duration</p>
-            <p className="font-extrabold text-xl">
-              {`${Math.ceil(totalTimeline / 7)} ${
-                Math.ceil(totalTimeline / 7) === 1 ? "week" : "weeks"
-              }`}
-            </p>
+            <p className="font-extrabold text-xl">{durationLabel}</p>
           </div>
         </div>
         <div

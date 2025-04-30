@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import delivery from "../delivery/page";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { selectTotalCost } from "../store/featureSlice";
+import { calculateFeatureTotals } from "../store/featureSlice";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
@@ -19,13 +19,11 @@ const CartFooter = () => {
   const router = useRouter();
 
   console.log("user footer", user);
-
-  console.log("featureids", featureIds);
-  const { fixedCost, totalTimelineInWeeks, customizationCost } =
-    useSelector(selectTotalCost);
-  const totalCost = (
-    parseFloat(fixedCost) + parseFloat(customizationCost)
-  ).toFixed(0);
+  const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
+    calculateFeatureTotals(allFeatures);
+  // const totalCost = (
+  //   parseFloat(fixedCost) + parseFloat(customizationCost)
+  // ).toFixed(0);
   const addIncompleteBuildCard = () => {
     setLoading(true);
     const userRef = doc(db, "users", user.uid);
@@ -39,7 +37,7 @@ const CartFooter = () => {
       cloudServiceCost: null,
       platforms: ["web"],
       speed: 3,
-      duration: totalTimelineInWeeks,
+      duration: indicativeDurationInWeeks,
       phases: [
         {
           name: "Product Roadmap",
@@ -93,7 +91,7 @@ const CartFooter = () => {
               platforms: ["ios"],
               features: featureIds,
               customFeatures: "null",
-              duration: totalTimelineInWeeks,
+              duration: indicativeDurationInWeeks,
               fixedCost: fixedCost,
               customizationCost: customizationCost,
               totalCost: totalCost,

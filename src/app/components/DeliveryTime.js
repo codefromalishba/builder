@@ -1,24 +1,36 @@
 import React, { useState } from "react";
 import { FaRegCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { selectTotalCost } from "../store/featureSlice";
-import { IoIosCheckmarkCircle, IoIosRadioButtonOff } from "react-icons/io";
+import { calculateFeatureTotals } from "../store/featureSlice";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
 const DeliveryTime = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [step, setStep] = useState(3); // Default step is "Standard"
   const [step2, setStep2] = useState(4); // Default step is "50k+"
-  const { fixedCost, customizationCost, phasesCost } =
-    useSelector(selectTotalCost);
-
-  const grandTotal =
-    parseFloat(fixedCost) +
-    parseFloat(customizationCost) +
-    parseFloat(phasesCost);
+  const features = useSelector((state) => state.feature.allFeatures);
+  const { totalCost } = calculateFeatureTotals(features);
+  // const grandTotal =
+  //   parseFloat(fixedCost) +
+  //   parseFloat(customizationCost) +
+  //   parseFloat(phasesCost);
 
   const getAdjustedPrice = (basePrice, adjustment) => {
-    return (basePrice + basePrice * adjustment).toFixed(0);
+    const price = Number(basePrice);
+    const adj = Number(adjustment);
+
+    if (isNaN(price) || isNaN(adj)) {
+      console.error("Invalid input to getAdjustedPrice", {
+        basePrice,
+        adjustment,
+      });
+      return "0";
+    }
+
+    return Math.round(price + price * adj).toString(); // returns a string like "123"
   };
+
+  console.log("Total Cost:", totalCost);
 
   const speedOptions = [
     { label: "Relaxed", adjustment: -0.025, duration: "4 Weeks" },
@@ -87,7 +99,7 @@ const DeliveryTime = () => {
                           : "text-black"
                       }`}
                     >
-                      <p>${getAdjustedPrice(grandTotal, option.adjustment)}</p>
+                      <p>${getAdjustedPrice(totalCost, option.adjustment)}</p>
                       <p className="pt-1">{option.duration}</p>
                     </div>
                   ))}
