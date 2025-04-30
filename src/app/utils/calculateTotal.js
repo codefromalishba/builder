@@ -9,9 +9,6 @@ export const calculateFeatureTotals = (
   const pathname = usePathname();
   const isFeaturePage = pathname.includes("feature");
 
-  // console.log("features inside calculateFeatureTotals", features);
-  // console.log("selectedPhases inside calculateFeatureTotals", selectedPhases);
-  // console.log("initialPhases inside calcualteFeatureTotals", initialPhases);
   if (!Array.isArray(features)) {
     console.error("Expected features to be an array but got:", features);
     features = [];
@@ -29,7 +26,7 @@ export const calculateFeatureTotals = (
   );
   const indicativeDurationInWeeks = Math.ceil(totalTimeline / 7);
 
-  // ✅ Bonuses for selected phases
+  // Bonuses for selected phases
   const bonusModifiers = {
     "Product Roadmap": 0.1,
     "Professional Prototype": 0.18,
@@ -40,7 +37,7 @@ export const calculateFeatureTotals = (
   let customizationBonus = 0;
 
   selectedPhases?.forEach((id) => {
-    const phase = initialPhases?.find((p) => parseInt(p.id) === id);
+    const phase = initialPhases?.find((p) => String(p.id) === id);
     if (phase && bonusModifiers[phase.name]) {
       const modifier = bonusModifiers[phase.name];
       fixedBonus += fixedCost * modifier;
