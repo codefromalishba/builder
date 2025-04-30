@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { setProfile } from "../store/profileSlice";
 
 const CartFooter = () => {
   const allFeatures = useSelector((state) => state.feature.allFeatures);
@@ -20,6 +21,34 @@ const CartFooter = () => {
 
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
     calculateFeatureTotals(allFeatures);
+
+  const defaultPhases = [
+    {
+      id: 1,
+      name: "Product Roadmap",
+      selected: false,
+    },
+    {
+      id: 2,
+      name: "Design",
+      selected: true,
+    },
+    {
+      id: 3,
+      name: "Professional Prototype",
+      selected: false,
+    },
+    {
+      id: 4,
+      name: "MVP",
+      selected: true,
+    },
+    {
+      id: 5,
+      name: "Full Build",
+      selected: false,
+    },
+  ];
 
   const addIncompleteBuildCard = () => {
     setLoading(true);
@@ -35,33 +64,7 @@ const CartFooter = () => {
       platforms: ["web"],
       speed: 3,
       duration: indicativeDurationInWeeks,
-      phases: [
-        {
-          id: 1,
-          name: "Product Roadmap",
-          selected: false,
-        },
-        {
-          id: 2,
-          name: "Design",
-          selected: true,
-        },
-        {
-          id: 3,
-          name: "Professional Prototype",
-          selected: true,
-        },
-        {
-          id: 4,
-          name: "MVP",
-          selected: true,
-        },
-        {
-          id: 5,
-          name: "Full Build",
-          selected: false,
-        },
-      ],
+      phases: defaultPhases,
       deliveryDate: "",
       features: featureIds,
       customFeatures: "null",
@@ -119,7 +122,7 @@ const CartFooter = () => {
               console.log("Build card added/updated successfully");
               router.push(`/delivery`);
               // .then(() => setLoading(false));
-              dispatch(setUser(userData));
+              // dispatch(setProfile(userData));
             })
 
             .catch((error) => {
@@ -143,7 +146,7 @@ const CartFooter = () => {
         <motion.div
           whileTap={{ scale: 0.95 }} // Slight shrink on click
           transition={{ duration: 0.2, ease: "easeInOut" }} // Smooth transition
-          className="bg-demo flex justify-center py-6 cursor-pointer items-center h-full border border-gray-500 rounded-lg shadow-md"
+          className="bg-demo flex justify-center py-6 cursor-pointer items-center h-full border border-gray-500 shadow-md"
         >
           <p
             onClick={addIncompleteBuildCard}

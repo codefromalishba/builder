@@ -5,6 +5,7 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { setProfile } from "../store/profileSlice";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { initialPhases } from "@/data";
 
 const DeliveryFooter = () => {
   const user = useSelector((state) => state.profile);
@@ -13,9 +14,10 @@ const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
   const dispatch = useDispatch();
   const db = getFirestore();
-  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
+  const { allFeatures, selectedPhases, speed } = useSelector(
     (state) => state.feature
   );
+
   const uniqueFeatures = allFeatures.filter(
     (feature, index, self) =>
       index === self.findIndex((f) => f.id === feature.id)
@@ -24,6 +26,7 @@ const DeliveryFooter = () => {
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
     calculateFeatureTotals(
       uniqueFeatures,
+      false,
       selectedPhases,
       initialPhases,
       speed
@@ -46,46 +49,6 @@ const DeliveryFooter = () => {
   const handleUpdateDelivery = () => {
     // setLoading(true);
     const userRef = doc(db, "users", user.uid);
-    // const newBuildCard = {
-    //   id: uuidv4(),
-    //   name: "My Project Name",
-    //   status: "incomplete",
-    //   fixedCost: fixedCost,
-    //   customizationCost: customizationCost,
-    //   totalCost: totalCost,
-    //   cloudServiceCost: null,
-    //   platforms: ["web"],
-    //   speed: 3,
-    //   duration: indicativeDurationInWeeks,
-    //   phases: [
-    //     {
-    //       name: "Product Roadmap",
-    //       selected: false,
-    //     },
-    //     {
-    //       name: "Design",
-    //       selected: true,
-    //     },
-    //     {
-    //       name: "Professional Prototype",
-    //       selected: false,
-    //     },
-    //     {
-    //       name: "MVP",
-    //       selected: true,
-    //     },
-    //     {
-    //       name: "Full Build",
-    //       selected: false,
-    //     },
-    //   ],
-    //   deliveryDate: "",
-    //   features: featureIds,
-    //   customFeatures: "null",
-    //   createdAt: new Date().toISOString(),
-    //   updatedAt: new Date().toISOString(),
-    //   details: "",
-    // };
 
     getDoc(userRef)
       .then((docSnapshot) => {

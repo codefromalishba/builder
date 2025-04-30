@@ -29,8 +29,8 @@ const ProductPhase = ({ isOn }) => {
     if (initialPhases.length > 0) {
       const initialState = {};
       initialPhases.forEach((phase) => {
-        initialState[phase.id] =
-          phase.name === "Design" || phase.name === "MVP";
+        const phaseIdStr = String(phase.id);
+        initialState[phaseIdStr] = selectedPhases?.includes(phaseIdStr);
       });
       setExpandedCards(initialState);
     }

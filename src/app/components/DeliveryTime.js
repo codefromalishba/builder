@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { speedOptions } from "@/data";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { changeSpeed } from "../store/featureSlice";
 
 const DeliveryTime = () => {
   const [isSelected, setIsSelected] = useState(false);

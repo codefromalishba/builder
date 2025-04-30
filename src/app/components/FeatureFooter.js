@@ -3,9 +3,19 @@ import { useSelector } from "react-redux";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
 
 const FeatureFooter = () => {
-  const allFeatures = useSelector((state) => state.feature.allFeatures);
+  const { allFeatures, selectedFeature } = useSelector(
+    (state) => state.feature
+  );
+
+  const featuresToPass =
+    allFeatures.length > 0
+      ? allFeatures
+      : selectedFeature
+      ? [selectedFeature]
+      : [];
+
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(allFeatures, true);
+    calculateFeatureTotals(featuresToPass, true);
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;

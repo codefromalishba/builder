@@ -77,13 +77,15 @@ const HeaderLayout = ({ children, lang }) => {
 
                 console.log("defaultPlatforms", defaultPlatforms);
 
-                dispatch(updatePlatforms(defaultPlatforms));
                 dispatch(setPhases(defaultPhases));
+                dispatch(updatePlatforms(defaultPlatforms));
 
                 const matchedFeatures = mapFeatureIdsToSidebarData(
                   incompleteItem.features,
                   sidebarData
                 );
+
+                console.log("matchedFeatures", matchedFeatures);
 
                 matchedFeatures.forEach((feature) => {
                   dispatch(addFeature(feature));
