@@ -12,7 +12,11 @@ import DashboardHeader from "./DashboardHeader";
 import { sidebarData } from "@/data";
 import { auth } from "../firebase";
 import { setProfile } from "../store/profileSlice";
-import { addFeature, setSelectedFeature } from "../store/featureSlice";
+import {
+  addFeature,
+  setPhases,
+  setSelectedFeature,
+} from "../store/featureSlice";
 import { mapFeatureIdsToSidebarData } from "../utils/mapFeatures";
 
 const HeaderLayout = ({ children, lang }) => {
@@ -31,9 +35,7 @@ const HeaderLayout = ({ children, lang }) => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setIsLoading(false);
-        // console.log("autherized data", authUser);
         const userDocRef = doc(db, "users", authUser.uid);
-        // console.log("userDocRef", userDocRef);
 
         getDoc(userDocRef)
           .then(async (docSnapshot) => {
@@ -64,7 +66,13 @@ const HeaderLayout = ({ children, lang }) => {
                   dispatch(setProfile(userData));
                 }
               } else {
-                console.log("incomplete build card found");
+                console.log("incomplete build card found", incompleteItem);
+
+                const defaultPhases = incompleteItem?.phases
+                  ?.filter((item) => item.selected)
+                  ?.map((item) => item.id);
+
+                dispatch(setPhases(defaultPhases));
 
                 const matchedFeatures = mapFeatureIdsToSidebarData(
                   incompleteItem.features,

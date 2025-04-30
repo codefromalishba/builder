@@ -24,10 +24,7 @@ const MainDashboard = () => {
   const { allFeatures, selectedFeature } = useSelector(
     (state) => state.feature
   );
-
-  // console.log("allFeatures", allFeatures);
   const [openDropDown, setOpenDropDown] = useState();
-  // const allFeatures = useSelector((state) => state.feature);
 
   const handleAddFeature = (item) => {
     dispatch(setSelectedFeature(item));

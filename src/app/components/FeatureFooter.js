@@ -12,10 +12,6 @@ const FeatureFooter = () => {
 
   console.log("FeatureFooter allFeatures:", allFeatures);
 
-  // const grandTotal = (
-  //   parseFloat(fixedCost) + parseFloat(customizationCost)
-  // ).toFixed(0);
-
   return (
     <div className="px-5 gap-8 flex pt-4 justify-center">
       <div className="flex flex-col gap-2 px-2 justify-start ">

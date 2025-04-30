@@ -10,10 +10,6 @@ const DeliveryTime = () => {
   const [step2, setStep2] = useState(4); // Default step is "50k+"
   const features = useSelector((state) => state.feature.allFeatures);
   const { totalCost } = calculateFeatureTotals(features);
-  // const grandTotal =
-  //   parseFloat(fixedCost) +
-  //   parseFloat(customizationCost) +
-  //   parseFloat(phasesCost);
 
   const getAdjustedPrice = (basePrice, adjustment) => {
     const price = Number(basePrice);

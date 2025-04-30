@@ -10,10 +10,6 @@ const Page = () => {
   return (
     <HeaderLayout>
       <div className="flex flex-col">
-        {/* Fixed Header */}
-        {/* <div className="fixed top-0 left-0 right-0 z-50">
-          <DashboardHeader />
-        </div> */}
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto mt-[72px] mb-[80px]">

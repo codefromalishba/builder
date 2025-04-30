@@ -55,7 +55,7 @@ const MainDelivery = () => {
           );
 
           if (buildCard && buildCard.platforms) {
-            console.log("Found saved platforms:", buildCard.platforms);
+            // console.log("Found saved platforms:", buildCard.platforms);
             setSelectedPlatforms(buildCard.platforms);
           } else {
             console.log("No saved platforms, fallback");

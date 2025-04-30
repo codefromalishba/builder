@@ -10,6 +10,9 @@ const featureSlice = createSlice({
     initialPhases: initialPhases, // NEW
   },
   reducers: {
+    setPhases: (state, action) => {
+      state.selectedPhases = action.payload;
+    },
     setSelectedFeature: (state, action) => {
       state.selectedFeature = action.payload;
     },
@@ -37,62 +40,25 @@ const featureSlice = createSlice({
   },
 });
 
-// export const selectTotalCost = (state) => {
-//   const { selectedFeature, allFeatures, selectedPhases, initialPhases } =
-//     state.feature;
-
-//   let fixedCost = 0;
-//   let totalTimeline = 0;
-//   let customizationCost = allFeatures.length > 0 ? allFeatures.length * 10 : 0;
-
-//   if (allFeatures.length > 0) {
-//     ({ fixedCost, totalTimeline } = allFeatures.reduce(
-//       (totals, feature) => ({
-//         fixedCost: totals.fixedCost + parseFloat(feature.price),
-//         totalTimeline: totals.totalTimeline + parseFloat(feature.timeline),
-//       }),
-//       { fixedCost: 0, totalTimeline: 0 }
-//     ));
-//   } else if (selectedFeature) {
-//     fixedCost = parseFloat(selectedFeature.price);
-//     totalTimeline = parseFloat(selectedFeature.timeline);
-//   }
-//   // 🧠 Convert timeline in days → weeks
-//   const totalTimelineInWeeks = Math.ceil(totalTimeline / 7);
-//   const phaseModifiers = {
-//     "Product Roadmap": 0.1,
-//     "Professional Prototype": 0.18,
-//     "Full Build": 0.2,
-//     Design: 0.08,
-//     MVP: 0.05,
-//   };
-
-//   let fixedBonus = 0;
-//   let customizationBonus = 0;
-
-//   selectedPhases.forEach((id) => {
-//     const phase = initialPhases.find((p) => p.id === id);
-//     if (phase) {
-//       const modifier = phaseModifiers[phase.name] || 0;
-//       fixedBonus += fixedCost * modifier;
-//       customizationBonus += customizationCost * modifier;
-//     }
-//   });
-
-//   return {
-//     fixedCost: fixedCost + fixedBonus,
-//     customizationCost: customizationCost + customizationBonus,
-//     totalTimeline,
-//     totalTimelineInWeeks,
-//     phasesCost: fixedBonus + customizationBonus,
-//   };
-// };
-
-export const calculateFeatureTotals = (features) => {
+export const calculateFeatureTotals = (
+  features,
+  selectedPhases = [],
+  initialPhases = []
+) => {
+  console.log("selectedPhases", selectedPhases);
+  console.log("initialPhases", initialPhases);
   if (!Array.isArray(features)) {
     console.error("Expected features to be an array but got:", features);
     features = [];
   }
+
+  const phaseModifiers = {
+    "Product Roadmap": 0.1,
+    "Professional Prototype": 0.18,
+    "Full Build": 0.2,
+    Design: 0.08,
+    MVP: 0.05,
+  };
 
   const fixedCost = features.reduce(
     (sum, feature) => sum + parseFloat(feature.price || 0),
@@ -108,13 +74,30 @@ export const calculateFeatureTotals = (features) => {
 
   const indicativeDurationInWeeks = Math.ceil(totalTimeline / 7);
 
-  const totalCost = (fixedCost + customizationCost).toFixed(0);
+  // 🧠 Apply Phase Modifiers
+  let fixedBonus = 0;
+  let customizationBonus = 0;
+
+  selectedPhases.forEach((id) => {
+    const phase = initialPhases.find((p) => parseInt(p.id) === id);
+    if (phase) {
+      const modifier = phaseModifiers[phase.name] || 0;
+      fixedBonus += fixedCost * modifier;
+      customizationBonus += customizationCost * modifier;
+    }
+  });
+
+  console.log("fixedBonus", fixedBonus);
+  console.log("customisationBonus", customizationBonus);
+  const totalFixedCost = fixedCost + fixedBonus;
+  const totalCustomizationCost = customizationCost + customizationBonus;
 
   return {
-    fixedCost,
-    customizationCost,
-    totalCost,
+    fixedCost: totalFixedCost,
+    customizationCost: totalCustomizationCost,
+    totalCost: (totalFixedCost + totalCustomizationCost).toFixed(0),
     indicativeDurationInWeeks,
+    phasesCost: fixedBonus + customizationBonus,
   };
 };
 
@@ -123,6 +106,7 @@ export const {
   addFeature,
   removeFeature,
   addPhase,
+  setPhases,
   removePhase,
 } = featureSlice.actions;
 export default featureSlice.reducer;

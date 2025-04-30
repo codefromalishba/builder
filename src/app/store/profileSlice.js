@@ -15,7 +15,6 @@ const profileSlice = createSlice({
       if (email !== undefined) state.email = email;
     },
     setProfile: (state, action) => {
-      // console.log("action.payload in setProfile", action.payload);
       const { name, email, uid, buildCards } = action.payload;
       state.name = name;
       state.email = email;

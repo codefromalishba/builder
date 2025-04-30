@@ -7,24 +7,40 @@ import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
 import { BsInfoCircle } from "react-icons/bs";
+import { GoChecklist, GoRocket } from "react-icons/go";
+import { IoCodeSlashOutline } from "react-icons/io5";
+import { PiShootingStarThin } from "react-icons/pi";
+import { SiStyledcomponents } from "react-icons/si";
 import moment from "moment";
-// import { initialPhases } from "@/data";
 import { useDispatch, useSelector } from "react-redux";
-import { addPhase, removePhase } from "../store/featureSlice";
+import {
+  addPhase,
+  calculateFeatureTotals,
+  removePhase,
+} from "../store/featureSlice";
 
-const ProductPhase = ({ isOn, initialPhases }) => {
+const ProductPhase = ({ isOn }) => {
   const [selectedPhase, setSelectedPhase] = useState(null);
-  const allFeatures = useSelector((state) => state.feature.allFeatures);
+  const [expandedCards, setExpandedCards] = useState({});
   const dispatch = useDispatch();
-  // Initialize expandedCards with default selected: Design and MVP
-  const [expandedCards, setExpandedCards] = useState(() => {
-    const initialState = {};
-    initialPhases.forEach((phase) => {
-      initialState[phase.id] = phase.name === "Design" || phase.name === "MVP";
-    });
-    return initialState;
-  });
 
+  // Access values from Redux
+  const { allFeatures, selectedPhases, initialPhases } = useSelector(
+    (state) => state.feature
+  );
+
+  useEffect(() => {
+    if (initialPhases.length > 0) {
+      const initialState = {};
+      initialPhases.forEach((phase) => {
+        initialState[phase.id] =
+          phase.name === "Design" || phase.name === "MVP";
+      });
+      setExpandedCards(initialState);
+    }
+  }, [initialPhases]);
+
+  // Handle toggling of phase selection
   const toggleCard = (id) => {
     const isCurrentlySelected = expandedCards[id];
     const selectedCount = Object.values(expandedCards).filter(Boolean).length;
@@ -40,13 +56,21 @@ const ProductPhase = ({ isOn, initialPhases }) => {
 
       // Dispatch Redux actions
       if (!isCurrentlySelected) {
-        dispatch(addPhase(id));
+        dispatch(addPhase(parseInt(id)));
       } else {
-        dispatch(removePhase(id));
+        dispatch(removePhase(parseInt(id)));
       }
 
       return newState;
     });
+  };
+
+  const iconMap = {
+    GoChecklist: <GoChecklist className="text-3xl text-black" />,
+    SiStyledcomponents: <SiStyledcomponents className="text-4xl text-black" />,
+    PiShootingStarThin: <PiShootingStarThin className="text-4xl text-black" />,
+    IoCodeSlashOutline: <IoCodeSlashOutline className="text-3xl text-black" />,
+    GoRocket: <GoRocket className="text-3xl text-black" />,
   };
 
   return (
@@ -74,7 +98,9 @@ const ProductPhase = ({ isOn, initialPhases }) => {
               </div>
 
               <div className="flex gap-2">
-                <div className="w-10 h-10">{phase.icon}</div>
+                <div className="w-10 h-10">
+                  <div className="w-10 h-10">{iconMap[phase.icon]}</div>
+                </div>
                 <div>
                   <div className="flex gap-1 pb-1">
                     <p className="font-bold text-demo max-w-[100px] text-sm">
@@ -160,7 +186,9 @@ const ProductPhase = ({ isOn, initialPhases }) => {
               <div>
                 <div className="rounded-md rounded-b-none p-5 bg-slate-200">
                   <div className="flex p-5 py-1 gap-1">
-                    <div>{phase.icon}</div>
+                    <div>
+                      <div className="w-10 h-10">{iconMap[phase.icon]}</div>
+                    </div>
                     <p className="text-demo font-bold text-sm max-w-[100px]">
                       {phase.name}
                     </p>
