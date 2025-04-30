@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import AppName from "./AppName";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { calculateFeatureTotals } from "../store/featureSlice";
+import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
+import { setProfile } from "../store/profileSlice";
 
 const DeliveryFooter = () => {
+  const user = useSelector((state) => state.profile);
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
+  const dispatch = useDispatch();
+  const db = getFirestore();
   const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
@@ -34,6 +42,118 @@ const DeliveryFooter = () => {
     setIsAppNamePopupOpen(false);
     document.body.classNameList.remove("overflow-hidden"); // Re-enable scrolling
   };
+
+  const handleUpdateDelivery = () => {
+    // setLoading(true);
+    const userRef = doc(db, "users", user.uid);
+    // const newBuildCard = {
+    //   id: uuidv4(),
+    //   name: "My Project Name",
+    //   status: "incomplete",
+    //   fixedCost: fixedCost,
+    //   customizationCost: customizationCost,
+    //   totalCost: totalCost,
+    //   cloudServiceCost: null,
+    //   platforms: ["web"],
+    //   speed: 3,
+    //   duration: indicativeDurationInWeeks,
+    //   phases: [
+    //     {
+    //       name: "Product Roadmap",
+    //       selected: false,
+    //     },
+    //     {
+    //       name: "Design",
+    //       selected: true,
+    //     },
+    //     {
+    //       name: "Professional Prototype",
+    //       selected: false,
+    //     },
+    //     {
+    //       name: "MVP",
+    //       selected: true,
+    //     },
+    //     {
+    //       name: "Full Build",
+    //       selected: false,
+    //     },
+    //   ],
+    //   deliveryDate: "",
+    //   features: featureIds,
+    //   customFeatures: "null",
+    //   createdAt: new Date().toISOString(),
+    //   updatedAt: new Date().toISOString(),
+    //   details: "",
+    // };
+
+    getDoc(userRef)
+      .then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data();
+
+          userData.buildCards = Array.isArray(userData.buildCards)
+            ? userData.buildCards
+            : [];
+
+          const incompleteBuildCardIndex = userData.buildCards.findIndex(
+            (card) => card.status === "incomplete"
+          );
+
+          console.log("incompleteBuildCardIndex", incompleteBuildCardIndex);
+          if (incompleteBuildCardIndex !== -1) {
+            console.log("updating existing...");
+
+            const platforms = initialPhases[0].platform;
+
+            const phasesSelected = initialPhases.map((phase) => ({
+              id: phase.id,
+              name: phase.name,
+              selected: selectedPhases.includes(parseInt(phase.id)),
+            }));
+
+            console.log("phasesSelected", phasesSelected);
+            userData.buildCards[incompleteBuildCardIndex] = {
+              ...userData.buildCards[incompleteBuildCardIndex],
+              platforms: platforms,
+              speed,
+              phases: phasesSelected,
+              duration: indicativeDurationInWeeks,
+              fixedCost: fixedCost,
+              customizationCost: customizationCost,
+              totalCost: totalCost,
+            };
+
+            // Save the id of the updated build card to local storage
+            localStorage.setItem(
+              "recentBuildCardId",
+              userData.buildCards[incompleteBuildCardIndex].id
+            );
+          }
+
+          updateDoc(userRef, { buildCards: userData.buildCards })
+            .then(() => {
+              console.log("Build card added/updated successfully");
+              router.push(`/delivery`);
+              // .then(() => setLoading(false));
+              dispatch(setProfile(userData));
+            })
+
+            .catch((error) => {
+              setLoading(false);
+              console.error("Error updating document: ", error);
+            });
+        } else {
+          console.error("User document does not exist");
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Error getting document:", error);
+      });
+  };
+
   return (
     <>
       <div className=" grid grid-cols-4  h-[80px]">
@@ -64,7 +184,7 @@ const DeliveryFooter = () => {
           </div>
         </div>
         <div
-          onClick={handleOpenAppNamePopup}
+          onClick={handleUpdateDelivery}
           className="bg-demo col-span-1 flex justify-center py-6 cursor-pointer items-center h-full border border-gray-500"
         >
           <p className=" ">Done</p>

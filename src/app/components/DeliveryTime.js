@@ -3,6 +3,7 @@ import { FaRegCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { calculateFeatureTotals, changeSpeed } from "../store/featureSlice";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { speedOptions } from "@/data";
 
 const DeliveryTime = () => {
   const [isSelected, setIsSelected] = useState(false);

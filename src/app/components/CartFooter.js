@@ -40,22 +40,27 @@ const CartFooter = () => {
       duration: indicativeDurationInWeeks,
       phases: [
         {
+          id: 1,
           name: "Product Roadmap",
           selected: false,
         },
         {
+          id: 2,
           name: "Design",
           selected: true,
         },
         {
+          id: 3,
           name: "Professional Prototype",
           selected: false,
         },
         {
+          id: 4,
           name: "MVP",
           selected: true,
         },
         {
+          id: 5,
           name: "Full Build",
           selected: false,
         },
