@@ -5,7 +5,7 @@ import { calculateFeatureTotals } from "../store/featureSlice";
 
 const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
-  const { allFeatures, selectedPhases, initialPhases } = useSelector(
+  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
   const uniqueFeatures = allFeatures.filter(
@@ -14,7 +14,12 @@ const DeliveryFooter = () => {
   );
 
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(uniqueFeatures, selectedPhases, initialPhases);
+    calculateFeatureTotals(
+      uniqueFeatures,
+      selectedPhases,
+      initialPhases,
+      speed
+    );
 
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
@@ -65,9 +70,9 @@ const DeliveryFooter = () => {
           <p className=" ">Done</p>
         </div>
       </div>
-      {isAppNamePopupOpen && (
+      {/* {isAppNamePopupOpen && (
         <AppName handleCloseAppNamePopup={handleCloseAppNamePopup} />
-      )}
+      )} */}
     </>
   );
 };

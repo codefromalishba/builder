@@ -2856,6 +2856,14 @@ export const initialPhases = [
   },
 ];
 
+export const speedOptions = [
+  { label: "Relaxed", adjustment: -0.025, duration: "4 Weeks" },
+  { label: "Slow", adjustment: -0.015, duration: "3 Weeks" },
+  { label: "Standard", adjustment: 0, duration: "2 Weeks" },
+  { label: "Fast", adjustment: 0.015, duration: "1 Week" },
+  { label: "Speedy", adjustment: 0.025, duration: "0 Weeks" },
+];
+
 export const numOfUsers = [
   { users: "0-500", minPrice: 150, maxPrice: 230 },
   { users: "500-5k", minPrice: 225, maxPrice: 340 },

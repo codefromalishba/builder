@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialPhases } from "@/data";
+import { initialPhases, speedOptions } from "@/data";
 
 const featureSlice = createSlice({
   name: "feature",
@@ -7,9 +7,13 @@ const featureSlice = createSlice({
     selectedFeature: null,
     allFeatures: [],
     selectedPhases: [],
+    speed: 3,
     initialPhases: initialPhases, // NEW
   },
   reducers: {
+    changeSpeed: (state, action) => {
+      state.speed = action.payload;
+    },
     updatePlatforms: (state, action) => {
       state.initialPhases = state.initialPhases.map((phase, index) => ({
         ...phase,
@@ -54,7 +58,8 @@ const featureSlice = createSlice({
 export const calculateFeatureTotals = (
   features,
   selectedPhases = [],
-  initialPhases = []
+  initialPhases = [],
+  speed = 3
 ) => {
   if (!Array.isArray(features)) {
     console.error("Expected features to be an array but got:", features);
@@ -112,17 +117,34 @@ export const calculateFeatureTotals = (
     }
   });
 
-  const totalFixedCost = fixedCost + fixedBonus - fixedPenalty;
-  const totalCustomizationCost =
+  const baseFixedCost = fixedCost + fixedBonus - fixedPenalty;
+  const baseCustomizationCost =
     customizationCost + customizationBonus - customizationPenalty;
 
+  // 🚀 Apply speed adjustment
+
+  const speedIndex = Math.max(0, Math.min(speed - 1, 4)); // Ensure valid index
+  const speedAdjustment = speedOptions[speedIndex].adjustment;
+
+  const speedFixedBonus = baseFixedCost * speedAdjustment;
+  const speedCustomizationBonus = baseCustomizationCost * speedAdjustment;
+
+  const finalFixedCost = baseFixedCost + speedFixedBonus;
+  const finalCustomizationCost =
+    baseCustomizationCost + speedCustomizationBonus;
+
+  // const totalFixedCost = fixedCost + fixedBonus - fixedPenalty;
+  // const totalCustomizationCost =
+  //   customizationCost + customizationBonus - customizationPenalty;
+
   return {
-    fixedCost: totalFixedCost,
-    customizationCost: totalCustomizationCost,
-    totalCost: (totalFixedCost + totalCustomizationCost).toFixed(0),
+    fixedCost: finalFixedCost,
+    customizationCost: finalCustomizationCost,
+    totalCost: (finalFixedCost + finalCustomizationCost).toFixed(0),
     indicativeDurationInWeeks,
     phasesCost:
       fixedBonus + customizationBonus - (fixedPenalty + customizationPenalty),
+    speedAdjustmentCost: speedFixedBonus + speedCustomizationBonus,
   };
 };
 
@@ -132,6 +154,7 @@ export const {
   removeFeature,
   updatePlatforms,
   updateInitialPhases,
+  changeSpeed,
   addPhase,
   setPhases,
   removePhase,

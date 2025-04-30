@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { FaRegCircle } from "react-icons/fa";
-import { useSelector } from "react-redux";
-import { calculateFeatureTotals } from "../store/featureSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { calculateFeatureTotals, changeSpeed } from "../store/featureSlice";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 
 const DeliveryTime = () => {
   const [isSelected, setIsSelected] = useState(false);
-  const [step, setStep] = useState(3); // Default step is "Standard"
-  const { selectedPhases, initialPhases } = useSelector(
+  const dispatch = useDispatch();
+  const { selectedPhases, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
   const [step2, setStep2] = useState(4); // Default step is "50k+"
@@ -33,17 +33,8 @@ const DeliveryTime = () => {
     return Math.round(price + price * adj).toString(); // returns a string like "123"
   };
 
-  // console.log("Total Cost:", totalCost);
-
-  const speedOptions = [
-    { label: "Relaxed", adjustment: -0.025, duration: "4 Weeks" },
-    { label: "Slow", adjustment: -0.015, duration: "3 Weeks" },
-    { label: "Standard", adjustment: 0, duration: "2 Weeks" },
-    { label: "Fast", adjustment: 0.015, duration: "1 Week" },
-    { label: "Speedy", adjustment: 0.025, duration: "0 Weeks" },
-  ];
   const handleChange = (event) => {
-    setStep(Number(event.target.value));
+    dispatch(changeSpeed(Number(event.target.value)));
   };
 
   const userRanges = [
@@ -70,7 +61,7 @@ const DeliveryTime = () => {
                     <p
                       key={index}
                       className={`text-xs mt-4 ${
-                        step === index + 1
+                        speed === index + 1
                           ? "text-demo font-semibold"
                           : "text-black"
                       }`}
@@ -86,7 +77,7 @@ const DeliveryTime = () => {
                     min="1"
                     max="5"
                     step="1"
-                    value={step}
+                    value={speed}
                     onChange={handleChange}
                     className="slider w-full outline-none border-none rounded-md cursor-pointer bg-gray-300 relative"
                   />
@@ -97,7 +88,7 @@ const DeliveryTime = () => {
                     <div
                       key={index}
                       className={`text-xs mt-4 text-center ${
-                        step === index + 1
+                        speed === index + 1
                           ? "text-demo font-semibold"
                           : "text-black"
                       }`}
