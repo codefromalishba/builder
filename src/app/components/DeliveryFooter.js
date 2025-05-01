@@ -58,8 +58,6 @@ const DeliveryFooter = () => {
 
             const platforms = initialPhases[0].platform;
 
-            // console.log("platforms", platforms);
-            // console.log("initialPhases", initialPhases);
 
             const phasesSelected = initialPhases.map((phase) => ({
               id: phase.id,
