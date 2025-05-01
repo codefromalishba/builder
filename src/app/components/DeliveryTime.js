@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { speedOptions } from "@/data";
+import { speedOptions, userRanges } from "@/data";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
 import { changeSpeed } from "../store/featureSlice";
 
@@ -38,13 +38,6 @@ const DeliveryTime = () => {
   const handleChange = (event) => {
     dispatch(changeSpeed(Number(event.target.value)));
   };
-
-  const userRanges = [
-    { label: "0-500", value: "0-500" },
-    { label: "500-5k", value: "500-5k" },
-    { label: "5k-50k", value: "5k-50k" },
-    { label: "50k+", value: "50k+" },
-  ];
 
   const handleChange2 = (event) => {
     setStep2(Number(event.target.value));
@@ -105,10 +98,11 @@ const DeliveryTime = () => {
             <div className="w-1/4 ">
               <div className="bg-gray-300 w-48 p-2 rounded">
                 <div className="flex flex-col p-3 justify-center items-center">
-                  <p className="text-xs font-semibold">Standard</p>
+                  <p className="text-xs font-semibold">
+                    {speedOptions[speed - 1]?.label}
+                  </p>
                   <p className="text-xs text-center pt-1">
-                    The perfect middle ground for anyone with a modest budget
-                    and medium-term deadlines
+                    {speedOptions[speed - 1]?.description}
                   </p>
                 </div>
               </div>
@@ -202,6 +196,25 @@ const DeliveryTime = () => {
           </div>
         </div>
         <div className="mt-4">
+          <p className="text-black text-2xl">
+            {step2 !== userRanges.length ? (
+              <span className="font-bold">
+                ${userRanges[step2 - 1].minPrice} - $
+                {userRanges[step2 - 1].maxPrice}
+              </span>
+            ) : (
+              <span className="font-bold">
+                ${userRanges[step2 - 1].maxPrice.toLocaleString()} + *
+              </span>
+            )}{" "}
+            /month
+          </p>
+          <p className="text-xs text-gray-600 pt-5 font-thin">
+            *This is an estimated price for cloud hosting and will vary
+            according to usage.
+          </p>
+        </div>
+        {/* <div className="mt-4">
           <p className=" text-2xl">
             <span className="font-bold"> $1,000 + * </span> /month
           </p>
@@ -209,7 +222,7 @@ const DeliveryTime = () => {
             *This is an estimated price for cloud hosting and will vary
             according to usage.
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

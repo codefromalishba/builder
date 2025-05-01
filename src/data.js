@@ -2857,11 +2857,36 @@ export const initialPhases = [
 ];
 
 export const speedOptions = [
-  { label: "Relaxed", adjustment: -0.025, duration: "4 Weeks" },
-  { label: "Slow", adjustment: -0.015, duration: "3 Weeks" },
-  { label: "Standard", adjustment: 0, duration: "2 Weeks" },
-  { label: "Fast", adjustment: 0.015, duration: "1 Week" },
-  { label: "Speedy", adjustment: 0.025, duration: "0 Weeks" },
+  {
+    label: "Relaxed",
+    adjustment: -0.025,
+    duration: "4 Weeks",
+    description: `Our most budget-friendly option for those who aren't in a hurry`,
+  },
+  {
+    label: "Slow",
+    adjustment: -0.015,
+    duration: "3 Weeks",
+    description: `For those with a fixed long-term plan who want to keep costs down`,
+  },
+  {
+    label: "Standard",
+    adjustment: 0,
+    duration: "2 Weeks",
+    description: `The perfect middle ground for anyone with a modest budget and medium-term deadlines`,
+  },
+  {
+    label: "Fast",
+    adjustment: 0.015,
+    duration: "1 Week",
+    description: `We put your app build on turbo charge for a few extra bucks`,
+  },
+  {
+    label: "Speedy",
+    adjustment: 0.025,
+    duration: "0 Weeks",
+    description: `We build your app at the speed of light for a premium price`,
+  },
 ];
 
 export const numOfUsers = [
@@ -2869,4 +2894,11 @@ export const numOfUsers = [
   { users: "500-5k", minPrice: 225, maxPrice: 340 },
   { users: "5k-50k", minPrice: 490, maxPrice: 735 },
   { users: "50k+", maxPrice: 1000 },
+];
+
+export const userRanges = [
+  { label: "0-500", value: "0-500", minPrice: 150, maxPrice: 230 },
+  { label: "500-5k", value: "500-5k", minPrice: 225, maxPrice: 340 },
+  { label: "5k-50k", value: "5k-50k", minPrice: 490, maxPrice: 735 },
+  { label: "50k+", value: "50k+", maxPrice: 1000 },
 ];
