@@ -49,7 +49,6 @@ const CartFooter = () => {
       selected: false,
     },
   ];
-
   const addIncompleteBuildCard = () => {
     setLoading(true);
     const userRef = doc(db, "users", user.uid);

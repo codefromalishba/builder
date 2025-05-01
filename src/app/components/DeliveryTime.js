@@ -5,13 +5,15 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { speedOptions, userRanges } from "@/data";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
 import { changeSpeed } from "../store/featureSlice";
+import moment from "moment";
 
 const DeliveryTime = () => {
   const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
-  const { selectedPhases, initialPhases, speed } = useSelector(
+  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
+  const { indicativeDurationInWeeks } = calculateFeatureTotals(allFeatures);
   const [step2, setStep2] = useState(4); // Default step is "50k+"
   const features = useSelector((state) => state.feature.allFeatures);
   const { totalCost } = calculateFeatureTotals(
@@ -19,6 +21,8 @@ const DeliveryTime = () => {
     selectedPhases,
     initialPhases
   );
+  const today = moment();
+  const deliveryDate = today.clone().add(indicativeDurationInWeeks, "weeks");
 
   const getAdjustedPrice = (basePrice, adjustment) => {
     const price = Number(basePrice);
@@ -108,7 +112,23 @@ const DeliveryTime = () => {
               </div>
             </div>
           </div>
-          <div className="py-5 flex ">
+          <div className="flex py-5">
+            <div className="bg-white p-5 rounded-md">
+              <p className="text-black font-bold">
+                If you kick-off on{" "}
+                <span className="font-bold text-demo">
+                  {today.format("DD-MMM-YYYY")}
+                </span>
+              </p>
+              <p className="text-gray-400 text-sm pt-2">
+                Estimated Final delivery:{" "}
+                <span className="font-bold text-black">
+                  {deliveryDate.format("DD-MMM-YYYY")}
+                </span>
+              </p>
+            </div>
+          </div>
+          {/* <div className="py-5 flex ">
             <div className="bg-white p-5 rounded-md">
               <p className="font-bold">
                 If you kick-off on
@@ -119,7 +139,7 @@ const DeliveryTime = () => {
                 <span className="font-bold text-black"> 10-Nov-2024</span>
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="col-span-1 m-10 flex-col border-[1px] border-gray-300 rounded-md p-5">

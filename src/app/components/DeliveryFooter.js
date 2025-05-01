@@ -128,6 +128,7 @@ const DeliveryFooter = () => {
           <div>
             <p className="text-2xl text-[#A6A6A6] ">=</p>
           </div>
+
           <div className="flex flex-col gap-2 px-2 justify-start ">
             <p className="text-xs">Total Cost</p>
             <p className="font-extrabold text-xl">{totalCost} $</p>
