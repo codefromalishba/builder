@@ -9,6 +9,7 @@ import { initialPhases } from "@/data";
 
 const DeliveryFooter = () => {
   const user = useSelector((state) => state.profile);
+  const [name, setName] = useState("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
@@ -64,10 +65,9 @@ const DeliveryFooter = () => {
               selected: selectedPhases.includes(String(phase.id)),
             }));
 
-            console.log("speed", speed);
-
             userData.buildCards[incompleteBuildCardIndex] = {
               ...userData.buildCards[incompleteBuildCardIndex],
+              name,
               platforms: platforms,
               speed,
               phases: phasesSelected,
@@ -138,16 +138,19 @@ const DeliveryFooter = () => {
           </div>
         </div>
         <div
-          onClick={handleUpdateDelivery}
+          onClick={handleOpenAppNamePopup}
           className="bg-demo col-span-1 flex justify-center py-6 cursor-pointer items-center h-full border border-gray-500"
         >
-          <div onClick={handleOpenAppNamePopup}>
-            <p className=" ">Done</p>
-          </div>
+          <p>Done</p>
         </div>
       </div>
       {isAppNamePopupOpen && (
-        <AppName handleCloseAppNamePopup={handleCloseAppNamePopup} />
+        <AppName
+          name={name}
+          setName={setName}
+          handleCloseAppNamePopup={handleCloseAppNamePopup}
+          handleUpdateDelivery={handleUpdateDelivery}
+        />
       )}
     </>
   );

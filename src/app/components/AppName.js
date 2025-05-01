@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 
-const AppName = ({ handleCloseAppNamePopup }) => {
-  const [name, setName] = useState("");
-
+const AppName = ({
+  name,
+  setName,
+  handleCloseAppNamePopup,
+  handleUpdateDelivery,
+}) => {
   const handleInputChange = (e) => {
     setName(e.target.value);
   };
@@ -30,13 +33,17 @@ const AppName = ({ handleCloseAppNamePopup }) => {
           <div className="grid grid-cols-2 gap-x-6 w-full">
             <button
               onClick={handleCloseAppNamePopup}
-              className="cursor-pointer w-full items-center h-10 py-1 bg-gray-400 rounded-md"
+              className="cursor-pointer w-full items-center h-10 py-1 border-slate-300 border rounded-md"
             >
-              <p className="text-white text-sm">CLOSE</p>
+              <p className="text-sm">CLOSE</p>
             </button>
             <button
-              onClick={handleCloseAppNamePopup}
-              className="cursor-pointer w-full items-center h-10 py-1 bg-gray-400 rounded-md"
+              onClick={handleUpdateDelivery}
+              className={`w-full items-center h-10 py-1 rounded-md ${
+                name.trim() === ""
+                  ? "opacity-50 cursor-not-allowed bg-gray-400"
+                  : "cursor-pointer bg-demo"
+              }`}
               disabled={name.trim() === ""}
             >
               <p className="text-white text-sm">SAVE</p>
