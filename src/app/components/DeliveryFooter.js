@@ -27,12 +27,12 @@ const DeliveryFooter = () => {
 
   const handleOpenAppNamePopup = () => {
     setIsAppNamePopupOpen(true);
-    document.body.classNameList.add("overflow-hidden"); // Prevent scrolling
+    document.body.classList.add("overflow-hidden"); // Prevent scrolling
   };
 
   const handleCloseAppNamePopup = () => {
     setIsAppNamePopupOpen(false);
-    document.body.classNameList.remove("overflow-hidden"); // Re-enable scrolling
+    document.body.classList.remove("overflow-hidden"); // typo fixed
   };
 
   const handleUpdateDelivery = () => {
@@ -141,12 +141,14 @@ const DeliveryFooter = () => {
           onClick={handleUpdateDelivery}
           className="bg-demo col-span-1 flex justify-center py-6 cursor-pointer items-center h-full border border-gray-500"
         >
-          <p className=" ">Done</p>
+          <div onClick={handleOpenAppNamePopup}>
+            <p className=" ">Done</p>
+          </div>
         </div>
       </div>
-      {/* {isAppNamePopupOpen && (
+      {isAppNamePopupOpen && (
         <AppName handleCloseAppNamePopup={handleCloseAppNamePopup} />
-      )} */}
+      )}
     </>
   );
 };

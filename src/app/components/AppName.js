@@ -29,7 +29,7 @@ const AppName = ({ handleCloseAppNamePopup }) => {
           />
           <button
             onClick={handleCloseAppNamePopup}
-            className="flex justify-center items-center h-10 px-2 py-1 bg-gray-400 w-full rounded-md"
+            className="flex justify-center cursor-pointer items-center h-10 px-2 py-1 bg-gray-400 w-full rounded-md"
             disabled={name.trim() === ""}
           >
             <p className="text-white text-sm">SAVE</p>
