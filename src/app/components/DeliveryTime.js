@@ -128,18 +128,6 @@ const DeliveryTime = () => {
               </p>
             </div>
           </div>
-          {/* <div className="py-5 flex ">
-            <div className="bg-white p-5 rounded-md">
-              <p className="font-bold">
-                If you kick-off on
-                <span className="text-demo"> 29-Sep-2024</span>
-              </p>
-              <p className="pt-2 text-sm text-gray-400">
-                Estimated Final delivery:
-                <span className="font-bold text-black"> 10-Nov-2024</span>
-              </p>
-            </div>
-          </div> */}
         </div>
       </div>
       <div className="col-span-1 m-10 flex-col border-[1px] border-gray-300 rounded-md p-5">
