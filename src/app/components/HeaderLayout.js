@@ -14,6 +14,7 @@ import { auth } from "../firebase";
 import { setProfile } from "../store/profileSlice";
 import {
   addFeature,
+  changeSpeed,
   setPhases,
   setSelectedFeature,
   updatePlatforms,
@@ -67,6 +68,8 @@ const HeaderLayout = ({ children, lang }) => {
                 }
               } else {
                 console.log("incomplete build card found", incompleteItem);
+
+                dispatch(changeSpeed(incompleteItem?.speed));
 
                 const defaultPhases = incompleteItem?.phases
                   ?.filter((item) => item.selected)

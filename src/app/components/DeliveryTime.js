@@ -13,6 +13,7 @@ const DeliveryTime = () => {
   const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
+  console.log("speed", speed);
   const { indicativeDurationInWeeks } = calculateFeatureTotals(allFeatures);
   const [step2, setStep2] = useState(4); // Default step is "50k+"
   const features = useSelector((state) => state.feature.allFeatures);
