@@ -27,13 +27,21 @@ const AppName = ({ handleCloseAppNamePopup }) => {
             placeholder="eg.Booking.com"
             onChange={handleInputChange}
           />
-          <button
-            onClick={handleCloseAppNamePopup}
-            className="flex justify-center cursor-pointer items-center h-10 px-2 py-1 bg-gray-400 w-full rounded-md"
-            disabled={name.trim() === ""}
-          >
-            <p className="text-white text-sm">SAVE</p>
-          </button>
+          <div className="grid grid-cols-2 gap-x-6 w-full">
+            <button
+              onClick={handleCloseAppNamePopup}
+              className="cursor-pointer w-full items-center h-10 py-1 bg-gray-400 rounded-md"
+            >
+              <p className="text-white text-sm">CLOSE</p>
+            </button>
+            <button
+              onClick={handleCloseAppNamePopup}
+              className="cursor-pointer w-full items-center h-10 py-1 bg-gray-400 rounded-md"
+              disabled={name.trim() === ""}
+            >
+              <p className="text-white text-sm">SAVE</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
