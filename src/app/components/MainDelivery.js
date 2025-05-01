@@ -22,7 +22,6 @@ const MainDelivery = () => {
 
   const handlePlatformClick = (platform) => {
     setSelectedPlatforms((prevSelected) => {
-      console.log("prevSelected", prevSelected);
       const updated = prevSelected.includes(platform)
         ? prevSelected.length > 1
           ? prevSelected.filter((p) => p !== platform)

@@ -5,7 +5,6 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { setProfile } from "../store/profileSlice";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
-import { initialPhases } from "@/data";
 
 const DeliveryFooter = () => {
   const user = useSelector((state) => state.profile);
@@ -15,7 +14,7 @@ const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
   const dispatch = useDispatch();
   const db = getFirestore();
-  const { allFeatures, selectedPhases, speed } = useSelector(
+  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
 
@@ -59,6 +58,9 @@ const DeliveryFooter = () => {
 
             const platforms = initialPhases[0].platform;
 
+            // console.log("platforms", platforms);
+            // console.log("initialPhases", initialPhases);
+
             const phasesSelected = initialPhases.map((phase) => ({
               id: phase.id,
               name: phase.name,
@@ -87,17 +89,19 @@ const DeliveryFooter = () => {
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
               console.log("Build card added/updated successfully");
+              handleCloseAppNamePopup();
               router.push(`/delivery`);
-              // .then(() => setLoading(false));
               dispatch(setProfile(userData));
             })
 
             .catch((error) => {
               setLoading(false);
               console.error("Error updating document: ", error);
+              handleCloseAppNamePopup();
             });
         } else {
           console.error("User document does not exist");
+          handleCloseAppNamePopup();
           setLoading(false);
         }
       })

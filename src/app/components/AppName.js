@@ -10,6 +10,7 @@ const AppName = ({
   const handleInputChange = (e) => {
     setName(e.target.value);
   };
+
   return (
     <div className="fixed inset-0 w-full h-full z-40 bg-black bg-opacity-60 flex justify-center items-center">
       <div className=" w-96 h-auto z-50 bg-white rounded-lg shadow-lg">

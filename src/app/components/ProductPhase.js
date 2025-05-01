@@ -32,9 +32,14 @@ const ProductPhase = ({ isOn }) => {
         const phaseIdStr = String(phase.id);
         initialState[phaseIdStr] = selectedPhases?.includes(phaseIdStr);
       });
-      setExpandedCards(initialState);
+
+      setExpandedCards((prev) => {
+        // Only update if different
+        const isSame = JSON.stringify(prev) === JSON.stringify(initialState);
+        return isSame ? prev : initialState;
+      });
     }
-  }, [initialPhases]);
+  }, [initialPhases, selectedPhases]);
 
   // Handle toggling of phase selection
   const toggleCard = (id) => {
