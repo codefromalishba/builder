@@ -3,6 +3,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaRegBookmark } from "react-icons/fa6";
 import { LuPencil } from "react-icons/lu";
 import { useSelector } from "react-redux";
+import { TfiAndroid } from "react-icons/tfi";
+import { FaApple } from "react-icons/fa";
+import { MdWeb } from "react-icons/md";
+import { IoDesktop } from "react-icons/io5";
 
 const SummaryMain = () => {
   const profile = useSelector((state) => state.profile);
@@ -20,6 +24,7 @@ const SummaryMain = () => {
   const detailsRef = useRef(null);
 
   const [showFeatures, setShowFeatures] = useState(false);
+  const [showPhases, setShowPhases] = useState(false);
 
   // Hardcoded features
   const features = [
@@ -27,6 +32,34 @@ const SummaryMain = () => {
     { name: "User Dashboard" },
     { name: "Notifications" },
     { name: "Analytics" },
+  ];
+
+  const hardcodedPhases = [
+    {
+      name: "Product Roadmap",
+      selected: true,
+      platforms: ["android", "ios"],
+    },
+    {
+      name: "Design",
+      selected: true,
+      platforms: ["android", "ios"],
+    },
+    {
+      name: "Professional Prototype",
+      selected: true,
+      platforms: ["android", "ios"],
+    },
+    {
+      name: "MVP",
+      selected: true,
+      platforms: ["android", "ios"],
+    },
+    {
+      name: "Full Build",
+      selected: true,
+      platforms: ["android", "ios"],
+    },
   ];
   useEffect(() => {
     if (enterName) inputRef?.current?.focus();
@@ -51,7 +84,7 @@ const SummaryMain = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-4.5rem)]">
+    <div className="flex-1 overflow-y-auto mt-[72px] mb-[80px]">
       <div className="grid grid-cols-3">
         <div className="col-span-2">
           <div className="py-5 px-10 flex flex-col">
@@ -65,11 +98,14 @@ const SummaryMain = () => {
               <div className="w-1/4">
                 <div
                   className="cursor-pointer"
-                  onClick={() => setShowFeatures(false)}
+                  onClick={() => {
+                    setShowFeatures(false);
+                    setShowPhases(false);
+                  }}
                 >
                   <p
                     className={`rounded-md p-2 my-2 ${
-                      !showFeatures
+                      !showFeatures && !showPhases
                         ? "bg-demo text-white"
                         : "bg-white text-black"
                     }`}
@@ -80,7 +116,10 @@ const SummaryMain = () => {
 
                 <div
                   className="cursor-pointer"
-                  onClick={() => setShowFeatures(true)}
+                  onClick={() => {
+                    setShowFeatures(true);
+                    setShowPhases(false);
+                  }}
                 >
                   <p
                     className={`rounded-md p-2 my-2 ${
@@ -92,16 +131,27 @@ const SummaryMain = () => {
                     Features (4)
                   </p>
                 </div>
-                {/* <div className="cursor-pointer">
-                  <p className="rounded-md p-2 my-2">Features (4)</p>
-                </div> */}
-                <div className="cursor-pointer">
-                  <p className="rounded-md p-2 my-2">Phases (5)</p>
+
+                <div
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setShowPhases(true);
+                    setShowFeatures(false);
+                  }}
+                >
+                  <p
+                    className={`rounded-md p-2 my-2 ${
+                      showPhases ? "bg-demo text-white" : "bg-white text-black"
+                    }`}
+                  >
+                    Phases (5)
+                  </p>
                 </div>
               </div>
 
               <div className="w-3/4">
-                {!showFeatures ? (
+                {/* Show Name and Details only if not showing features or phases */}
+                {!showFeatures && !showPhases && (
                   <div className="py-2">
                     <p className="text-demo font-semibold pb-5">
                       Launch Swift basic details
@@ -185,7 +235,10 @@ const SummaryMain = () => {
                       </div>
                     </div>
                   </div>
-                ) : (
+                )}
+
+                {/* Show Features Section */}
+                {showFeatures && (
                   <div className="py-2">
                     <p className="text-secondary pb-5 font-semibold">
                       Selected Features
@@ -202,91 +255,73 @@ const SummaryMain = () => {
                     </ol>
                   </div>
                 )}
-              </div>
 
-              {/* <div className="w-3/4">
-                <div className="py-2">
-                  <p className="text-demo font-semibold pb-5">
-                    Launch Swift basic details
-                  </p>
-
-                  <div className="flex gap-5">
-                    <div className="text-black text-xl">
-                      <FaRegBookmark />
-                    </div>
-
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-2">
-                        <p className="text-black text-sm font-thin">Name</p>
-                        {!enterName && (
-                          <LuPencil
-                            onClick={() => setEnterName(true)}
-                            className="text-secondary cursor-pointer text-sm"
-                          />
-                        )}
-                      </div>
-
-                      {enterName ? (
-                        <div className="my-1 gap-2 flex items-center">
-                          <input
-                            ref={inputRef}
-                            className="p-2 border border-gray-300 rounded-md text-black font-medium outline-none"
-                            type="text"
-                            value={buildCardName}
-                            onChange={(e) => setBuildCardName(e.target.value)}
-                          />
-                          <button
-                            onClick={() => setEnterName(false)}
-                            className="bg-secondary p-2 text-white rounded-md text-sm"
+                {/* Show Phases Section */}
+                {showPhases && (
+                  <div className="py-2">
+                    <p className="text-secondary pb-5 font-semibold">
+                      Selected Phases
+                    </p>
+                    <div className="grid grid-cols-2 gap-5">
+                      {hardcodedPhases
+                        .filter((item) => item.selected)
+                        .map((item, index) => (
+                          <div
+                            className="border border-gray-300 rounded-md"
+                            key={index}
                           >
-                            Save
-                          </button>
-                        </div>
-                      ) : (
-                        <p className="text-black py-2 font-bold">
-                          {buildCardName || "Enter a name"}
-                        </p>
-                      )}
-
-                      <div className="flex items-center gap-2">
-                        <p className="text-black text-sm font-thin">Details</p>
-                        {!enterDetails && (
-                          <LuPencil
-                            onClick={() => setEnterDetails(true)}
-                            className="text-secondary cursor-pointer text-sm"
-                          />
-                        )}
-                      </div>
-
-                      {enterDetails ? (
-                        <div className="my-1 gap-2 flex flex-col items-start">
-                          <textarea
-                            ref={detailsRef}
-                            rows={4}
-                            cols={30}
-                            placeholder="Enter Launch Swift Description"
-                            className="p-2 border border-gray-300 rounded-md text-black font-medium outline-none"
-                            value={buildCardDetails}
-                            onChange={(e) =>
-                              setBuildCardDetails(e.target.value)
-                            }
-                          />
-                          <button
-                            onClick={() => setEnterDetails(false)}
-                            className="bg-secondary py-2 px-3 text-white rounded-md text-sm"
-                          >
-                            Save
-                          </button>
-                        </div>
-                      ) : (
-                        <p className="text-black py-2 text-sm">
-                          {buildCardDetails || "Click to enter details"}
-                        </p>
-                      )}
+                            <div className="rounded-md rounded-b-none p-5 bg-slate-200">
+                              <div className="flex p-5 gap-1 py-1">
+                                <p className="text-black font-bold text-sm">
+                                  {item.name}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex p-5 justify-between pt-5">
+                              <p className="text-black text-xs font-bold">
+                                Platform
+                              </p>
+                            </div>
+                            <div className="flex px-5 justify-start py-4 gap-4">
+                              {item.platforms.includes("android") && (
+                                <div className="flex flex-col items-center">
+                                  <TfiAndroid className="text-2xl text-black" />
+                                  <p className="text-gray-400 pt-2 text-xs">
+                                    Android
+                                  </p>
+                                </div>
+                              )}
+                              {item.platforms.includes("ios") && (
+                                <div className="flex flex-col items-center">
+                                  <FaApple className="text-2xl text-black" />
+                                  <p className="text-gray-400 pt-2 text-xs">
+                                    iOS
+                                  </p>
+                                </div>
+                              )}
+                              {item.platforms.includes("web") && (
+                                <div className="flex flex-col items-center">
+                                  <MdWeb className="text-2xl text-black" />
+                                  <p className="text-gray-400 pt-2 text-xs">
+                                    Web
+                                  </p>
+                                </div>
+                              )}
+                              {item.platforms.includes("desktop") && (
+                                <div className="flex flex-col items-center">
+                                  <IoDesktop className="text-2xl text-black" />
+                                  <p className="text-gray-400 pt-2 text-xs">
+                                    Desktop
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        ))}
                     </div>
                   </div>
-                </div>
-              </div> */}
+                )}
+              </div>
             </div>
           </div>
         </div>
