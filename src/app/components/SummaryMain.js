@@ -14,11 +14,22 @@ import { IoClose } from "react-icons/io5";
 
 const SummaryMain = () => {
   const profile = useSelector((state) => state.profile);
-  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
+
+  const { recentBuildCard, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
+  const selectedPhases =
+    recentBuildCard?.phases?.filter((item) => item.selected) || [];
+  const { allFeatures } = useSelector((state) => state.feature);
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
+    calculateFeatureTotals(
+      allFeatures,
+      recentBuildCard,
+      selectedPhases,
+      initialPhases,
+      speed
+    );
+
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;
@@ -31,50 +42,16 @@ const SummaryMain = () => {
   const [enterName, setEnterName] = useState(false);
   const [enterDetails, setEnterDetails] = useState(false);
 
-  const [buildCardName, setBuildCardName] = useState("");
-  const [buildCardDetails, setBuildCardDetails] = useState("");
+  const [buildCardName, setBuildCardName] = useState(recentBuildCard.name);
+  const [buildCardDetails, setBuildCardDetails] = useState(
+    recentBuildCard.details
+  );
 
   const inputRef = useRef(null);
   const detailsRef = useRef(null);
 
   const [showFeatures, setShowFeatures] = useState(false);
   const [showPhases, setShowPhases] = useState(false);
-
-  // Hardcoded features
-  const features = [
-    { name: "Login/Signup" },
-    { name: "User Dashboard" },
-    { name: "Notifications" },
-    { name: "Analytics" },
-  ];
-
-  const hardcodedPhases = [
-    {
-      name: "Product Roadmap",
-      selected: true,
-      platforms: ["android", "ios"],
-    },
-    {
-      name: "Design",
-      selected: true,
-      platforms: ["android", "ios"],
-    },
-    {
-      name: "Professional Prototype",
-      selected: true,
-      platforms: ["android", "ios"],
-    },
-    {
-      name: "MVP",
-      selected: true,
-      platforms: ["android", "ios"],
-    },
-    {
-      name: "Full Build",
-      selected: true,
-      platforms: ["android", "ios"],
-    },
-  ];
   useEffect(() => {
     if (enterName) inputRef?.current?.focus();
   }, [enterName]);
@@ -130,6 +107,10 @@ const SummaryMain = () => {
     setIsPromoVisible(false);
   };
 
+  const inputDate = new Date(recentBuildCard?.updatedAt);
+  const options = { day: "2-digit", month: "short", year: "numeric" };
+  const formattedDate = inputDate.toLocaleDateString("en-US", options);
+
   return (
     <div className="flex-1 overflow-y-auto mt-[72px] mb-[80px]">
       <div className="grid grid-cols-3">
@@ -138,7 +119,9 @@ const SummaryMain = () => {
             <p className="font-medium">Hi, {profile?.email}</p>
             <div className="flex justify-between items-center py-2">
               <p className="font-semibold">Here is your Launch Swift</p>
-              <p className="text-gray-900 text-sm">Last edited: Oct 01, 2024</p>
+              <p className="text-gray-900 text-sm">
+                Last edited: {formattedDate}
+              </p>
             </div>
 
             <div className="flex gap-10 py-5">
@@ -175,7 +158,7 @@ const SummaryMain = () => {
                         : "bg-white text-black"
                     }`}
                   >
-                    Features (4)
+                    Features ({allFeatures?.length || 0})
                   </p>
                 </div>
 
@@ -191,7 +174,7 @@ const SummaryMain = () => {
                       showPhases ? "bg-demo text-white" : "bg-white text-black"
                     }`}
                   >
-                    Phases (5)
+                    Phases ({selectedPhases?.length || 0})
                   </p>
                 </div>
               </div>
@@ -211,7 +194,9 @@ const SummaryMain = () => {
 
                       <div className="flex flex-col">
                         <div className="flex items-center gap-2">
-                          <p className="text-black text-sm font-thin">Name</p>
+                          <p className="text-black text-sm font-semibold">
+                            Name
+                          </p>
                           {!enterName && (
                             <LuPencil
                               onClick={() => setEnterName(true)}
@@ -243,7 +228,7 @@ const SummaryMain = () => {
                         )}
 
                         <div className="flex items-center gap-2">
-                          <p className="text-black text-sm font-thin">
+                          <p className="text-black text-sm font-semibold">
                             Details
                           </p>
                           {!enterDetails && (
@@ -291,12 +276,12 @@ const SummaryMain = () => {
                       Selected Features
                     </p>
                     <ol className="grid grid-cols-2 gap-2">
-                      {features.map((item, index) => (
+                      {allFeatures.map((item, index) => (
                         <li
                           key={index}
                           className="text-black text-sm font-medium py-1"
                         >
-                          {item.name}
+                          {item.name || "Unnamed Feature"}
                         </li>
                       ))}
                     </ol>
@@ -310,61 +295,63 @@ const SummaryMain = () => {
                       Selected Phases
                     </p>
                     <div className="grid grid-cols-2 gap-5">
-                      {hardcodedPhases
-                        .filter((item) => item.selected)
-                        .map((item, index) => (
-                          <div
-                            className="border border-gray-300 rounded-md"
-                            key={index}
-                          >
-                            <div className="rounded-md rounded-b-none p-5 bg-slate-200">
-                              <div className="flex p-5 gap-1 py-1">
-                                <p className="text-black font-bold text-sm">
-                                  {item.name}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex p-5 justify-between pt-5">
-                              <p className="text-black text-xs font-bold">
-                                Platform
+                      {selectedPhases.map((item, index) => (
+                        <div
+                          className="border border-gray-300 rounded-md"
+                          key={index}
+                        >
+                          <div className="rounded-md rounded-b-none p-5 bg-slate-200">
+                            <div className="flex p-5 gap-1 py-1">
+                              <p className="text-black font-bold text-sm">
+                                {item.name}
                               </p>
                             </div>
-                            <div className="flex px-5 justify-start py-4 gap-4">
-                              {item.platforms.includes("android") && (
-                                <div className="flex flex-col items-center">
-                                  <TfiAndroid className="text-2xl text-black" />
-                                  <p className="text-gray-400 pt-2 text-xs">
-                                    Android
-                                  </p>
-                                </div>
-                              )}
-                              {item.platforms.includes("ios") && (
-                                <div className="flex flex-col items-center">
-                                  <FaApple className="text-2xl text-black" />
-                                  <p className="text-gray-400 pt-2 text-xs">
-                                    iOS
-                                  </p>
-                                </div>
-                              )}
-                              {item.platforms.includes("web") && (
-                                <div className="flex flex-col items-center">
-                                  <MdWeb className="text-2xl text-black" />
-                                  <p className="text-gray-400 pt-2 text-xs">
-                                    Web
-                                  </p>
-                                </div>
-                              )}
-                              {item.platforms.includes("desktop") && (
-                                <div className="flex flex-col items-center">
-                                  <IoDesktop className="text-2xl text-black" />
-                                  <p className="text-gray-400 pt-2 text-xs">
-                                    Desktop
-                                  </p>
-                                </div>
-                              )}
-                            </div>
                           </div>
-                        ))}
+                          <div className="flex p-5 justify-between pt-5">
+                            <p className="text-black text-xs font-bold">
+                              Platform
+                            </p>
+                          </div>
+                          <div className="flex px-5 justify-start py-4 gap-4">
+                            {recentBuildCard?.platforms?.includes(
+                              "android"
+                            ) && (
+                              <div className="flex flex-col items-center">
+                                <TfiAndroid className="text-2xl text-black" />
+                                <p className="text-gray-400 pt-2 text-xs">
+                                  Android
+                                </p>
+                              </div>
+                            )}
+                            {recentBuildCard?.platforms?.includes("ios") && (
+                              <div className="flex flex-col items-center">
+                                <FaApple className="text-2xl text-black" />
+                                <p className="text-gray-400 pt-2 text-xs">
+                                  iOS
+                                </p>
+                              </div>
+                            )}
+                            {recentBuildCard?.platforms?.includes("web") && (
+                              <div className="flex flex-col items-center">
+                                <MdWeb className="text-2xl text-black" />
+                                <p className="text-gray-400 pt-2 text-xs">
+                                  Web
+                                </p>
+                              </div>
+                            )}
+                            {recentBuildCard?.platforms?.includes(
+                              "desktop"
+                            ) && (
+                              <div className="flex flex-col items-center">
+                                <IoDesktop className="text-2xl text-black" />
+                                <p className="text-gray-400 pt-2 text-xs">
+                                  Desktop
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}

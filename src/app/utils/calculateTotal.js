@@ -37,14 +37,16 @@ export const calculateFeatureTotals = (
   let fixedBonus = 0;
   let customizationBonus = 0;
 
-  selectedPhases?.forEach((id) => {
-    const phase = initialPhases?.find((p) => String(p.id) === id);
-    if (phase && bonusModifiers[phase.name]) {
-      const modifier = bonusModifiers[phase.name];
-      fixedBonus += fixedCost * modifier;
-      customizationBonus += customizationCost * modifier;
-    }
-  });
+  if (Array.isArray(selectedPhases)) {
+    selectedPhases.forEach((id) => {
+      const phase = initialPhases?.find((p) => String(p.id) === id);
+      if (phase && bonusModifiers[phase.name]) {
+        const modifier = bonusModifiers[phase.name];
+        fixedBonus += fixedCost * modifier;
+        customizationBonus += customizationCost * modifier;
+      }
+    });
+  }
 
   const penaltyModifiers = {
     Design: 0.08,
@@ -56,9 +58,11 @@ export const calculateFeatureTotals = (
 
   Object.entries(penaltyModifiers).forEach(([phaseName, penalty]) => {
     const isSelected = initialPhases?.some((phase) => {
-      const result =
-        phase.name === phaseName && selectedPhases.includes(String(phase.id));
-      return result;
+      return (
+        phase.name === phaseName &&
+        Array.isArray(selectedPhases) &&
+        selectedPhases.includes(String(phase.id))
+      );
     });
 
     if (!isSelected) {
@@ -71,8 +75,8 @@ export const calculateFeatureTotals = (
   const baseCustomizationCost =
     customizationCost + customizationBonus - customizationPenalty;
 
-  const speedIndex = Math.max(0, Math.min(speed - 1, 4)); // Ensure valid index
-  const speedAdjustment = speedOptions[speedIndex].adjustment;
+  const speedIndex = Math.max(0, Math.min(speed - 1, speedOptions.length - 1));
+  const speedAdjustment = speedOptions[speedIndex]?.adjustment || 0;
 
   const speedFixedBonus = baseFixedCost * speedAdjustment;
   const speedCustomizationBonus = baseCustomizationCost * speedAdjustment;

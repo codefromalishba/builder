@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const AppName = ({
   name,
   setName,
   handleCloseAppNamePopup,
   handleUpdateDelivery,
-  handleOpenAppNamePopup,
 }) => {
+  const { recentBuildCard } = useSelector((state) => state.feature);
   const handleInputChange = (e) => {
     setName(e.target.value);
   };
@@ -27,7 +28,7 @@ const AppName = ({
           </p>
           <input
             className="my-2 outline-none border-[1px] w-full border-gray-300 rounded-md p-2"
-            placeholder={name || "eg. Booking.com"}
+            placeholder={recentBuildCard?.name || "eg. Booking.com"}
             value={name}
             onChange={handleInputChange}
           />

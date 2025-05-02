@@ -18,6 +18,7 @@ import {
   setPhases,
   setSelectedFeature,
   updatePlatforms,
+  updateRecentBuildCard,
 } from "../store/featureSlice";
 import { mapFeatureIdsToSidebarData } from "../utils/mapFeatures";
 
@@ -70,6 +71,7 @@ const HeaderLayout = ({ children, lang }) => {
               } else {
                 console.log("incomplete build card found", incompleteItem);
 
+                dispatch(updateRecentBuildCard(incompleteItem));
                 dispatch(changeSpeed(incompleteItem?.speed));
 
                 const defaultPhases = incompleteItem?.phases

@@ -74,6 +74,7 @@ const DeliveryFooter = () => {
               fixedCost: fixedCost,
               customizationCost: customizationCost,
               totalCost: totalCost,
+              updatedAt: new Date().toISOString(),
             };
 
             // Save the id of the updated build card to local storage

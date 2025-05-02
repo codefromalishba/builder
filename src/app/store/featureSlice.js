@@ -8,9 +8,13 @@ const featureSlice = createSlice({
     allFeatures: [],
     selectedPhases: [],
     speed: 3,
+    recentBuildCard: null,
     initialPhases: initialPhases, // NEW
   },
   reducers: {
+    updateRecentBuildCard: (state, action) => {
+      state.recentBuildCard = action.payload;
+    },
     changeSpeed: (state, action) => {
       state.speed = action.payload;
     },
@@ -58,6 +62,7 @@ const featureSlice = createSlice({
 
 export const {
   setSelectedFeature,
+  updateRecentBuildCard,
   addFeature,
   removeFeature,
   updatePlatforms,
