@@ -31,6 +31,7 @@ const HeaderLayout = ({ children, lang }) => {
   const dispatch = useDispatch();
   const pathname = usePathname();
   const isFeaturePage = pathname.includes("/feature");
+  const isSummaryPage = pathname.includes("/summary");
   const sidebarDataToUse = sidebarData;
 
   useEffect(() => {
@@ -122,7 +123,9 @@ const HeaderLayout = ({ children, lang }) => {
       {!isLoading && (
         <div
           className={`${
-            isFeaturePage ? "" : "fixed top-0 left-0 right-0 z-50"
+            !isFeaturePage && !isSummaryPage
+              ? "fixed top-0 left-0 right-0 z-50"
+              : ""
           }`}
         >
           <DashboardHeader

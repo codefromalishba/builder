@@ -58,7 +58,6 @@ const DeliveryFooter = () => {
 
             const platforms = initialPhases[0].platform;
 
-
             const phasesSelected = initialPhases.map((phase) => ({
               id: phase.id,
               name: phase.name,
@@ -88,7 +87,7 @@ const DeliveryFooter = () => {
             .then(() => {
               console.log("Build card added/updated successfully");
               handleCloseAppNamePopup();
-              router.push(`/delivery`);
+              router.push(`/summary`);
               dispatch(setProfile(userData));
             })
 
