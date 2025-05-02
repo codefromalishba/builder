@@ -7,12 +7,26 @@ import { TfiAndroid } from "react-icons/tfi";
 import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
+import { calculateFeatureTotals } from "../utils/calculateTotal";
+import moment from "moment";
+import { IoMdPricetags } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 
 const SummaryMain = () => {
   const profile = useSelector((state) => state.profile);
+  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
+    (state) => state.feature
+  );
+  const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
+    calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
+  const durationLabel = `${indicativeDurationInWeeks} ${
+    indicativeDurationInWeeks === 1 ? "week" : "weeks"
+  }`;
+  const today = moment();
+  const deliveryDate = today.clone().add(indicativeDurationInWeeks, "weeks");
 
-  const [isPromoVisible, setIsPromoVisible] = useState(false);
-  const [promoCode, setPromoCode] = useState("");
+  // const [isPromoVisible, setIsPromoVisible] = useState(false);
+  // const [promoCode, setPromoCode] = useState("");
 
   const [enterName, setEnterName] = useState(false);
   const [enterDetails, setEnterDetails] = useState(false);
@@ -75,12 +89,45 @@ const SummaryMain = () => {
     }
   }, [enterDetails]);
 
+  // const handleApplyPromotionClick = () => {
+  //   setIsPromoVisible(!isPromoVisible);
+  // };
+
+  // const handleApplyClick = () => {
+  //   console.log(`Promo code applied: ${promoCode}`);
+  // };
+
+  const [isPromoVisible, setIsPromoVisible] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [promoCodeValid, setPromoCodeValid] = useState(false);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const promoRef = useRef(null);
+
   const handleApplyPromotionClick = () => {
-    setIsPromoVisible(!isPromoVisible);
+    setIsPromoVisible(true);
   };
 
-  const handleApplyClick = () => {
-    console.log(`Promo code applied: ${promoCode}`);
+  const handleApplyClick = async () => {
+    if (!promoCode) return;
+    setLoading(true);
+
+    // Simulated API check
+    setTimeout(() => {
+      const validCodes = ["SAVE20", "LAUNCH10"]; // Replace with actual validation
+      const isValid = validCodes.includes(promoCode.toUpperCase());
+
+      setPromoCodeValid(isValid);
+      setMessage(isValid ? "valid" : "invalid");
+      setLoading(false);
+    }, 1000);
+  };
+
+  const handleCancelPromoCode = () => {
+    setPromoCode("");
+    setPromoCodeValid(false);
+    setMessage("");
+    setIsPromoVisible(false);
   };
 
   return (
@@ -333,29 +380,103 @@ const SummaryMain = () => {
             <div className="py-5">
               <div className="flex justify-between py-1 text-sm">
                 <p>Customization Cost</p>
-                <p>$428</p>
+                <p>${customizationCost}</p>
               </div>
               <div className="flex justify-between py-1 text-sm">
                 <p>Fixed Cost</p>
-                <p>$2,137</p>
+                <p>${fixedCost}</p>
               </div>
               <hr className="my-2" />
               <div className="flex justify-between py-1 text-sm">
                 <p className="font-bold">Total Cost</p>
-                <p>$2,565</p>
+                <p>${totalCost}</p>
               </div>
               <hr className="my-2" />
               <div className="flex justify-between py-1 text-sm">
                 <p>Indicative Development Duration</p>
-                <p className="font-bold">6 weeks</p>
+                <p className="font-bold">{durationLabel}</p>
               </div>
               <div className="flex justify-between py-1 text-sm">
                 <p>Estimated Delivery Date</p>
-                <p className="font-bold">12-Nov-2024</p>
+                <p className="font-bold">
+                  {" "}
+                  <span className="font-bold text-black">
+                    {deliveryDate.format("DD-MMM-YYYY")}
+                  </span>
+                </p>
               </div>
               <hr className="my-2" />
 
-              <div className="flex justify-between py-1 text-sm">
+              <>
+                <div className="flex justify-between py-1 text-sm">
+                  <p className="font-bold">Promo Code</p>
+                  {!isPromoVisible && (
+                    <p
+                      className="text-white p-2 bg-demo rounded-md cursor-pointer"
+                      onClick={handleApplyPromotionClick}
+                    >
+                      Apply Promotion
+                    </p>
+                  )}
+                </div>
+
+                {isPromoVisible && (
+                  <>
+                    {message && (
+                      <div
+                        className={`${
+                          message === "valid" ? "bg-demo" : "bg-red-400"
+                        } px-4 py-2 rounded-md my-3`}
+                      >
+                        <p className="text-white text-sm">
+                          {message === "valid"
+                            ? "Promo code is valid!"
+                            : "Promo code is invalid"}
+                        </p>
+                      </div>
+                    )}
+
+                    {promoCodeValid ? (
+                      <div className="flex w-fit px-3 items-center gap-2 bg-slate-200 rounded-md">
+                        <div className="flex items-center gap-1">
+                          <IoMdPricetags className="text-black" />
+                          <p className="p-2 text-gray-500 rounded-md font-bold">
+                            {promoCode}
+                          </p>
+                        </div>
+                        <IoClose
+                          onClick={handleCancelPromoCode}
+                          className="text-black cursor-pointer"
+                        />
+                      </div>
+                    ) : (
+                      <div className="my-1 w-full gap-2 flex items-center">
+                        <input
+                          ref={promoRef}
+                          className="p-2 w-full border border-gray-300 rounded-md font-medium outline-none"
+                          type="text"
+                          placeholder="Enter Promo Code"
+                          value={promoCode}
+                          onChange={(e) =>
+                            setPromoCode(e.target.value.toUpperCase())
+                          }
+                          disabled={loading}
+                        />
+                        <button
+                          onClick={handleApplyClick}
+                          disabled={!promoCode || loading}
+                          className={`${
+                            promoCode && !loading ? "bg-demo" : "bg-slate-300"
+                          } py-2 px-4 text-white rounded-md text-sm`}
+                        >
+                          {loading ? "Applying..." : "Apply"}
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
+              </>
+              {/* <div className="flex justify-between py-1 text-sm">
                 <p className="font-bold">Promo Code</p>
                 <p
                   className="text-white p-2 bg-demo rounded-md cursor-pointer"
@@ -364,7 +485,6 @@ const SummaryMain = () => {
                   Apply Promotion
                 </p>
               </div>
-
               {isPromoVisible && (
                 <div className="my-1 w-full gap-2 flex items-center">
                   <input
@@ -381,7 +501,7 @@ const SummaryMain = () => {
                     Apply
                   </button>
                 </div>
-              )}
+              )} */}
               <hr className="my-2" />
             </div>
 

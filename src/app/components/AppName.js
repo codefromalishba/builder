@@ -6,11 +6,11 @@ const AppName = ({
   setName,
   handleCloseAppNamePopup,
   handleUpdateDelivery,
+  handleOpenAppNamePopup,
 }) => {
   const handleInputChange = (e) => {
     setName(e.target.value);
   };
-
   return (
     <div className="fixed inset-0 w-full h-full z-40 bg-black bg-opacity-60 flex justify-center items-center">
       <div className=" w-96 h-auto z-50 bg-white rounded-lg shadow-lg">
@@ -27,8 +27,8 @@ const AppName = ({
           </p>
           <input
             className="my-2 outline-none border-[1px] w-full border-gray-300 rounded-md p-2"
-            type="text"
-            placeholder="eg.Booking.com"
+            placeholder={name || "eg. Booking.com"}
+            value={name}
             onChange={handleInputChange}
           />
           <div className="grid grid-cols-2 gap-x-6 w-full">

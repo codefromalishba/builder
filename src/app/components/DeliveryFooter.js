@@ -27,7 +27,7 @@ const DeliveryFooter = () => {
 
   const handleOpenAppNamePopup = () => {
     setIsAppNamePopupOpen(true);
-    document.body.classList.add("overflow-hidden"); // Prevent scrolling
+    document.body.classList.add("overflow-hidden");
   };
 
   const handleCloseAppNamePopup = () => {
