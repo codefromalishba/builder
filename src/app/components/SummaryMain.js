@@ -19,6 +19,15 @@ const SummaryMain = () => {
   const inputRef = useRef(null);
   const detailsRef = useRef(null);
 
+  const [showFeatures, setShowFeatures] = useState(false);
+
+  // Hardcoded features
+  const features = [
+    { name: "Login/Signup" },
+    { name: "User Dashboard" },
+    { name: "Notifications" },
+    { name: "Analytics" },
+  ];
   useEffect(() => {
     if (enterName) inputRef?.current?.focus();
   }, [enterName]);
@@ -54,20 +63,148 @@ const SummaryMain = () => {
 
             <div className="flex gap-10 py-5">
               <div className="w-1/4">
-                <div className="cursor-pointer">
-                  <p className="rounded-md p-2 my-2 bg-demo text-white">
+                <div
+                  className="cursor-pointer"
+                  onClick={() => setShowFeatures(false)}
+                >
+                  <p
+                    className={`rounded-md p-2 my-2 ${
+                      !showFeatures
+                        ? "bg-demo text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
                     Launch Swift Info
                   </p>
                 </div>
-                <div className="cursor-pointer">
-                  <p className="rounded-md p-2 my-2">Features (4)</p>
+
+                <div
+                  className="cursor-pointer"
+                  onClick={() => setShowFeatures(true)}
+                >
+                  <p
+                    className={`rounded-md p-2 my-2 ${
+                      showFeatures
+                        ? "bg-demo text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
+                    Features (4)
+                  </p>
                 </div>
+                {/* <div className="cursor-pointer">
+                  <p className="rounded-md p-2 my-2">Features (4)</p>
+                </div> */}
                 <div className="cursor-pointer">
                   <p className="rounded-md p-2 my-2">Phases (5)</p>
                 </div>
               </div>
 
               <div className="w-3/4">
+                {!showFeatures ? (
+                  <div className="py-2">
+                    <p className="text-demo font-semibold pb-5">
+                      Launch Swift basic details
+                    </p>
+
+                    <div className="flex gap-5">
+                      <div className="text-black text-xl">
+                        <FaRegBookmark />
+                      </div>
+
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2">
+                          <p className="text-black text-sm font-thin">Name</p>
+                          {!enterName && (
+                            <LuPencil
+                              onClick={() => setEnterName(true)}
+                              className="text-secondary cursor-pointer text-sm"
+                            />
+                          )}
+                        </div>
+
+                        {enterName ? (
+                          <div className="my-1 gap-2 flex items-center">
+                            <input
+                              ref={inputRef}
+                              className="p-2 border border-gray-300 rounded-md text-black font-medium outline-none"
+                              type="text"
+                              value={buildCardName}
+                              onChange={(e) => setBuildCardName(e.target.value)}
+                            />
+                            <button
+                              onClick={() => setEnterName(false)}
+                              className="bg-demo p-2 text-white rounded-md text-sm"
+                            >
+                              Save
+                            </button>
+                          </div>
+                        ) : (
+                          <p className="text-black py-2 font-bold">
+                            {buildCardName || "Enter a name"}
+                          </p>
+                        )}
+
+                        <div className="flex items-center gap-2">
+                          <p className="text-black text-sm font-thin">
+                            Details
+                          </p>
+                          {!enterDetails && (
+                            <LuPencil
+                              onClick={() => setEnterDetails(true)}
+                              className="text-secondary cursor-pointer text-sm"
+                            />
+                          )}
+                        </div>
+
+                        {enterDetails ? (
+                          <div className="my-1 gap-2 flex flex-col items-start">
+                            <textarea
+                              ref={detailsRef}
+                              rows={4}
+                              cols={30}
+                              placeholder="Enter Launch Swift Description"
+                              className="p-2 border border-gray-300 rounded-md text-black font-medium outline-none"
+                              value={buildCardDetails}
+                              onChange={(e) =>
+                                setBuildCardDetails(e.target.value)
+                              }
+                            />
+                            <button
+                              onClick={() => setEnterDetails(false)}
+                              className="bg-demo py-2 px-3 text-white rounded-md text-sm"
+                            >
+                              Save
+                            </button>
+                          </div>
+                        ) : (
+                          <p className="text-black py-2 text-sm">
+                            {buildCardDetails || "Click to enter details"}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="py-2">
+                    <p className="text-secondary pb-5 font-semibold">
+                      Selected Features
+                    </p>
+                    <ol className="grid grid-cols-2 gap-2">
+                      {features.map((item, index) => (
+                        <li
+                          key={index}
+                          className="text-black text-sm font-medium py-1"
+                        >
+                          {item.name}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+              </div>
+
+              {/* <div className="w-3/4">
                 <div className="py-2">
                   <p className="text-demo font-semibold pb-5">
                     Launch Swift basic details
@@ -149,7 +286,7 @@ const SummaryMain = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
