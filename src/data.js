@@ -23,6 +23,226 @@ import camera from "../public/images/icons/camera.png";
 import imageIcon from "../public/images/icons/imageIcon.png";
 import business from "../public/images/icons/business.png";
 import ecommerce from "../public/images/icons/ecommerce.png";
+import loginWithGoogle from "../public/images/mobile/login-with-google.png";
+import PhoneLogin from "../public/images/WebImages/phone-login.png";
+import loginWithApple from "../public/images/mobile/login-with-apple.png";
+import loginWithFacebook from "../public/images/mobile/login-with-facebook.png";
+import loginWithPhone from "../public/images/mobile/login-with-phone.png";
+import AdminDshboardWeb from "../public/images/WebImages/admin-dashboard.png";
+import AdminDshboard from "../public/images/mobile/admin-dashboard.png";
+import EmployeeLoginWeb from "../public/images/WebImages/employee-login.png";
+import EmployeeLogin from "../public/images/mobile/employee-login.png";
+import AppFeedbackWeb from "../public/images/WebImages/app-feedback.png";
+import AppFeedback from "../public/images/mobile/app-feedback.png";
+import HamburgerWeb from "../public/images/WebImages/hamburger-menu-drawer.png";
+import Hamburger from "../public/images/mobile/hamburger-menu-and-drawer.png";
+import SettingWeb from "../public/images/WebImages/privacy-settings.png";
+import Setting from "../public/images/mobile/setting.png";
+import SearchBarWeb from "../public/images/WebImages/searchbar-popup.png";
+import SearchBar from "../public/images/mobile/searchbar-popup.png";
+import BreadcrumbWeb from "../public/images/WebImages/breadcrumb-navigation.png";
+import Breadcrumb from "../public/images/mobile/breadcrumb_navigation.png";
+import LogoDesignWeb from "../public/images/WebImages/logo-design.png";
+import LogoDesign from "../public/images/mobile/logo-design.png";
+import OTPWeb from "../public/images/WebImages/OTP-verification.png";
+import OTP from "../public/images/mobile/OTP-verification.png";
+import TwoFactorWeb from "../public/images/WebImages/two-factor-auth.png";
+import TwoFactor from "../public/images/mobile/two-factor-auth.png";
+import KYCWeb from "../public/images/WebImages/kyc-verification.png";
+import KYC from "../public/images/mobile/kyc-verification.png";
+import PasscodeWeb from "../public/images/WebImages/passcode-lock.png";
+import Passcode from "../public/images/mobile/passcode-lock.png";
+import FaceIdWeb from "../public/images/WebImages/face-id.png";
+import FaceID from "../public/images/mobile/face-id.png";
+import FingerprintWeb from "../public/images/WebImages/finderprint-auth.png";
+import Fingerprint from "../public/images/mobile/fingerprint-auth.png";
+import PrivacyWeb from "../public/images/WebImages/privacy-settings.png";
+import Privacy from "../public/images/mobile/privacy-setting.png";
+import CaptchaWeb from "../public/images/WebImages/captcha.png";
+import Captcha from "../public/images/mobile/captcha.png";
+import AddFriendWeb from "../public/images/WebImages/add-friend.png";
+import AddFriend from "../public/images/mobile/add-friend.png";
+import FriendsListWeb from "../public/images/WebImages/firends-list.png";
+import FriendsList from "../public/images/mobile/friends-list.png";
+import FollowersListWeb from "../public/images/WebImages/list-of-followers.png";
+import FollowersList from "../public/images/mobile/list-of-followers.png";
+import LikePost from "../public/images/mobile/like-post.png";
+import RepostWeb from "../public/images/WebImages/activity-feed.png";
+import Repost from "../public/images/mobile/repost.png";
+import CreatePostWeb from "../public/images/WebImages/create-posts.png";
+import CreatePost from "../public/images/mobile/create-posts.png";
+import BlockUserWeb from "../public/images/WebImages/block-users.png";
+import BlockUser from "../public/images/mobile/block-users.png";
+import DisableAdsWeb from "../public/images/WebImages/disable-ads.png";
+import DisableAds from "../public/images/mobile/disable-ads.png";
+import CustomizeWeb from "../public/images/WebImages/custom-user-profile.png";
+import Customize from "../public/images/mobile/customise-user-profile.png";
+import TagWeb from "../public/images/WebImages/tagging.png";
+import Tag from "../public/images/mobile/tagging.png";
+import AdvanceSearchWeb from "../public/images/WebImages/advanced-search.png";
+import AdvanceSearch from "../public/images/mobile/advanced-search.png";
+import AffiliateWeb from "../public/images/WebImages/affiliate-url.png";
+import Affiliate from "../public/images/mobile/affiliate-url.png";
+import SaveSearchWeb from "../public/images/WebImages/save-search.png";
+import SaveSearch from "../public/images/mobile/save-search.png";
+import ChatScreenWeb from "../public/images/WebImages/conversation-threading.png";
+import ChatScreen from "../public/images/mobile/chatscreen.png";
+import GroupChatWeb from "../public/images/WebImages/group-chat.png";
+import GroupChat from "../public/images/mobile/group-chat.png";
+import ChatBackupWeb from "../public/images/WebImages/chat-backup.png";
+import ChatBackup from "../public/images/mobile/chat-backup.png";
+import ChatbotWeb from "../public/images/WebImages/chatbot.png";
+import Chatbot from "../public/images/mobile/chatbot.png";
+import GroupVedioCallWeb from "../public/images/WebImages/group-video-call.png";
+import GroupVedioCall from "../public/images/mobile/group-video-calls.png";
+import ConversationThreadingWeb from "../public/images/WebImages/conversation-threading.png";
+import ConversationThreading from "../public/images/mobile/conversation-threading.png";
+import AudioVedioMessengerWeb from "../public/images/WebImages/audio-video-messenger.png";
+import AudioVedioMessenger from "../public/images/mobile/audio-video-messenger.png";
+import ShareContactWeb from "../public/images/WebImages/share-contact.png";
+import ShareContact from "../public/images/mobile/share-contact.png";
+import ShareLinkWeb from "../public/images/WebImages/share-link.png";
+import ShareLink from "../public/images/mobile/share-link.png";
+import ReviewPromptWeb from "../public/images/WebImages/app-review-prompt.png";
+import ReviewPrompt from "../public/images/mobile/app-review-prompt.png";
+import SurveysWeb from "../public/images/WebImages/surveys.png";
+import Surveys from "../public/images/mobile/surveys.png";
+import BackendFeatureWeb from "../public/images/WebImages/backend-feature.png";
+import AudioPlayer from "../public/images/mobile/audio-player.png";
+import AudioPlayerWeb from "../public/images/WebImages/audio-player.png";
+import RadioStation from "../public/images/mobile/radio-station.png";
+import RadioStationWeb from "../public/images/WebImages/radio-station.png";
+import DownloadOption from "../public/images/mobile/download-options.png";
+import DownloadOptionWeb from "../public/images/WebImages/download-options.png";
+import Archive from "../public/images/mobile/archive.png";
+import ArchiveWeb from "../public/images/WebImages/archive.png";
+import VedioManagment from "../public/images/mobile/video-management.png";
+import VedioManagmentWeb from "../public/images/WebImages/video-management.png";
+import VedioEditing from "../public/images/mobile/video-editing.png";
+import VedioEditingWeb from "../public/images/WebImages/video-editing.png";
+import AudioCall from "../public/images/mobile/audio-call.png";
+import AudioCallWeb from "../public/images/WebImages/audio-call.png";
+import AudioLibrary from "../public/images/mobile/audio-library.png";
+import AudioLibraryWeb from "../public/images/WebImages/audio-library.png";
+import CallRecording from "../public/images/mobile/call-recording.png";
+import CallRecordingWeb from "../public/images/WebImages/call-recording.png";
+import VoiceNotes from "../public/images/mobile/voice-notes.png";
+import VoiceNotesWeb from "../public/images/WebImages/voice-notes.png";
+import PushNotification from "../public/images/mobile/push-notification.png";
+import PushNotificationWeb from "../public/images/WebImages/push-notifications.png";
+import InNotifications from "../public/images/mobile/in-app-notifications.png";
+import InNotificationsWeb from "../public/images/WebImages/in-app-notifications.png";
+import AutoEmailSending from "../public/images/mobile/auto-email-sending.png";
+import AutoEmailSendingWeb from "../public/images/WebImages/auto-email-sending.png";
+import NotificatioSound from "../public/images/mobile/notification-sound-haptics.png";
+import NotificatioSoundWeb from "../public/images/WebImages/backend-feature.png";
+import ScheduleNotification from "../public/images/mobile/schedule-notifcation.png";
+import ScheduleNotificationWeb from "../public/images/WebImages/schedule-notification.png";
+import DesktopNotification from "../public/images/mobile/desktop-notifications.png";
+import DesktopNotificationWeb from "../public/images/WebImages/desktop-notifications.png";
+import AutoReminder from "../public/images/mobile/auto-reminders.png";
+import AutoReminderWeb from "../public/images/WebImages/auto-reminders.png";
+import RealTimeUpdate from "../public/images/mobile/realtime-updates.png";
+import RealTimeUpdateWeb from "../public/images/WebImages/realtime-updates.png";
+import EmailNotification from "../public/images/mobile/email-notifications.png";
+import EmailNotificationWeb from "../public/images/WebImages/email-notifications.png";
+import EmailSubscription from "../public/images/mobile/email-subscriptions.png";
+import EmailSubscriptionWeb from "../public/images/WebImages/email-subscriptions.png";
+import BackgroundFetch from "../public/images/mobile/background-fetch.png";
+import BackgroundFetchWeb from "../public/images/WebImages/backend-feature.png";
+import PdfScanner from "../public/images/mobile/pdf-scanner.png";
+import PdfScannerWeb from "../public/images/WebImages/pdf-scanner.png";
+import Haptics from "../public/images/mobile/haptics.png";
+import HapticsWeb from "../public/images/WebImages/haptics.png";
+import DataSaving from "../public/images/mobile/data-saving.png";
+import DataSavingWeb from "../public/images/WebImages/data-saving.png";
+import Theme from "../public/images/mobile/theme.png";
+import ThemeWeb from "../public/images/WebImages/theme.png";
+import AppleMaps from "../public/images/mobile/apple-maps.png";
+import SwitchLanguage from "../public/images/mobile/switch-language.png";
+import SwitchLanguageWeb from "../public/images/WebImages/switch-language.png";
+import ApiIntegration from "../public/images/mobile/api-integration.png";
+import GoogleContacts from "../public/images/mobile/google-contacts-import.png";
+import GoogleContactsWeb from "../public/images/WebImages/google-contacts-import.png";
+import BarcodeScanning from "../public/images/mobile/barcode-scanning.png";
+import FileCompression from "../public/images/mobile/file-compression.png";
+import FileCompressionWeb from "../public/images/WebImages/file-compression.png";
+import ConvertFiles from "../public/images/mobile/convert-files.png";
+import ConvertFilesWeb from "../public/images/WebImages/convert-files.png";
+import DataSrorage from "../public/images/mobile/data-storage.png";
+import DataSrorageWeb from "../public/images/WebImages/data-storage.png";
+import CameraAccess from "../public/images/mobile/camera-access.png";
+import CameraAccessWeb from "../public/images/WebImages/camera-access.png";
+import FaceDetaction from "../public/images/mobile/face-detection.png";
+import PhotoLibrary from "../public/images/mobile/photo-library.png";
+import PhotoLibraryWeb from "../public/images/WebImages/photo-library.png";
+import Annotation from "../public/images/mobile/annotation.png";
+import AnnotationWeb from "../public/images/WebImages/annotation.png";
+import ScreenshotEditing from "../public/images/mobile/screenshot-editing.png";
+import ScreenshotEditingWeb from "../public/images/WebImages/screenshot-editing.png";
+import PhotoViewer from "../public/images/mobile/360-photo-viewer.png";
+import PhotoViewerWeb from "../public/images/WebImages/360-photo-viewer.png";
+import Analytics from "../public/images/mobile/analytics.png";
+import AnalyticsWeb from "../public/images/WebImages/analytics.png";
+import AppointmentCreation from "../public/images/mobile/appointment-creation.png";
+import AppointmentCreationWeb from "../public/images/WebImages/appointment-creation.png";
+import PerfomanceTracker from "../public/images/mobile/performance-tracker.png";
+import PerfomanceTrackerWeb from "../public/images/WebImages/performance-tracker.png";
+import PinConversation from "../public/images/mobile/pin-conversation.png";
+import PinConversationWeb from "../public/images/WebImages/pin-conversation.png";
+import RecurringAppointments from "../public/images/mobile/recurring-appointments.png";
+import RecurringAppointmentsWeb from "../public/images/WebImages/recurring-appointments.png";
+import ScreenSharing from "../public/images/mobile/screen-sharing.png";
+import ScreenSharingWeb from "../public/images/WebImages/screen-sharing.png";
+import AnalyticsReport from "../public/images/mobile/analytics-report.png";
+import AnalyticsReportWeb from "../public/images/WebImages/analytics-report.png";
+import AuctionBidding from "../public/images/mobile/auction-bidding.png";
+import AuctionBiddingWeb from "../public/images/WebImages/auction-bidding.png";
+import KanbanBoard from "../public/images/mobile/kanban-board.png";
+import KanbanBoardWeb from "../public/images/WebImages/kanban-board.png";
+import PromoCode from "../public/images/mobile/promo-codes.png";
+import PromoCodeWeb from "../public/images/WebImages/promo-codes.png";
+import Checkout from "../public/images/mobile/checkout.png";
+import CheckoutWeb from "../public/images/WebImages/checkout.png";
+import Dashboard from "../public/images/mobile/dashboard.png";
+import DashboardWeb from "../public/images/WebImages/dashboard.png";
+import DownloadOptions from "../public/images/mobile/download-options.png";
+import DownloadOptionsWeb from "../public/images/WebImages/download-options.png";
+import FavoritesList from "../public/images/mobile/favorites-list.png";
+import FavoritesListWeb from "../public/images/WebImages/favorites-list.png";
+import FreeCredits from "../public/images/mobile/free-credits.png";
+import FreeCreditsWeb from "../public/images/WebImages/free-credits.png";
+import GuestLogin from "../public/images/mobile/guest-login.png";
+import GuestLoginWeb from "../public/images/WebImages/guest-login.png";
+import QuickView from "../public/images/mobile/quick-view.png";
+import QuickViewWeb from "../public/images/WebImages/quick-view.png";
+import LoyaltySystem from "../public/images/mobile/loyalty-system.png";
+import LoyaltySystemWeb from "../public/images/WebImages/loyalty-system.png";
+import Menu from "../public/images/mobile/menu.png";
+import MenuWeb from "../public/images/WebImages/menu.png";
+import Print from "../public/images/mobile/print.png";
+import PrintWeb from "../public/images/WebImages/print.png";
+import ProductTutorial from "../public/images/mobile/product-tutorial.png";
+import ProductTutorialWeb from "../public/images/WebImages/product-tutorial.png";
+import ShoppingCart from "../public/images/mobile/shopping-cart.png";
+import ShoppingCartWeb from "../public/images/WebImages/shopping-cart.png";
+import AutoRenewals from "../public/images/mobile/auto-renewals.png";
+import AutoRenewalsWeb from "../public/images/WebImages/auto-renewal.png";
+import CollectTransactions from "../public/images/mobile/collect-transactions-and-tax.png";
+import CollectTransactionsWeb from "../public/images/WebImages/collect-transactions-and-tax.png";
+import DigitalSign from "../public/images/mobile/digital-sign.png";
+import DigitalSignWeb from "../public/images/WebImages/digital-sign.png";
+import Donation from "../public/images/mobile/donation.png";
+import DonationWeb from "../public/images/WebImages/donations.png";
+import StripeIntegration from "../public/images/mobile/stripe-integration.png";
+import PlanComparison from "../public/images/mobile/plan-comparison.png";
+import PlanComparisonWeb from "../public/images/WebImages/plan-comparison.png";
+import RefundManagement from "../public/images/mobile/refund-management.png";
+import RefundManagementWeb from "../public/images/WebImages/refund-management.png";
+import RestorePurchase from "../public/images/mobile/restore-purchase.png";
+import RestorePurchaseWeb from "../public/images/WebImages/restore-purchase.png";
+import SubsciptionBilling from "../public/images/mobile/subscription-billing.png";
+import SubsciptionBillingWeb from "../public/images/WebImages/subscription-billing.png";
 
 export const sidebarData = [
   {
@@ -33,10 +253,9 @@ export const sidebarData = [
         id: 1,
         name: "Signup/login with email",
         icon: "https://statestreetdebating.site/lauchswift/icons/login-with-google.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/login-with-google.png",
+        mobile: loginWithGoogle,
         //web needs fixing
-        web: "https://statestreetdebating.site/lauchswift/web/phone-login.png",
+        web: PhoneLogin,
         price: "412.84",
         timeline: "2",
         description:
@@ -46,10 +265,8 @@ export const sidebarData = [
         id: 2,
         name: "Apple Login",
         icon: `https://statestreetdebating.site/lauchswift/icons/login-with-apple.png`,
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/login-with-apple.png",
-        //needs fixing on web - fixed for now
-        web: "https://statestreetdebating.site/lauchswift/web/phone-login.png",
+        mobile: loginWithApple,
+        web: PhoneLogin,
         price: "120",
         timeline: "1.5",
         description:
@@ -59,10 +276,9 @@ export const sidebarData = [
         id: 3,
         name: "Google login",
         icon: `https://statestreetdebating.site/lauchswift/icons/login-with-google.png`,
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/login-with-google.png",
+        mobile: loginWithGoogle,
         //needs fixing on web
-        web: "https://statestreetdebating.site/lauchswift/web/phone-login.png",
+        web: PhoneLogin,
         price: "340.00",
         timeline: "2",
         description:
@@ -72,10 +288,9 @@ export const sidebarData = [
         id: 4,
         name: "Facebook login",
         icon: `https://statestreetdebating.site/lauchswift/icons/login-with-facebook.png`,
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/login-with-facebook.png",
+        mobile: loginWithFacebook,
         //needs fixing on web
-        web: "https://statestreetdebating.site/lauchswift/web/",
+        web: PhoneLogin,
         price: "720.00",
         timeline: "3",
         description:
@@ -85,9 +300,8 @@ export const sidebarData = [
         id: 5,
         name: "Signup/login with phone number",
         icon: `https://statestreetdebating.site/lauchswift/icons/login-with-phone.png`,
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/login-with-phone.png",
-        web: "https://statestreetdebating.site/lauchswift/web/phone-login.png",
+        mobile: loginWithPhone,
+        web: PhoneLogin,
         price: "278.00",
         timeline: "1.5",
         description:
@@ -97,9 +311,8 @@ export const sidebarData = [
         id: 6,
         name: "Admin login",
         icon: "https://statestreetdebating.site/lauchswift/icons/admin-dashboard.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/admin-dashboard.png",
-        web: "https://statestreetdebating.site/lauchswift/web/admin-dashboard.png",
+        mobile: AdminDshboard,
+        web: AdminDshboardWeb,
         price: "350.00",
         timeline: "3",
         description:
@@ -109,9 +322,8 @@ export const sidebarData = [
         id: 7,
         name: "Employee login",
         icon: "https://statestreetdebating.site/lauchswift/icons/employee-login.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/employee-login.png",
-        web: "https://statestreetdebating.site/lauchswift/web/employee-login.png",
+        mobile: EmployeeLogin,
+        web: EmployeeLoginWeb,
         price: "570.00",
         timeline: "3",
         description:
@@ -121,9 +333,8 @@ export const sidebarData = [
         id: 8,
         name: "App feedback",
         icon: "https://statestreetdebating.site/lauchswift/icons/app-feedback.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/app-feedback.png",
-        web: "https://statestreetdebating.site/lauchswift/web/app-feedback.png",
+        mobile: AppFeedback,
+        web: AppFeedbackWeb,
         price: "240.00",
         timeline: "1",
         description:
@@ -135,10 +346,9 @@ export const sidebarData = [
         //needs fixing on web
         icon: "https://statestreetdebating.site/lauchswift/icons/employee-login.png",
         //needs fixing on web
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/login-with-google.png",
+        mobile: loginWithGoogle,
         //needs fixing on web
-        web: "https://statestreetdebating.site/lauchswift/web/phone-login.png",
+        web: PhoneLogin,
         price: "520.00",
         timeline: "2",
         description:
@@ -148,9 +358,8 @@ export const sidebarData = [
         id: 10,
         name: "Splash screens",
         icon: "https://statestreetdebating.site/lauchswift/icons/splash-screen.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/splash-screen.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: AppFeedback,
+        web: AppFeedbackWeb,
         price: "250.00",
         timeline: "1.5",
         description:
@@ -160,9 +369,8 @@ export const sidebarData = [
         id: 11,
         name: "Hamburger menu and drawer",
         icon: "https://statestreetdebating.site/lauchswift/icons/hamburger-menu-and-drawer.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/hamburger-menu-and-drawer.png",
-        web: "https://statestreetdebating.site/lauchswift/web/hamburger-menu-drawer.png",
+        mobile: Hamburger,
+        web: HamburgerWeb,
         price: "1481.00",
         timeline: "1.5",
         description:
@@ -172,9 +380,8 @@ export const sidebarData = [
         id: 12,
         name: "Settings",
         icon: "https://statestreetdebating.site/lauchswift/icons/settings.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/setting.png",
-        web: "https://statestreetdebating.site/lauchswift/web/privacy-settings.png",
+        mobile: Setting,
+        web: SettingWeb,
         price: "768.07",
         timeline: "3",
         description:
@@ -184,54 +391,30 @@ export const sidebarData = [
         id: 13,
         name: "Searchbar with fields popup",
         icon: "https://statestreetdebating.site/lauchswift/icons/searchbar-popup.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/searchbar-popup.png",
-        web: "https://statestreetdebating.site/lauchswift/web/searchbar-popup.png",
+        mobile: SearchBar,
+        web: SearchBarWeb,
         price: "850.87",
         timeline: "2",
         description:
           "Allowing users the ability to find specific information or content quickly and easily. Once searched, users can select the result that best meets their requirements.",
       },
-      // {
-      //   id: 14,
-      //   name: "Terms and Conditions",
-      //   icon: "https://statestreetdebating.site/lauchswift/icons/",
-      //   mobile: "https://statestreetdebating.site/lauchswift/mobile/",
-      //   web: "https://statestreetdebating.site/lauchswift/web/",
-      //   price: "234.44",
-      //   timeline: "2",
-      //   description:
-      //     "Asking the user to confirm they agree with terms and conditions before using the product. This feature is often used for age verification or to explain what is done with user data.",
-      // },
       {
         id: 15,
         name: "Breadcrumb navigation",
         icon: "https://statestreetdebating.site/lauchswift/icons/breadcrumb-navigation.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/breadcrumb_navigation.png",
-        web: "https://statestreetdebating.site/lauchswift/web/breadcrumb-navigation.png",
+        mobile: Breadcrumb,
+        web: BreadcrumbWeb,
         price: "542.00",
         timeline: "2",
         description:
           'Helps users navigate through a website\'s structure. It appears at the top of a page and shows the user their location in the product. Each clickable "crumb" represents a different level of the structure.',
       },
-      // {
-      //   id: 16,
-      //   name: "Landing page",
-      //   icon: "https://statestreetdebating.site/lauchswift/icons/",
-      //   mobile: "https://statestreetdebating.site/lauchswift/mobile/",
-      //   web: "https://statestreetdebating.site/lauchswift/web/",
-      //   price: "198.00",
-      //   timeline: "2",
-      //   description: "",
-      // },
       {
         id: 17,
         name: "Logo Design",
         icon: "https://statestreetdebating.site/lauchswift/icons/logo-design.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/logo-design.png",
-        web: "https://statestreetdebating.site/lauchswift/web/logo-design.png",
+        mobile: LogoDesign,
+        web: LogoDesignWeb,
         price: "1,245.00",
         timeline: "2",
         description:
@@ -246,9 +429,8 @@ export const sidebarData = [
         id: 18,
         name: "OTP sending through Twilio",
         icon: "https://statestreetdebating.site/lauchswift/icons/OTP-verification.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/OTP-verification.png",
-        web: "https://statestreetdebating.site/lauchswift/web/OTP-verification.png",
+        mobile: OTP,
+        web: OTPWeb,
         price: "547.00",
         timeline: "2",
         description:
@@ -258,9 +440,8 @@ export const sidebarData = [
         id: 19,
         name: "Two-Factor Authentication",
         icon: "https://statestreetdebating.site/lauchswift/icons/two-factor-auth.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/two-factor-auth.png",
-        web: "https://statestreetdebating.site/lauchswift/web/two-factor-auth.png",
+        mobile: TwoFactor,
+        web: TwoFactorWeb,
         price: "288.00",
         timeline: "2",
         description:
@@ -270,9 +451,8 @@ export const sidebarData = [
         id: 20,
         name: "Know Your Customer (KYC) Verification",
         icon: "https://statestreetdebating.site/lauchswift/icons/kyc-verification.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/kyc-verification.png",
-        web: "https://statestreetdebating.site/lauchswift/web/kyc-verification.png",
+        mobile: KYC,
+        web: KYCWeb,
         price: "623.00",
         timeline: "3",
         description:
@@ -282,9 +462,8 @@ export const sidebarData = [
         id: 21,
         name: "Passcode lock",
         icon: "https://statestreetdebating.site/lauchswift/icons/passcode-lock.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/passcode-lock.png",
-        web: "https://statestreetdebating.site/lauchswift/web/passcode-lock.png",
+        mobile: Passcode,
+        web: PasscodeWeb,
         price: "453.00",
         timeline: "2",
         description:
@@ -294,9 +473,8 @@ export const sidebarData = [
         id: 22,
         name: "FaceID Authentication",
         icon: "https://statestreetdebating.site/lauchswift/icons/face-id.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/face-id.png",
-        web: "https://statestreetdebating.site/lauchswift/web/face-id.png",
+        mobile: FaceID,
+        web: FaceIdWeb,
         price: "698.00",
         timeline: "2",
         description:
@@ -306,9 +484,8 @@ export const sidebarData = [
         id: 23,
         name: "Fingerprint authentication",
         icon: "https://statestreetdebating.site/lauchswift/icons/fingerprint-auth.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/fingerprint-auth.png",
-        web: "https://statestreetdebating.site/lauchswift/web/finderprint-auth.png",
+        mobile: Fingerprint,
+        web: FingerprintWeb,
         price: "549.00",
         timeline: "2",
         description:
@@ -318,9 +495,8 @@ export const sidebarData = [
         id: 24,
         name: "Privacy Settings",
         icon: "https://statestreetdebating.site/lauchswift/icons/privacy-setting.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/privacy-setting.png",
-        web: "https://statestreetdebating.site/lauchswift/web/privacy-settings.png",
+        mobile: Privacy,
+        web: PrivacyWeb,
         price: "193.00",
         timeline: "1.5",
         description:
@@ -330,9 +506,8 @@ export const sidebarData = [
         id: 25,
         name: "Captcha",
         icon: "https://statestreetdebating.site/lauchswift/icons/captcha.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/captcha.png",
-        web: "https://statestreetdebating.site/lauchswift/web/captcha.png",
+        mobile: Captcha,
+        web: CaptchaWeb,
         price: "352.00",
         timeline: "2",
         description:
@@ -349,9 +524,8 @@ export const sidebarData = [
         id: 26,
         name: "Add friends",
         icon: "https://statestreetdebating.site/lauchswift/icons/",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/add-friend.png",
-        web: "https://statestreetdebating.site/lauchswift/web/add-friend.png",
+        mobile: AddFriend,
+        web: AddFriendWeb,
         price: "260.00",
         timeline: "2",
         description:
@@ -361,9 +535,8 @@ export const sidebarData = [
         id: 27,
         name: "Friends list",
         icon: "https://statestreetdebating.site/lauchswift/icons/friends-list.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/friends-list.png",
-        web: "https://statestreetdebating.site/lauchswift/web/firends-list.png",
+        mobile: FriendsList,
+        web: FriendsListWeb,
         price: "320.00",
         timeline: "2",
         description:
@@ -373,9 +546,8 @@ export const sidebarData = [
         id: 28,
         name: "List of followers",
         icon: "https://statestreetdebating.site/lauchswift/icons/list-of-followers.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/list-of-followers.png",
-        web: "https://statestreetdebating.site/lauchswift/web/list-of-followers.png",
+        mobile: FollowersList,
+        web: FollowersListWeb,
         price: "560.00",
         timeline: "2.5",
         description:
@@ -385,9 +557,8 @@ export const sidebarData = [
         id: 29,
         name: "Like a post",
         icon: "https://statestreetdebating.site/lauchswift/icons/like-post.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/like-post.png",
-        web: "https://statestreetdebating.site/lauchswift/web/activity-feed.png",
+        mobile: LikePost,
+        web: RepostWeb,
         price: "175.00",
         timeline: "1.5",
         description:
@@ -397,8 +568,8 @@ export const sidebarData = [
         id: 30,
         name: "Repost",
         icon: "https://statestreetdebating.site/lauchswift/icons/repost.png",
-        mobile: "https://statestreetdebating.site/lauchswift/mobile/repost.png",
-        web: "https://statestreetdebating.site/lauchswift/web/activity-feed.png",
+        mobile: Repost,
+        web: RepostWeb,
         price: "358.00",
         timeline: "2",
         description:
@@ -408,9 +579,8 @@ export const sidebarData = [
         id: 31,
         name: "Creating a post",
         icon: "https://statestreetdebating.site/lauchswift/icons/create-post.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/create-posts.png",
-        web: "https://statestreetdebating.site/lauchswift/web/create-posts.png",
+        mobile: CreatePost,
+        web: CreatePostWeb,
         price: "312.00",
         timeline: "2",
         description:
@@ -420,32 +590,19 @@ export const sidebarData = [
         id: 32,
         name: "Block Users",
         icon: "https://statestreetdebating.site/lauchswift/icons/block-user.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/block-users.png",
-        web: "https://statestreetdebating.site/lauchswift/web/block-users.png",
+        mobile: BlockUser,
+        web: BlockUserWeb,
         price: "249.00",
         timeline: "1.5",
         description:
           "Both users and admins can block users within the product. Admins can control users' access to all content, while users can prevent specific individuals from interacting with them.",
       },
-      // {
-      //   id: 33,
-      //   name: "Invite Friends",
-      //   icon: "https://statestreetdebating.site/lauchswift/icons/",
-      //   mobile: "https://statestreetdebating.site/lauchswift/mobile/",
-      //   web: "https://statestreetdebating.site/lauchswift/web/",
-      //   price: "542.00",
-      //   timeline: "2",
-      //   description:
-      //     "Users can invite friends and contacts to join them on the product via social media, email or text message (SMS). Great for increasing the product's visibility and reach.",
-      // },
       {
         id: 34,
         name: "Disable ads",
         icon: "https://statestreetdebating.site/lauchswift/icons/disable-ads.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/disable-ads.png",
-        web: "https://statestreetdebating.site/lauchswift/web/disable-ads.png",
+        mobile: DisableAds,
+        web: DisableAdsWeb,
         price: "347.00",
         timeline: "2",
         description:
@@ -455,9 +612,8 @@ export const sidebarData = [
         id: 35,
         name: "Customisable User Profile",
         icon: "https://statestreetdebating.site/lauchswift/icons/customise-user-profile.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/customise-user-profile.png",
-        web: "https://statestreetdebating.site/lauchswift/web/custom-user-profile.png",
+        mobile: Customize,
+        web: CustomizeWeb,
         price: "230.00",
         timeline: "1",
         description:
@@ -467,9 +623,8 @@ export const sidebarData = [
         id: 36,
         name: "Mention/Tagging",
         icon: "https://statestreetdebating.site/lauchswift/icons/tagging.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/tagging.png",
-        web: "https://statestreetdebating.site/lauchswift/web/tagging.png",
+        mobile: Tag,
+        web: TagWeb,
         price: "531.00",
         timeline: "2",
         description:
@@ -479,9 +634,8 @@ export const sidebarData = [
         id: 37,
         name: "Advanced search",
         icon: "https://statestreetdebating.site/lauchswift/icons/advanced-search.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/advanced-search.png",
-        web: "https://statestreetdebating.site/lauchswift/web/advanced-search.png",
+        mobile: AdvanceSearch,
+        web: AdvanceSearchWeb,
         price: "863.00",
         timeline: "2",
         description:
@@ -491,9 +645,8 @@ export const sidebarData = [
         id: 38,
         name: "Affiliate URL",
         icon: "https://statestreetdebating.site/lauchswift/icons/affiliate-url.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/affiliate-url.png",
-        web: "https://statestreetdebating.site/lauchswift/web/affiliate-url.png",
+        mobile: Affiliate,
+        web: AffiliateWeb,
         price: "390.00",
         timeline: "2",
         description:
@@ -503,9 +656,8 @@ export const sidebarData = [
         id: 39,
         name: "Save Search",
         icon: "https://statestreetdebating.site/lauchswift/icons/save-search.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/save-search.png",
-        web: "https://statestreetdebating.site/lauchswift/web/save-search.png",
+        mobile: SaveSearch,
+        web: SaveSearchWeb,
         price: "975.00",
         timeline: "2",
         description:
@@ -521,9 +673,8 @@ export const sidebarData = [
         id: 40,
         name: "Chat",
         icon: "https://statestreetdebating.site/lauchswift/icons/chatscreen.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/chatscreen.png",
-        web: "https://statestreetdebating.site/lauchswift/web/conversation-threading.png",
+        mobile: ChatScreen,
+        web: ChatScreenWeb,
         price: "850.00",
         timeline: "2",
         description:
@@ -533,9 +684,8 @@ export const sidebarData = [
         id: 41,
         name: "Group chat",
         icon: "https://statestreetdebating.site/lauchswift/icons/group-chat.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/group-chat.png",
-        web: "https://statestreetdebating.site/lauchswift/web/group-chat.png",
+        mobile: GroupChat,
+        web: GroupChatWeb,
         price: "250.00",
         timeline: "2",
         description:
@@ -545,9 +695,8 @@ export const sidebarData = [
         id: 42,
         name: "Chat Backup/Restore",
         icon: "https://statestreetdebating.site/lauchswift/icons/chat-backup.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/chat-backup.png",
-        web: "https://statestreetdebating.site/lauchswift/web/chat-backup.png",
+        mobile: ChatBackup,
+        web: ChatBackupWeb,
         price: "670.00",
         timeline: "3",
         description:
@@ -557,9 +706,8 @@ export const sidebarData = [
         id: 43,
         name: "Chatbot",
         icon: "https://statestreetdebating.site/lauchswift/icons/chatbot.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/chatbot.png",
-        web: "https://statestreetdebating.site/lauchswift/web/chatbot.png",
+        mobile: Chatbot,
+        web: ChatbotWeb,
         price: "560.00",
         timeline: "3",
         description:
@@ -569,9 +717,8 @@ export const sidebarData = [
         id: 44,
         name: "Group Video Call",
         icon: "https://statestreetdebating.site/lauchswift/icons/group-video-calls.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/group-video-calls.png",
-        web: "https://statestreetdebating.site/lauchswift/web/group-video-call.png",
+        mobile: GroupVedioCall,
+        web: GroupVedioCallWeb,
         price: "431.00",
         timeline: "2",
         description:
@@ -581,9 +728,8 @@ export const sidebarData = [
         id: 45,
         name: "Conversation Threading",
         icon: "https://statestreetdebating.site/lauchswift/icons/conversation-threading.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/conversation-threading.png",
-        web: "https://statestreetdebating.site/lauchswift/web/conversation-threading.png",
+        mobile: ConversationThreading,
+        web: ConversationThreadingWeb,
         price: "781.00",
         timeline: "2",
         description:
@@ -593,9 +739,8 @@ export const sidebarData = [
         id: 46,
         name: "Audio/video messenger",
         icon: "https://statestreetdebating.site/lauchswift/icons/audio-call.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/audio-video-messenger.png",
-        web: "https://statestreetdebating.site/lauchswift/web/audio-video-messenger.png",
+        mobile: AudioVedioMessenger,
+        web: AudioVedioMessengerWeb,
         price: "340.00",
         timeline: "2",
         description:
@@ -605,9 +750,8 @@ export const sidebarData = [
         id: 47,
         name: "Webinar",
         icon: "https://statestreetdebating.site/lauchswift/icons//group-video-call.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile//group-video-call.png",
-        web: "https://statestreetdebating.site/lauchswift/web/group-video-call.png",
+        mobile: GroupVedioCall,
+        web: GroupVedioCallWeb,
         price: "380.00",
         timeline: "2",
         description:
@@ -623,9 +767,8 @@ export const sidebarData = [
         id: 48,
         name: "Share contact",
         icon: "https://statestreetdebating.site/lauchswift/icons/share-contact.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/share-contact.png",
-        web: "https://statestreetdebating.site/lauchswift/web/share-contact.png",
+        mobile: ShareContact,
+        web: ShareContactWeb,
         price: "541.00",
         timeline: "2",
         description:
@@ -635,9 +778,8 @@ export const sidebarData = [
         id: 49,
         name: "Link share",
         icon: "https://statestreetdebating.site/lauchswift/icons/share-link.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/share-link.png",
-        web: "https://statestreetdebating.site/lauchswift/web/link-share.png",
+        mobile: ShareLink,
+        web: ShareLinkWeb,
         price: "562.00",
         timeline: "2.5",
         description:
@@ -653,9 +795,8 @@ export const sidebarData = [
         id: 50,
         name: "App review prompt",
         icon: "https://statestreetdebating.site/lauchswift/icons/app-review-prompt.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/app-review-prompt.png",
-        web: "https://statestreetdebating.site/lauchswift/web/app-review-prompt.png",
+        mobile: ReviewPrompt,
+        web: ReviewPromptWeb,
         price: "390.00",
         timeline: "1",
         description:
@@ -665,9 +806,8 @@ export const sidebarData = [
         id: 51,
         name: "Surveys",
         icon: "https://statestreetdebating.site/lauchswift/icons/surveys.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/surveys.png",
-        web: "https://statestreetdebating.site/lauchswift/web/surveys.png",
+        mobile: Surveys,
+        web: SurveysWeb,
         price: "180.00",
         timeline: "1",
         description:
@@ -677,9 +817,8 @@ export const sidebarData = [
         id: 52,
         name: "Feedback dashboard",
         icon: "https://statestreetdebating.site/lauchswift/iconsapp-feedback.png/",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/app-feedback.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: AppFeedback,
+        web: BackendFeatureWeb,
         price: "275.00",
         timeline: "2",
         description:
@@ -695,32 +834,19 @@ export const sidebarData = [
         id: 53,
         name: "Audio Player",
         icon: "https://statestreetdebating.site/lauchswift/icons/audio-player.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/audio-player.png",
-        web: "https://statestreetdebating.site/lauchswift/web/audio-player.png",
+        mobile: AudioPlayer,
+        web: AudioPlayerWeb,
         price: "657.00",
         timeline: "3",
         description:
           "A central hub where users can manage their audio. They can easily control basic functions like playing, pausing, and controlling the volume. Advanced add-ons features like sound bass boosting and EQ can be added as well if preferred.",
       },
-      // {
-      //   id: 54,
-      //   name: "Video player",
-      //   icon: "https://statestreetdebating.site/lauchswift/icons/camera-video-recordin.png",
-      //   mobile: "https://statestreetdebating.site/lauchswift/mobile/",
-      //   web: "https://statestreetdebating.site/lauchswift/web/",
-      //   price: "743.00",
-      //   timeline: "3",
-      //   description:
-      //     "A central hub where users can manage their audio. They can easily control basic functions like playing, pausing, and controlling the volume. Advanced add-ons features like sound bass boosting and EQ can be added as well if preferred.",
-      // },
       {
         id: 55,
         name: "Radio Stations",
         icon: "https://statestreetdebating.site/lauchswift/icons/radio-station.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/radio-station.png",
-        web: "https://statestreetdebating.site/lauchswift/web/radio-station.png",
+        mobile: RadioStation,
+        web: RadioStationWeb,
         price: "980.00",
         timeline: "2.5",
         description:
@@ -730,9 +856,8 @@ export const sidebarData = [
         id: 56,
         name: "Download options",
         icon: "https://statestreetdebating.site/lauchswift/icons/download-options.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/download-options.png",
-        web: "https://statestreetdebating.site/lauchswift/web/download-options.png",
+        mobile: DownloadOption,
+        web: DownloadOptionWeb,
         price: "342.00",
         timeline: "2",
         description: "A feature to download documents/media/files to a device.",
@@ -741,9 +866,8 @@ export const sidebarData = [
         id: 57,
         name: "Archive",
         icon: "https://statestreetdebating.site/lauchswift/icons/archive.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/archive.png",
-        web: "https://statestreetdebating.site/lauchswift/web/archive.png",
+        mobile: Archive,
+        web: ArchiveWeb,
         price: "287.00",
         timeline: "2",
         description:
@@ -753,9 +877,8 @@ export const sidebarData = [
         id: 58,
         name: "Video Management",
         icon: "https://statestreetdebating.site/lauchswift/icons/video-management.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/video-management.png",
-        web: "https://statestreetdebating.site/lauchswift/web/video-management.png",
+        mobile: VedioManagment,
+        web: VedioManagmentWeb,
         price: "760.00",
         timeline: "1.5",
         description:
@@ -765,9 +888,8 @@ export const sidebarData = [
         id: 59,
         name: "Video Editing Tools",
         icon: "https://statestreetdebating.site/lauchswift/icons/video-editing.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/video-editing.png",
-        web: "https://statestreetdebating.site/lauchswift/web/video-editing.png",
+        mobile: VedioEditing,
+        web: VedioEditingWeb,
         price: "1,200.00",
         timeline: "3",
         description:
@@ -782,9 +904,8 @@ export const sidebarData = [
         id: 60,
         name: "Audio Call",
         icon: "https://statestreetdebating.site/lauchswift/icons/audio-call.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/audio-call.png",
-        web: "https://statestreetdebating.site/lauchswift/web/audio-call.png",
+        mobile: AudioCall,
+        web: AudioCallWeb,
         price: "280.00",
         timeline: "2",
         description:
@@ -794,9 +915,8 @@ export const sidebarData = [
         id: 61,
         name: "Audio Library",
         icon: "https://statestreetdebating.site/lauchswift/icons/audio-library.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/audio-library.png",
-        web: "https://statestreetdebating.site/lauchswift/web/audio-library.png",
+        mobile: AudioLibrary,
+        web: AudioLibraryWeb,
         price: "930.00",
         timeline: "2",
         description:
@@ -806,9 +926,8 @@ export const sidebarData = [
         id: 62,
         name: "Call Recording",
         icon: "https://statestreetdebating.site/lauchswift/icons/call-recording.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/call-recording.png",
-        web: "https://statestreetdebating.site/lauchswift/web/call-recording.png",
+        mobile: CallRecording,
+        web: CallRecordingWeb,
         price: "390.00",
         timeline: "1.5",
         description:
@@ -818,9 +937,8 @@ export const sidebarData = [
         id: 63,
         name: "Voicenotes",
         icon: "https://statestreetdebating.site/lauchswift/icons/voice-notes.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/voice-notes.png",
-        web: "https://statestreetdebating.site/lauchswift/web/voice-notes.png",
+        mobile: VoiceNotes,
+        web: VoiceNotesWeb,
         price: "780.00",
         timeline: "1.5",
         description:
@@ -830,9 +948,8 @@ export const sidebarData = [
         id: 64,
         name: "Push notifications",
         icon: "https://statestreetdebating.site/lauchswift/icons/push-notification.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/push-notification.png",
-        web: "https://statestreetdebating.site/lauchswift/web/push-notifications.png",
+        mobile: PushNotification,
+        web: PushNotificationWeb,
         price: "610.00",
         timeline: "2",
         description:
@@ -842,9 +959,8 @@ export const sidebarData = [
         id: 65,
         name: "In app notifications",
         icon: "https://statestreetdebating.site/lauchswift/icons/in-app-notifcations.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/in-app-notifications.png",
-        web: "https://statestreetdebating.site/lauchswift/web/in-app-notifications.png",
+        mobile: InNotifications,
+        web: InNotificationsWeb,
         price: "540.00",
         timeline: "1.5",
         description:
@@ -854,9 +970,8 @@ export const sidebarData = [
         id: 66,
         name: "Automated Email Sending",
         icon: "https://statestreetdebating.site/lauchswift/icons/automated.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/auto-email-sending.png",
-        web: "https://statestreetdebating.site/lauchswift/web/auto-email-sending.png",
+        mobile: AutoEmailSending,
+        web: AutoEmailSendingWeb,
         price: "765.00",
         timeline: "2",
         description:
@@ -866,9 +981,8 @@ export const sidebarData = [
         id: 67,
         name: "Notification sound and haptics",
         icon: "https://statestreetdebating.site/lauchswift/icons/notification-sound-haptics.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/notification-sound-haptics.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: NotificatioSound,
+        web: NotificatioSoundWeb,
         price: "189.00",
         timeline: "1.5",
         description:
@@ -878,9 +992,8 @@ export const sidebarData = [
         id: 68,
         name: "Schedule Notifications",
         icon: "https://statestreetdebating.site/lauchswift/icons/schedule-notification.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/schedule-notifcation.png",
-        web: "https://statestreetdebating.site/lauchswift/web/schedule-notification.png",
+        mobile: ScheduleNotification,
+        web: ScheduleNotificationWeb,
         price: "590.00",
         timeline: "2",
         description:
@@ -890,9 +1003,8 @@ export const sidebarData = [
         id: 69,
         name: "Desktop Notifications",
         icon: "https://statestreetdebating.site/lauchswift/icons/desktop-notifications.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/desktop-notifications.png",
-        web: "https://statestreetdebating.site/lauchswift/web/desktop-notifications.png",
+        mobile: DesktopNotification,
+        web: DesktopNotificationWeb,
         price: "741.00",
         timeline: "2.5",
         description:
@@ -902,9 +1014,8 @@ export const sidebarData = [
         id: 70,
         name: "Automatic Reminders",
         icon: "https://statestreetdebating.site/lauchswift/icons/auto-reminders.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/auto-reminders.png",
-        web: "https://statestreetdebating.site/lauchswift/web/auto-reminders.png",
+        mobile: AutoReminder,
+        web: AutoReminderWeb,
         price: "420.00",
         timeline: "2",
         description:
@@ -914,9 +1025,8 @@ export const sidebarData = [
         id: 71,
         name: "Real-time updates",
         icon: "https://statestreetdebating.site/lauchswift/icons/realtime-updates.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/realtime-updates.png",
-        web: "https://statestreetdebating.site/lauchswift/web/realtime-updates.png",
+        mobile: RealTimeUpdate,
+        web: RealTimeUpdateWeb,
         price: "960.00",
         timeline: "3",
         description:
@@ -926,9 +1036,8 @@ export const sidebarData = [
         id: 72,
         name: "Email Notifications",
         icon: "https://statestreetdebating.site/lauchswift/icons/email-notification.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/email-notifications.png",
-        web: "https://statestreetdebating.site/lauchswift/web/email-notifications.png",
+        mobile: EmailNotification,
+        web: EmailNotificationWeb,
         price: "320.00",
         timeline: "2",
         description:
@@ -938,9 +1047,8 @@ export const sidebarData = [
         id: 73,
         name: "Email Subscriptions",
         icon: "https://statestreetdebating.site/lauchswift/icons/email-subscription.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/email-subscriptions.png",
-        web: "https://statestreetdebating.site/lauchswift/web/email-subscriptions.png",
+        mobile: EmailSubscription,
+        web: EmailSubscriptionWeb,
         price: "380.00",
         timeline: "2",
         description:
@@ -957,9 +1065,8 @@ export const sidebarData = [
         id: 74,
         name: "Background Fetch",
         icon: "https://statestreetdebating.site/lauchswift/icons/background-fetch.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/background-fetch.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: BackgroundFetch,
+        web: BackgroundFetchWeb,
         price: "351.00",
         timeline: "2",
         description:
@@ -969,9 +1076,8 @@ export const sidebarData = [
         id: 75,
         name: "Document Picker",
         icon: "https://statestreetdebating.site/lauchswift/icons/pdf-scanner.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/pdf-scanner.png",
-        web: "https://statestreetdebating.site/lauchswift/web/pdf-scanner.png",
+        mobile: PdfScanner,
+        web: PdfScannerWeb,
         price: "498.00",
         timeline: "2",
         description:
@@ -982,9 +1088,8 @@ export const sidebarData = [
         id: 76,
         name: "Haptics",
         icon: "https://statestreetdebating.site/lauchswift/icons/haptics.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/haptics.png",
-        web: "https://statestreetdebating.site/lauchswift/web/haptics.png",
+        mobile: Haptics,
+        web: HapticsWeb,
         price: "230.00",
         timeline: "1",
         description:
@@ -994,9 +1099,8 @@ export const sidebarData = [
         id: 77,
         name: "File access",
         icon: "https://statestreetdebating.site/lauchswift/icons/pdf-scanner.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/pdf-scanner.png",
-        web: "https://statestreetdebating.site/lauchswift/web/pdf-scanner.png",
+        mobile: PdfScanner,
+        web: PdfScannerWeb,
         price: "143.00",
         timeline: "1",
         description:
@@ -1006,9 +1110,8 @@ export const sidebarData = [
         id: 78,
         name: "Data Saver",
         icon: "https://statestreetdebating.site/lauchswift/icons/app-updates.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/data-saving.png",
-        web: "https://statestreetdebating.site/lauchswift/web/data-saving.png",
+        mobile: DataSaving,
+        web: DataSavingWeb,
         price: "980.00",
         timeline: "3",
         description:
@@ -1018,8 +1121,8 @@ export const sidebarData = [
         id: 79,
         name: "Display & Theme (light mode/dark mode)",
         icon: "https://statestreetdebating.site/lauchswift/icons/theme.png",
-        mobile: "https://statestreetdebating.site/lauchswift/mobile/theme.png",
-        web: "https://statestreetdebating.site/lauchswift/web/theme.png",
+        mobile: Theme,
+        web: ThemeWeb,
         price: "1,500.00",
         timeline: "4",
         description:
@@ -1029,9 +1132,8 @@ export const sidebarData = [
         id: 80,
         name: "Offline Work",
         icon: "https://statestreetdebating.site/lauchswift/icons/activity-feed.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/apple-maps.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: AppleMaps,
+        web: BackgroundFetchWeb,
         price: "435.00",
         timeline: "2",
         description:
@@ -1041,9 +1143,8 @@ export const sidebarData = [
         id: 81,
         name: "Switch Language",
         icon: "https://statestreetdebating.site/lauchswift/icons/switch-language.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/switch-language.png",
-        web: "https://statestreetdebating.site/lauchswift/web/switch-language.png",
+        mobile: SwitchLanguage,
+        web: SwitchLanguageWeb,
         price: "120.00",
         timeline: "2",
         description:
@@ -1053,9 +1154,8 @@ export const sidebarData = [
         id: 82,
         name: "Cache",
         icon: "https://statestreetdebating.site/lauchswift/icons/app-update.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/api-integration.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: ApiIntegration,
+        web: BackgroundFetchWeb,
         price: "432.00",
         timeline: "2",
         description:
@@ -1065,9 +1165,8 @@ export const sidebarData = [
         id: 83,
         name: "Google contacts import",
         icon: "https://statestreetdebating.site/lauchswift/icons/google-contacts-import.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/google-contacts-import.png",
-        web: "https://statestreetdebating.site/lauchswift/web/google-contacts-import.png",
+        mobile: GoogleContacts,
+        web: GoogleContactsWeb,
         price: "447.00",
         timeline: "2.5",
         description:
@@ -1077,9 +1176,8 @@ export const sidebarData = [
         id: 84,
         name: "Bacrcode scanning",
         icon: "https://statestreetdebating.site/lauchswift/icons/barcode-scanning.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/barcode-scanning.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: BarcodeScanning,
+        web: BackgroundFetchWeb,
         price: "934.00",
         timeline: "2.5",
         description:
@@ -1094,9 +1192,8 @@ export const sidebarData = [
         id: 85,
         name: "File compression",
         icon: "https://statestreetdebating.site/lauchswift/icons/files-manager.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/file-compression.png",
-        web: "https://statestreetdebating.site/lauchswift/web/file-compression.png",
+        mobile: FileCompression,
+        web: FileCompressionWeb,
         price: "650.00",
         timeline: "1.5",
         description:
@@ -1106,9 +1203,8 @@ export const sidebarData = [
         id: 86,
         name: "Convert file",
         icon: "https://statestreetdebating.site/lauchswift/icons/convert-files.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/convert-files.png",
-        web: "https://statestreetdebating.site/lauchswift/web/convert-files.png",
+        mobile: ConvertFiles,
+        web: ConvertFilesWeb,
         price: "537.00",
         timeline: "2.5",
         description:
@@ -1118,9 +1214,8 @@ export const sidebarData = [
         id: 87,
         name: "Data Storage",
         icon: "https://statestreetdebating.site/lauchswift/icons/data-storage.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/data-storage.png",
-        web: "https://statestreetdebating.site/lauchswift/web/data-storage.png",
+        mobile: DataSrorage,
+        web: DataSrorageWeb,
         price: "458.00",
         timeline: "2",
         description:
@@ -1136,9 +1231,8 @@ export const sidebarData = [
         id: 86,
         name: "Camera access",
         icon: "https://statestreetdebating.site/lauchswift/icons/camera-access.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/camera-access.png",
-        web: "https://statestreetdebating.site/lauchswift/web/camera-access.png",
+        mobile: CameraAccess,
+        web: CameraAccessWeb,
         price: "312.00",
         timeline: "1",
         description:
@@ -1148,9 +1242,8 @@ export const sidebarData = [
         id: 87,
         name: "Face detection",
         icon: "https://statestreetdebating.site/lauchswift/icons/face-detection.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/face-detection.png",
-        web: "https://statestreetdebating.site/lauchswift/web/backend-feature.png",
+        mobile: FaceDetaction,
+        web: BackgroundFetchWeb,
         price: "674.00",
         timeline: "3",
         description:
@@ -1166,9 +1259,8 @@ export const sidebarData = [
         id: 88,
         name: "Image Module",
         icon: "https://statestreetdebating.site/lauchswift/icons/photo-library.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/photo-library.png",
-        web: "https://statestreetdebating.site/lauchswift/web/photo-library.png",
+        mobile: PhotoLibrary,
+        web: PhotoLibraryWeb,
         price: "240.00",
         timeline: "1",
         description:
@@ -1178,9 +1270,8 @@ export const sidebarData = [
         id: 89,
         name: "Annotation",
         icon: "https://statestreetdebating.site/lauchswift/icons/annotation.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/annotation.png",
-        web: "https://statestreetdebating.site/lauchswift/web/annotation.png",
+        mobile: Annotation,
+        web: AnnotationWeb,
         price: "689.00",
         timeline: "2",
         description:
@@ -1190,9 +1281,8 @@ export const sidebarData = [
         id: 90,
         name: "PDF Scanner",
         icon: "https://statestreetdebating.site/lauchswift/icons/pdf_scanner.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/pdf-scanner.png",
-        web: "https://statestreetdebating.site/lauchswift/web/pdf-scanner.png",
+        mobile: PdfScanner,
+        web: PdfScannerWeb,
         price: "459.00",
         timeline: "2",
         description:
@@ -1202,9 +1292,8 @@ export const sidebarData = [
         id: 91,
         name: "Screenshot Editor",
         icon: "https://statestreetdebating.site/lauchswift/icons/screenshot-editing.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/screenshot-editing.png",
-        web: "https://statestreetdebating.site/lauchswift/web/screenshot-editing.png",
+        mobile: ScreenshotEditing,
+        web: ScreenshotEditingWeb,
         price: "450.00",
         timeline: "2",
         description:
@@ -1214,9 +1303,8 @@ export const sidebarData = [
         id: 92,
         name: "360 degree photo viewer",
         icon: "https://statestreetdebating.site/lauchswift/icons/360-photo-viewer.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/360-photo-viewer.png",
-        web: "https://statestreetdebating.site/lauchswift/web/360-photo-viewer.png",
+        mobile: PhotoViewer,
+        web: PhotoViewerWeb,
         price: "964.00",
         timeline: "3",
         description:
@@ -1225,7 +1313,6 @@ export const sidebarData = [
     ],
     img: imageIcon,
   },
-
   {
     name: "Business & Productivity Features",
     dropDown: [
@@ -1233,9 +1320,8 @@ export const sidebarData = [
         id: 93,
         name: "Analytics",
         icon: "https://statestreetdebating.site/lauchswift/icons/analytics.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/analytics.png",
-        web: "https://statestreetdebating.site/lauchswift/web/analytics.png",
+        mobile: Analytics,
+        web: AnalyticsWeb,
         price: "730.00",
         timeline: "3",
         description:
@@ -1245,9 +1331,8 @@ export const sidebarData = [
         id: 94,
         name: "Appointment creation",
         icon: "https://statestreetdebating.site/lauchswift/icons/appointment-creation.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/appointment-creation.png",
-        web: "https://statestreetdebating.site/lauchswift/web/appointment-creation.png",
+        mobile: AppointmentCreation,
+        web: AppointmentCreationWeb,
         price: "348.00",
         timeline: "2",
         description:
@@ -1257,9 +1342,8 @@ export const sidebarData = [
         id: 95,
         name: "Performance Tracker",
         icon: "https://statestreetdebating.site/lauchswift/icons/performance-tracker.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/performance-tracker.png",
-        web: "https://statestreetdebating.site/lauchswift/web/performance-tracker.png",
+        mobile: PerfomanceTracker,
+        web: PerfomanceTrackerWeb,
         price: "1890.00",
         timeline: "2.5",
         description:
@@ -1269,9 +1353,8 @@ export const sidebarData = [
         id: 96,
         name: "Pin conversation",
         icon: "https://statestreetdebating.site/lauchswift/icons/pin-conversation.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/pin-conversation.png",
-        web: "https://statestreetdebating.site/lauchswift/web/pin-conversation.png",
+        mobile: PinConversation,
+        web: PinConversationWeb,
         price: "641.00",
         timeline: "1.5",
         description:
@@ -1281,9 +1364,8 @@ export const sidebarData = [
         id: 97,
         name: "Recurring Appointments",
         icon: "https://statestreetdebating.site/lauchswift/icons/recurring-appointments.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/recurring-appointments.png",
-        web: "https://statestreetdebating.site/lauchswift/web/recurring-appointments.png",
+        mobile: RecurringAppointments,
+        web: RecurringAppointmentsWeb,
         price: "630.00",
         timeline: "1",
         description:
@@ -1293,9 +1375,8 @@ export const sidebarData = [
         id: 98,
         name: "Screen sharing",
         icon: "https://statestreetdebating.site/lauchswift/icons/screen-sharing.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/screen-sharing.png",
-        web: "https://statestreetdebating.site/lauchswift/web/screen-sharing.png",
+        mobile: ScreenSharing,
+        web: ScreenSharingWeb,
         price: "780.00",
         timeline: "3",
         description:
@@ -1305,9 +1386,8 @@ export const sidebarData = [
         id: 99,
         name: "Analytics Reporting",
         icon: "https://statestreetdebating.site/lauchswift/icons/analytics-reporting.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/analytics-report.png",
-        web: "https://statestreetdebating.site/lauchswift/web/analytics-report.png",
+        mobile: AnalyticsReport,
+        web: AnalyticsReportWeb,
         price: "320.00",
         timeline: "1.5",
         description:
@@ -1317,9 +1397,8 @@ export const sidebarData = [
         id: 100,
         name: "Auction bidding",
         icon: "https://statestreetdebating.site/lauchswift/icons/auction-bidding.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/auction-bidding.png",
-        web: "https://statestreetdebating.site/lauchswift/web/auction-bidding.png",
+        mobile: AuctionBidding,
+        web: AuctionBiddingWeb,
         price: "830.00",
         timeline: "1.5",
         description:
@@ -1329,9 +1408,8 @@ export const sidebarData = [
         id: 101,
         name: "Kanban board",
         icon: "https://statestreetdebating.site/lauchswift/icons/kanban-board.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/kanban-board.png",
-        web: "https://statestreetdebating.site/lauchswift/web/kanban-board.png",
+        mobile: KanbanBoard,
+        web: KanbanBoardWeb,
         price: "1290.00",
         timeline: "3",
         description:
@@ -1340,7 +1418,6 @@ export const sidebarData = [
     ],
     img: business,
   },
-
   {
     name: "E-commerce & Financial Transactions",
     dropDown: [
@@ -1348,9 +1425,8 @@ export const sidebarData = [
         id: 102,
         name: "Promo Codes",
         icon: "https://statestreetdebating.site/lauchswift/icons/promo-codes.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/promo-codes.png",
-        web: "https://statestreetdebating.site/lauchswift/web/promo-codes.png",
+        mobile: PromoCode,
+        web: PromoCodeWeb,
         price: "670.00",
         timeline: "2",
         description:
@@ -1360,9 +1436,8 @@ export const sidebarData = [
         id: 103,
         name: "Checkout",
         icon: "https://statestreetdebating.site/lauchswift/icons/checkout.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/checkout.png",
-        web: "https://statestreetdebating.site/lauchswift/web/checkout.png",
+        mobile: Checkout,
+        web: CheckoutWeb,
         price: "1390.00",
         timeline: "2",
         description:
@@ -1372,9 +1447,8 @@ export const sidebarData = [
         id: 104,
         name: "Promo codes acceptance",
         icon: "https://statestreetdebating.site/lauchswift/icons/promo-codes.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/promo-codes.png",
-        web: "https://statestreetdebating.site/lauchswift/web/promo-codes.png",
+        mobile: PromoCode,
+        web: PromoCodeWeb,
         price: "110.00",
         timeline: "1.5",
         description:
@@ -1384,9 +1458,8 @@ export const sidebarData = [
         id: 105,
         name: "Dashboard",
         icon: "https://statestreetdebating.site/lauchswift/icons/dashboard.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/dashboard.png",
-        web: "https://statestreetdebating.site/lauchswift/web/dashboard.png",
+        mobile: Dashboard,
+        web: DashboardWeb,
         price: "320.00",
         timeline: "1",
         description:
@@ -1396,9 +1469,8 @@ export const sidebarData = [
         id: 106,
         name: "Downloadable products",
         icon: "https://statestreetdebating.site/lauchswift/icons/files-manager.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/download-options.png",
-        web: "https://statestreetdebating.site/lauchswift/web/download-options.png",
+        mobile: DownloadOptions,
+        web: DownloadOptionsWeb,
         price: "782.00",
         timeline: "1",
         description:
@@ -1408,9 +1480,8 @@ export const sidebarData = [
         id: 107,
         name: "Favorite items",
         icon: "https://statestreetdebating.site/lauchswift/icons/favorites-list.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/favorites-list.png",
-        web: "https://statestreetdebating.site/lauchswift/web/favorites-list.png",
+        mobile: FavoritesList,
+        web: FavoritesListWeb,
         price: "209.00",
         timeline: "1.5",
         description:
@@ -1420,9 +1491,8 @@ export const sidebarData = [
         id: 108,
         name: "Free Credits",
         icon: "https://statestreetdebating.site/lauchswift/icons/free-credits.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/free-credits.png",
-        web: "https://statestreetdebating.site/lauchswift/web/free-credits.png",
+        mobile: FreeCredits,
+        web: FreeCreditsWeb,
         price: "302.00",
         timeline: "1.5",
         description:
@@ -1432,9 +1502,8 @@ export const sidebarData = [
         id: 109,
         name: "Guest Login",
         icon: "https://statestreetdebating.site/lauchswift/icons/guest-login.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/guest-login.png",
-        web: "https://statestreetdebating.site/lauchswift/web/guest-login.png",
+        mobile: GuestLogin,
+        web: GuestLoginWeb,
         price: "780.00",
         timeline: "2",
         description:
@@ -1444,9 +1513,8 @@ export const sidebarData = [
         id: 110,
         name: "Quick View",
         icon: "https://statestreetdebating.site/lauchswift/icons/quick-view.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/quick-view.png",
-        web: "https://statestreetdebating.site/lauchswift/web/quick-view.png",
+        mobile: QuickView,
+        web: QuickViewWeb,
         price: "250.00",
         timeline: "1.5",
         description:
@@ -1456,8 +1524,8 @@ export const sidebarData = [
         id: 111,
         name: "International shippings",
         icon: "https://statestreetdebating.site/lauchswift/icons/",
-        mobile: "https://statestreetdebating.site/lauchswift/mobile/",
-        web: "https://statestreetdebating.site/lauchswift/web/",
+        mobile: QuickView,
+        web: QuickViewWeb,
         price: "670.00",
         timeline: "1",
         description:
@@ -1467,9 +1535,8 @@ export const sidebarData = [
         id: 112,
         name: "Loyalty System",
         icon: "https://statestreetdebating.site/lauchswift/icons/loyalty-system.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/loyalty-system.png",
-        web: "https://statestreetdebating.site/lauchswift/web/loyalty-system.png",
+        mobile: LoyaltySystem,
+        web: LoyaltySystemWeb,
         price: "390.00",
         timeline: "1",
         description:
@@ -1479,8 +1546,8 @@ export const sidebarData = [
         id: 113,
         name: "Menu/Ordering",
         icon: "https://statestreetdebating.site/lauchswift/icons/menu.png",
-        mobile: "https://statestreetdebating.site/lauchswift/mobile/menu.png",
-        web: "https://statestreetdebating.site/lauchswift/web/menu.png",
+        mobile: Menu,
+        web: MenuWeb,
         price: "290.00",
         timeline: "2",
         description:
@@ -1490,8 +1557,8 @@ export const sidebarData = [
         id: 114,
         name: "Print",
         icon: "https://statestreetdebating.site/lauchswift/icons/print.png",
-        mobile: "https://statestreetdebating.site/lauchswift/mobile/print.png",
-        web: "https://statestreetdebating.site/lauchswift/web/print.png",
+        mobile: Print,
+        web: PrintWeb,
         price: "789.00",
         timeline: "3",
         description:
@@ -1501,9 +1568,8 @@ export const sidebarData = [
         id: 115,
         name: "Product tutorial",
         icon: "https://statestreetdebating.site/lauchswift/icons/product-tutorial.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/product-tutorial.png",
-        web: "https://statestreetdebating.site/lauchswift/web/product-tutorial.png",
+        mobile: ProductTutorial,
+        web: ProductTutorialWeb,
         price: "698.00",
         timeline: "3",
         description:
@@ -1513,9 +1579,8 @@ export const sidebarData = [
         id: 116,
         name: "Shoping cart",
         icon: "https://statestreetdebating.site/lauchswift/icons/shopping-cart.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/shopping-cart.png",
-        web: "https://statestreetdebating.site/lauchswift/web/shopping-cart.png",
+        mobile: ShoppingCart,
+        web: ShoppingCartWeb,
         price: "590.00",
         timeline: "2",
         description:
@@ -1525,9 +1590,8 @@ export const sidebarData = [
         id: 117,
         name: "Automatic Renewals",
         icon: "https://statestreetdebating.site/lauchswift/icons/auto-renewals.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/auto-renewals.png",
-        web: "https://statestreetdebating.site/lauchswift/web/auto-renewal.png",
+        mobile: AutoRenewals,
+        web: AutoRenewalsWeb,
         price: "511.00",
         timeline: "2",
         description:
@@ -1537,9 +1601,8 @@ export const sidebarData = [
         id: 118,
         name: "Collect Transaction Fees and Taxes",
         icon: "https://statestreetdebating.site/lauchswift/icons/collect-transactions-and-tax.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/collect-transactions-and-tax.png",
-        web: "https://statestreetdebating.site/lauchswift/web/collect-transactions-and-tax.png",
+        mobile: CollectTransactions,
+        web: CollectTransactionsWeb,
         price: "290.00",
         timeline: "2",
         description:
@@ -1549,9 +1612,8 @@ export const sidebarData = [
         id: 119,
         name: "Digital Signatures",
         icon: "https://statestreetdebating.site/lauchswift/icons/digital-sign.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/digital-sign.png",
-        web: "https://statestreetdebating.site/lauchswift/web/digital-sign.png",
+        mobile: DigitalSign,
+        web: DigitalSignWeb,
         price: "120.00",
         timeline: "2",
         description:
@@ -1561,9 +1623,8 @@ export const sidebarData = [
         id: 120,
         name: "Donations",
         icon: "https://statestreetdebating.site/lauchswift/icons/donation.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/donation.png",
-        web: "https://statestreetdebating.site/lauchswift/web/donations.png",
+        mobile: Donation,
+        web: DonationWeb,
         price: "320.00",
         timeline: "1",
         description:
@@ -1573,9 +1634,8 @@ export const sidebarData = [
         id: 121,
         name: "In-app purchases",
         icon: "https://statestreetdebating.site/lauchswift/icons/collect-transactions-and-tax.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/stripe-integraton.png",
-        web: "https://statestreetdebating.site/lauchswift/web/checkout.png",
+        mobile: StripeIntegration,
+        web: CheckoutWeb,
         price: "270.00",
         timeline: "2",
         description:
@@ -1585,9 +1645,8 @@ export const sidebarData = [
         id: 122,
         name: "Plan Comparison",
         icon: "https://statestreetdebating.site/lauchswift/icons/plan-comparison.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/plan-comparison.png",
-        web: "https://statestreetdebating.site/lauchswift/web/plan-comparison.png",
+        mobile: PlanComparison,
+        web: PlanComparisonWeb,
         price: "560.00",
         timeline: "1.5",
         description:
@@ -1597,9 +1656,8 @@ export const sidebarData = [
         id: 123,
         name: "Refund Management",
         icon: "https://statestreetdebating.site/lauchswift/icons/refund-management.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/refund-management.png",
-        web: "https://statestreetdebating.site/lauchswift/web/refund-management.png",
+        mobile: RefundManagement,
+        web: RefundManagementWeb,
         price: "890.00",
         timeline: "2",
         description:
@@ -1609,9 +1667,8 @@ export const sidebarData = [
         id: 124,
         name: "Restore Purchases",
         icon: "https://statestreetdebating.site/lauchswift/icons/restore-purchase.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/restore-purchase.png",
-        web: "https://statestreetdebating.site/lauchswift/web/restore-purchase.png",
+        mobile: RestorePurchase,
+        web: RestorePurchaseWeb,
         price: "780.00",
         timeline: "2",
         description:
@@ -1621,9 +1678,8 @@ export const sidebarData = [
         id: 125,
         name: "Subscriptions Billing",
         icon: "https://statestreetdebating.site/lauchswift/icons/subscription-billing.png",
-        mobile:
-          "https://statestreetdebating.site/lauchswift/mobile/subscription-billing.png",
-        web: "https://statestreetdebating.site/lauchswift/web/subscription-billing.png",
+        mobile: SubsciptionBilling,
+        web: SubsciptionBillingWeb,
         price: "220.00",
         timeline: "1.5",
         description:

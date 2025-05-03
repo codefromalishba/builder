@@ -13,13 +13,19 @@ const DeliveryTime = () => {
   const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
     (state) => state.feature
   );
-  const { indicativeDurationInWeeks } = calculateFeatureTotals(allFeatures);
+  const { indicativeDurationInWeeks } = calculateFeatureTotals(
+    allFeatures,
+    selectedPhases,
+    initialPhases,
+    speed
+  );
   const [step2, setStep2] = useState(4); // Default step is "50k+"
   const features = useSelector((state) => state.feature.allFeatures);
   const { totalCost } = calculateFeatureTotals(
     features,
     selectedPhases,
-    initialPhases
+    initialPhases,
+    speed
   );
   const today = moment();
   const deliveryDate = today.clone().add(indicativeDurationInWeeks, "weeks");

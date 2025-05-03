@@ -42,7 +42,12 @@ const FeatureMain = ({ isMobile }) => {
       {isMobile ? (
         <>
           <div className="border-2 p-2 w-48 h-fit rounded-xl border-[#A6A6A6]">
-            {/* <img src={selectedFeature?.mobile} alt="MobileImg" /> */}
+            <Image
+              src={selectedFeature?.mobile}
+              alt="MobileImg"
+              width={200}
+              height={450}
+            />
           </div>
           <div className="w-1/3 pt-3">
             <div className="flex gap-2">

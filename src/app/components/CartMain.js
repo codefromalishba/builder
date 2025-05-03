@@ -2,6 +2,7 @@ import React from "react";
 import { MdOutlineDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFeature, setSelectedFeature } from "../store/featureSlice";
+import Image from "next/image";
 
 const CartMain = ({ isMobile }) => {
   const dispatch = useDispatch();
@@ -30,6 +31,13 @@ const CartMain = ({ isMobile }) => {
                     : "border-gray-300"
                 }`}
               >
+                <Image
+                  src={feature?.mobile}
+                  alt="MobileImg"
+                  width={200}
+                  height={450}
+                  className="p-1 rounded-lg"
+                />
                 {/* <img
                   className="p-1 h-full rounded-lg"
                   src={feature?.mobile}
