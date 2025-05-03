@@ -122,8 +122,10 @@ const ProductPhase = ({ isOn }) => {
                         Estimated Duration:
                         <span className="font-normal">
                           {expandedCards[phase.id]
-                            ? `${phase.duration} ${
-                                phase.duration === 1 ? "Week" : "Weeks"
+                            ? `${Math.ceil(phase.duration / 7)} ${
+                                Math.ceil(phase.duration / 7) === 1
+                                  ? "Week"
+                                  : "Weeks"
                               }`
                             : "---"}
                         </span>
@@ -260,8 +262,8 @@ const ProductPhase = ({ isOn }) => {
                   <p className="font-bold text-xs">Estimated Duration:</p>
                   <p className="text-xs">
                     {expandedCards[phase.id]
-                      ? `${phase.duration} ${
-                          phase.duration === 1 ? "Week" : "Weeks"
+                      ? `${Math.ceil(phase.duration / 7)} ${
+                          Math.ceil(phase.duration / 7) === 1 ? "Week" : "Weeks"
                         }`
                       : "---"}
                   </p>

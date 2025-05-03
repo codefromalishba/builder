@@ -38,7 +38,7 @@ const DashboardHeader = () => {
   // Get app name from the incomplete build card
   const currentAppName = profile.buildCards?.find(
     (card) => card.status === "incomplete"
-  )?.name;
+  )?.newName;
   return (
     <div>
       <div className="bg-black p-3 h-[4.5rem] flex items-center justify-between">

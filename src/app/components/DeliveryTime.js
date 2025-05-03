@@ -93,7 +93,19 @@ const DeliveryTime = () => {
                       }`}
                     >
                       <p>${getAdjustedPrice(totalCost, option.adjustment)}</p>
-                      <p className="pt-1">{option.duration}</p>
+                      <p className="pt-1">
+                        {Math.max(
+                          0,
+                          Math.ceil(
+                            indicativeDurationInWeeks * (1 - option.adjustment)
+                          )
+                        )}{" "}
+                        {Math.ceil(
+                          indicativeDurationInWeeks * (1 - option.adjustment)
+                        ) === 1
+                          ? "Week"
+                          : "Weeks"}
+                      </p>
                     </div>
                   ))}
                 </div>

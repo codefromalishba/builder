@@ -21,10 +21,18 @@ export const calculateFeatureTotals = (
   );
 
   const customizationCost = features.length * 10;
-  const totalTimeline = features.reduce(
-    (sum, feature) => sum + parseFloat(feature.timeline || 0),
-    0
-  );
+  const totalTimeline =
+    features.reduce(
+      (sum, feature) => sum + parseFloat(feature.timeline || 0),
+      0
+    ) +
+    (Array.isArray(selectedPhases) && Array.isArray(initialPhases)
+      ? selectedPhases.reduce((sum, id) => {
+          const phase = initialPhases.find((p) => String(p.id) === id);
+          return sum + (phase?.duration || 0);
+        }, 0)
+      : 0);
+
   const indicativeDurationInWeeks = Math.ceil(totalTimeline / 7);
 
   // Bonuses for selected phases
@@ -94,6 +102,7 @@ export const calculateFeatureTotals = (
       ? (fixedCost + customizationCost).toFixed(0)
       : (finalFixedCost + finalCustomizationCost).toFixed(0),
     indicativeDurationInWeeks,
+    totalTimeline,
     phasesCost:
       fixedBonus + customizationBonus - (fixedPenalty + customizationPenalty),
   };
