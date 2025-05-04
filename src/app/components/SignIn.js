@@ -85,31 +85,6 @@ const SignIn = ({ handleClosePopup }) => {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     if (isSignIn) {
-  //       await signInWithEmailAndPassword(auth, email, password);
-
-  //       alert("Signed in!");
-  //     } else {
-  //       await createUserWithEmailAndPassword(auth, email, password).then(
-  //         async (authUser) => {
-  //           console.log("test", authUser);
-  //           clearAllFields();
-  //           createUser({ uid: authUser.user.uid });
-  //         }
-  //       );
-  //       alert("Account created!");
-  //     }
-
-  //     handleClosePopup(); // optional — if you want to close modal first
-  //     router.push("/feature");
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // };
-
   return (
     <div className="fixed inset-0 w-full h-full z-40 bg-black bg-opacity-60 flex justify-center items-center">
       <div className="grid sm:grid-cols-2 w-5/6 sm:w-3/6 h-3/4 z-50 bg-white rounded-lg shadow-lg">
@@ -202,9 +177,13 @@ const SignIn = ({ handleClosePopup }) => {
             </div>
 
             <button
-              // type="submit"
               onClick={handleSubmit}
-              className="w-full bg-gray-400 text-white mt-3 py-3 rounded-lg hover:bg-demo"
+              disabled={!email || !password}
+              className={`w-full mt-3 py-3 rounded-lg text-white transition-all duration-300 ${
+                !email || !password
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-demo hover:bg-demo/90"
+              }`}
             >
               {isSignIn ? "Sign In" : "Create Account"}
             </button>

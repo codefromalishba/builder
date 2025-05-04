@@ -10,8 +10,16 @@ const featureSlice = createSlice({
     speed: 3,
     recentBuildCard: null,
     initialPhases: initialPhases, // NEW
+    cloudEnabled: false,
+    cloudRangeIndex: 3,
   },
   reducers: {
+    toggleCloud: (state) => {
+      state.cloudEnabled = !state.cloudEnabled;
+    },
+    setCloudRangeIndex: (state, action) => {
+      state.cloudRangeIndex = action.payload;
+    },
     updateRecentBuildCard: (state, action) => {
       state.recentBuildCard = action.payload;
     },
@@ -71,5 +79,7 @@ export const {
   addPhase,
   setPhases,
   removePhase,
+  toggleCloud,
+  setCloudRangeIndex,
 } = featureSlice.actions;
 export default featureSlice.reducer;

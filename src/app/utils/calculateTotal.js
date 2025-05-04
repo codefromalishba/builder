@@ -1,5 +1,6 @@
-import { speedOptions } from "@/data";
+import { speedOptions, userRanges } from "@/data";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
 
 export const calculateFeatureTotals = (
   features,
@@ -9,6 +10,9 @@ export const calculateFeatureTotals = (
 ) => {
   const pathname = usePathname();
   const isFeaturePage = pathname.includes("feature");
+  const { cloudEnabled, cloudRangeIndex } = useSelector(
+    (state) => state.feature
+  );
 
   if (!Array.isArray(features)) {
     console.error("Expected features to be an array but got:", features);
@@ -93,6 +97,11 @@ export const calculateFeatureTotals = (
   const finalCustomizationCost =
     baseCustomizationCost + speedCustomizationBonus;
 
+  let cloudCost = 0;
+  if (!isFeaturePage && cloudEnabled && userRanges[cloudRangeIndex]) {
+    cloudCost = userRanges[cloudRangeIndex].maxPrice || 0;
+  }
+
   return {
     fixedCost: isFeaturePage ? fixedCost : finalFixedCost,
     customizationCost: isFeaturePage
@@ -101,6 +110,10 @@ export const calculateFeatureTotals = (
     totalCost: isFeaturePage
       ? (fixedCost + customizationCost).toFixed(0)
       : (finalFixedCost + finalCustomizationCost).toFixed(0),
+    // totalCost: isFeaturePage
+    //   ? (fixedCost + customizationCost).toFixed(0)
+    //   : (finalFixedCost + finalCustomizationCost + cloudCost).toFixed(0),
+    cloudCost,
     indicativeDurationInWeeks,
     totalTimeline,
     phasesCost:

@@ -1,6 +1,19 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import SignIn from "./SignIn";
 
 const AppDeveloper = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+    document.body.classList.add("overflow-hidden"); // Prevent scrolling
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    document.body.classList.remove("overflow-hidden"); // Re-enable scrolling
+  };
   return (
     <div
       className="relative h-[370px] md:h-[680px] bg-cover bg-center"
@@ -17,10 +30,17 @@ const AppDeveloper = () => {
           No Code. No delays. Launch Swift.
         </p>
         <div className="flex flex-col sm:flex-row  sm:gap-8 gap-4  items-center text-p ">
-          <p className="bg-black sm:text-p text-sm text-white p-btn rounded-8 ">
+          <p
+            className="bg-black sm:text-p cursor-pointer  text-sm text-white p-btn rounded-8 "
+            onClick={handleOpenPopup}
+          >
             Get A Free Demo
           </p>
-          <p className=" border text-sm sm:text-p rounded-8 p-btn border-black">
+          {isPopupOpen && <SignIn handleClosePopup={handleClosePopup} />}
+          <p
+            className=" border cursor-pointer text-sm sm:text-p rounded-8 p-btn border-black"
+            onClick={handleOpenPopup}
+          >
             See Solution And Pricing
           </p>
         </div>

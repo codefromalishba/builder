@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { speedOptions, userRanges } from "@/data";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
-import { changeSpeed } from "../store/featureSlice";
+import {
+  changeSpeed,
+  setCloudRangeIndex,
+  toggleCloud,
+} from "../store/featureSlice";
 import moment from "moment";
 
 const DeliveryTime = () => {
@@ -50,7 +54,9 @@ const DeliveryTime = () => {
   };
 
   const handleChange2 = (event) => {
-    setStep2(Number(event.target.value));
+    const index = Number(event.target.value);
+    setStep2(index);
+    dispatch(setCloudRangeIndex(index - 1)); // adjust for 0-based index
   };
 
   return (
@@ -159,7 +165,10 @@ const DeliveryTime = () => {
           </div>
           <div
             className="cursor-pointer"
-            onClick={() => setIsSelected((prev) => !prev)}
+            onClick={() => {
+              setIsSelected((prev) => !prev);
+              dispatch(toggleCloud());
+            }}
           >
             {isSelected ? (
               <IoIosCheckmarkCircle className="text-2xl text-demo" />
@@ -240,15 +249,6 @@ const DeliveryTime = () => {
             according to usage.
           </p>
         </div>
-        {/* <div className="mt-4">
-          <p className=" text-2xl">
-            <span className="font-bold"> $1,000 + * </span> /month
-          </p>
-          <p className="text-xs text-gray-600 pt-5 font-thin">
-            *This is an estimated price for cloud hosting and will vary
-            according to usage.
-          </p>
-        </div> */}
       </div>
     </div>
   );
