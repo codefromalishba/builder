@@ -1,6 +1,19 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import SignIn from "./SignIn";
 
 const AiUse = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+    document.body.classList.add("overflow-hidden"); // Prevent scrolling
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    document.body.classList.remove("overflow-hidden"); // Re-enable scrolling
+  };
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-12 items-center p-header sm:p-helpPlaning">
       <div className="sm:p-aiuse xs:text-left text-center">
@@ -12,9 +25,13 @@ const AiUse = () => {
           businesses. Enjoy transparent pricing with fixed costs and clear
           timelines based on features chosen.
         </p>
-        <a className="text-demo pb-3 border-b border-demo cursor-pointer">
+        <a
+          className="text-demo pb-3 border-b border-demo cursor-pointer"
+          onClick={handleOpenPopup}
+        >
           How we use AI
         </a>
+        {isPopupOpen && <SignIn handleClosePopup={handleClosePopup} />}
       </div>
       <div>
         <img

@@ -1,6 +1,20 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import SignIn from "./SignIn";
 
 const Working = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+    document.body.classList.add("overflow-hidden"); // Prevent scrolling
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    document.body.classList.remove("overflow-hidden"); // Re-enable scrolling
+  };
+
   return (
     <section className="py-17 px-5 bg-white">
       <div className="container mx-auto text-center">
@@ -63,13 +77,20 @@ const Working = () => {
         <div className="flex justify-center">
           <div className="flex flex-col xs:flex-row  justify-center py-7 sm:py-12 gap-4 sm:gap-9">
             <div className="flex justify-center">
-              <div className="border flex justify-center w-max p-btn bg-black text-white rounded-8 hover:bg-demo cursor-pointer">
+              <div
+                className="border flex justify-center w-max p-btn bg-black text-white rounded-8 hover:bg-demo cursor-pointer"
+                onClick={handleOpenPopup}
+              >
                 <p>Speak To An Expert</p>
               </div>
             </div>
-            <p className=" border rounded-8 p-btn border-black w-fit">
+            <p
+              className=" border rounded-8 p-btn cursor-pointer border-black w-fit"
+              onClick={handleOpenPopup}
+            >
               See Solution And Pricing
             </p>
+            {isPopupOpen && <SignIn handleClosePopup={handleClosePopup} />}
           </div>
         </div>
       </div>

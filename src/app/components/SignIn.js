@@ -145,7 +145,10 @@ const SignIn = ({ handleClosePopup }) => {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-gray-600 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-left text-gray-600 mb-2"
+              >
                 Company Email
               </label>
               <input
@@ -161,7 +164,10 @@ const SignIn = ({ handleClosePopup }) => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-gray-600 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-left text-gray-600 mt-2 mb-2"
+              >
                 Password
               </label>
               <input
@@ -191,6 +197,7 @@ const SignIn = ({ handleClosePopup }) => {
 
             <p className="mt-4 text-gray-600 flex justify-center">
               {isSignIn ? "Don't have an account?" : "Already have an account?"}
+              &nbsp;
               <span
                 onClick={() => setIsSignIn(!isSignIn)}
                 className="text-demo hover:underline cursor-pointer"

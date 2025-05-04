@@ -1,6 +1,19 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import SignIn from "./SignIn";
 
 const AppPlatform = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+    document.body.classList.add("overflow-hidden"); // Prevent scrolling
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    document.body.classList.remove("overflow-hidden"); // Re-enable scrolling
+  };
   return (
     <div className="sm:p-mhelpPlaning p-header">
       <h2 className="text-4xl font-bold py-10 mb-8  text-center">
@@ -13,10 +26,14 @@ const AppPlatform = () => {
             It takes weeks, not months to turn your idea into reality using
             Launch Swift. No code is required.
           </p>
-          <a className="text-demo pb-3 border-b border-demo cursor-pointer">
+          <a
+            className="text-demo pb-3 border-b border-demo cursor-pointer"
+            onClick={handleOpenPopup}
+          >
             Learn More
           </a>
         </div>
+        {isPopupOpen && <SignIn handleClosePopup={handleClosePopup} />}
         <div className="flex justify-center">
           <img
             className="xs:w-[248px] xs:h-[360px] w-[250px] h-[250px]"
@@ -31,7 +48,10 @@ const AppPlatform = () => {
             and you finally have that dream app.
           </p>
           <h2 className="text-lg font-bold mb-4 ">Dr Hassan Yasin Moodit</h2>
-          <a className="text-demo pb-3 border-b border-demo cursor-pointer">
+          <a
+            className="text-demo pb-3 border-b border-demo cursor-pointer"
+            onClick={handleOpenPopup}
+          >
             Read moodit case study
           </a>
         </div>
