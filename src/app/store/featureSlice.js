@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialPhases, speedOptions } from "@/data";
+// import { initialPhases, speedOptions } from "@/data";
 
 const featureSlice = createSlice({
   name: "feature",
@@ -9,7 +9,8 @@ const featureSlice = createSlice({
     selectedPhases: [],
     speed: 3,
     recentBuildCard: null,
-    initialPhases: initialPhases, // NEW
+    initialPhases: null,
+    selectedPlatformss: null,
     cloudEnabled: false,
     cloudRangeIndex: 3,
   },
@@ -27,14 +28,17 @@ const featureSlice = createSlice({
       state.speed = action.payload;
     },
     updatePlatforms: (state, action) => {
-      state.initialPhases = state.initialPhases.map((phase, index) => ({
-        ...phase,
-        platform: action.payload,
-      }));
+      if (state.initialPhases) {
+        state.initialPhases = state.initialPhases.map((phase) => ({
+          ...phase,
+          platform: action.payload,
+        }));
+      }
+      state.selectedPlatformss = action.payload;
     },
 
     updateInitialPhases: (state, action) => {
-      console.log("initialPhases", action.payload);
+      // console.log("initialPhases", action.payload);
       state.initialPhases = action.payload;
     },
 

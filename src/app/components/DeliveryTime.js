@@ -21,7 +21,7 @@ const DeliveryTime = () => {
     allFeatures,
     selectedPhases,
     initialPhases,
-    speed
+    3
   );
   const [step2, setStep2] = useState(4); // Default step is "50k+"
   const features = useSelector((state) => state.feature.allFeatures);
@@ -29,7 +29,7 @@ const DeliveryTime = () => {
     features,
     selectedPhases,
     initialPhases,
-    speed
+    3
   );
   const today = moment();
   const deliveryDate = today.clone().add(indicativeDurationInWeeks, "weeks");
@@ -46,7 +46,7 @@ const DeliveryTime = () => {
       return "0";
     }
 
-    return Math.round(price + price * adj).toString(); // returns a string like "123"
+    return Math.ceil(price + price * adj).toString(); // returns a string like "123"
   };
 
   const handleChange = (event) => {

@@ -25,11 +25,14 @@ const ProductPhase = ({ isOn }) => {
     (state) => state.feature
   );
 
+  // console.log("initialPhases in ProductPhase", initialPhases);
+  // console.log("selectedPhases", selectedPhases);
+
   useEffect(() => {
-    if (initialPhases.length > 0) {
+    if (initialPhases?.length > 0) {
       const initialState = {};
-      initialPhases.forEach((phase) => {
-        const phaseIdStr = String(phase.id);
+      initialPhases?.forEach((phase) => {
+        const phaseIdStr = parseInt(phase.id);
         initialState[phaseIdStr] = selectedPhases?.includes(phaseIdStr);
       });
 
@@ -57,9 +60,9 @@ const ProductPhase = ({ isOn }) => {
 
       // Dispatch Redux actions
       if (!isCurrentlySelected) {
-        dispatch(addPhase(String(id)));
+        dispatch(addPhase(parseInt(id)));
       } else {
-        dispatch(removePhase(String(id)));
+        dispatch(removePhase(parseInt(id)));
       }
 
       return newState;
@@ -78,7 +81,7 @@ const ProductPhase = ({ isOn }) => {
     <>
       {!isOn ? (
         <div className="grid grid-cols-5 px-10 py-5 gap-5">
-          {initialPhases.map((phase) => (
+          {initialPhases?.map((phase) => (
             <div
               key={phase.id}
               className={`relative border border-demo rounded-md p-5 pt-6 bg-white shadow-md ${
@@ -171,7 +174,7 @@ const ProductPhase = ({ isOn }) => {
         </div>
       ) : (
         <div className="grid grid-cols-5 px-10 py-5 gap-5">
-          {initialPhases.map((phase) => (
+          {initialPhases?.map((phase) => (
             <div
               key={phase.id}
               className=" relative border-[1px] rounded-md h-fit border-demo"

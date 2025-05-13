@@ -10,6 +10,12 @@ export const calculateFeatureTotals = (
 ) => {
   const pathname = usePathname();
   const isFeaturePage = pathname.includes("feature");
+  const speedIndex = Math.max(0, Math.min(speed - 1, speedOptions.length - 1));
+  const speedAdjustment = speedOptions[speedIndex]?.adjustment || 0;
+  const speedDurationAdjustment = speedOptions[speedIndex]?.duration || 0;
+
+  console.log("speedAdjustment", speedAdjustment, speedOptions[speedIndex]);
+
   const { cloudEnabled, cloudRangeIndex } = useSelector(
     (state) => state.feature
   );
@@ -37,7 +43,11 @@ export const calculateFeatureTotals = (
         }, 0)
       : 0);
 
-  const indicativeDurationInWeeks = Math.ceil(totalTimeline / 7);
+  const durationInWeeks = Math.ceil(totalTimeline / 7);
+
+  const speedDuration = durationInWeeks * speedDurationAdjustment;
+
+  const indicativeDurationInWeeks = Math.ceil(durationInWeeks + speedDuration);
 
   // Bonuses for selected phases
   const bonusModifiers = {
@@ -51,7 +61,7 @@ export const calculateFeatureTotals = (
 
   if (Array.isArray(selectedPhases)) {
     selectedPhases.forEach((id) => {
-      const phase = initialPhases?.find((p) => String(p.id) === id);
+      const phase = initialPhases?.find((p) => parseInt(p.id) === id);
       if (phase && bonusModifiers[phase.name]) {
         const modifier = bonusModifiers[phase.name];
         fixedBonus += fixedCost * modifier;
@@ -73,7 +83,7 @@ export const calculateFeatureTotals = (
       return (
         phase.name === phaseName &&
         Array.isArray(selectedPhases) &&
-        selectedPhases.includes(String(phase.id))
+        selectedPhases.includes(parseInt(phase.id))
       );
     });
 
@@ -86,9 +96,6 @@ export const calculateFeatureTotals = (
   const baseFixedCost = fixedCost + fixedBonus - fixedPenalty;
   const baseCustomizationCost =
     customizationCost + customizationBonus - customizationPenalty;
-
-  const speedIndex = Math.max(0, Math.min(speed - 1, speedOptions.length - 1));
-  const speedAdjustment = speedOptions[speedIndex]?.adjustment || 0;
 
   const speedFixedBonus = baseFixedCost * speedAdjustment;
   const speedCustomizationBonus = baseCustomizationCost * speedAdjustment;
@@ -108,11 +115,8 @@ export const calculateFeatureTotals = (
       ? customizationCost
       : finalCustomizationCost,
     totalCost: isFeaturePage
-      ? (fixedCost + customizationCost).toFixed(0)
-      : (finalFixedCost + finalCustomizationCost).toFixed(0),
-    // totalCost: isFeaturePage
-    //   ? (fixedCost + customizationCost).toFixed(0)
-    //   : (finalFixedCost + finalCustomizationCost + cloudCost).toFixed(0),
+      ? Math.ceil(fixedCost + customizationCost).toFixed(0)
+      : Math.ceil(finalFixedCost + finalCustomizationCost).toFixed(0),
     cloudCost,
     indicativeDurationInWeeks,
     totalTimeline,

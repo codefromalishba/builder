@@ -72,7 +72,7 @@ const DeliveryFooter = () => {
             const phasesSelected = initialPhases.map((phase) => ({
               id: phase.id,
               name: phase.name,
-              selected: selectedPhases.includes(String(phase.id)),
+              selected: selectedPhases.includes(parseInt(phase.id)),
             }));
 
             userData.buildCards[incompleteBuildCardIndex] = {

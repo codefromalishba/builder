@@ -2916,31 +2916,31 @@ export const speedOptions = [
   {
     label: "Relaxed",
     adjustment: -0.025,
-    duration: "4 Weeks",
+    duration: 0.025,
     description: `Our most budget-friendly option for those who aren't in a hurry`,
   },
   {
     label: "Slow",
     adjustment: -0.015,
-    duration: "3 Weeks",
+    duration: 0.015,
     description: `For those with a fixed long-term plan who want to keep costs down`,
   },
   {
     label: "Standard",
     adjustment: 0,
-    duration: "2 Weeks",
+    duration: 0,
     description: `The perfect middle ground for anyone with a modest budget and medium-term deadlines`,
   },
   {
     label: "Fast",
     adjustment: 0.015,
-    duration: "1 Week",
+    duration: -0.015,
     description: `We put your app build on turbo charge for a few extra bucks`,
   },
   {
     label: "Speedy",
     adjustment: 0.025,
-    duration: "0 Weeks",
+    duration: -0.025,
     description: `We build your app at the speed of light for a premium price`,
   },
 ];

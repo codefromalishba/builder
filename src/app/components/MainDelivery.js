@@ -6,18 +6,31 @@ import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
 import ProductPhase from "./ProductPhase";
-import { initialPhases } from "@/data";
+// import { initialPhases } from "@/data";
 import { useDispatch, useSelector } from "react-redux";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { updateInitialPhases } from "../store/featureSlice";
+import {
+  setPhases,
+  updateInitialPhases,
+  updatePlatforms,
+} from "../store/featureSlice";
 
 const MainDelivery = () => {
   const [selectedPhase, setSelectedPhase] = useState(null);
   const [selectedPhase2, setSelectedPhase2] = useState(null);
   const [isOn, setIsOn] = useState(false);
-  const [selectedPlatforms, setSelectedPlatforms] = useState([]); // Default at least one selected
-  const [phases, setPhases] = useState(initialPhases);
+  const { selectedPlatformss, initialPhases } = useSelector(
+    (state) => state.feature
+  );
+  const [selectedPlatforms, setSelectedPlatforms] =
+    useState(selectedPlatformss); // Default at least one selected
+  const [phases, setPhasesLocally] = useState();
   const user = useSelector((state) => state.profile);
+
+  // console.log("initialPhases", initialPhases);
+
+  // console.log("phases", phases);
+
   const dispatch = useDispatch();
 
   const handlePlatformClick = (platform) => {
@@ -29,50 +42,58 @@ const MainDelivery = () => {
         : [...prevSelected, platform];
 
       // Update platforms in all phases (or filter based on condition if needed)
-      const updatedPhases = phases.map((phase) => ({
+      const updatedPhases = phases?.map((phase) => ({
         ...phase,
         platform: updated,
       }));
+      // console.log("updated", updated);
+      // dispatch(updateInitialPhases(updatedPhases));
+      dispatch(updatePlatforms(updated));
 
-      dispatch(updateInitialPhases(updatedPhases));
-
-      setPhases(updatedPhases);
+      setPhasesLocally(updatedPhases);
       return updated;
     });
   };
 
-  useEffect(() => {
-    const fetchSelectedPlatforms = async () => {
-      if (!user?.uid) return; // Wait until user data is loaded
+  // useEffect(() => {
+  //   const fetchSelectedPlatforms = async () => {
+  //     if (!user?.uid) return; // Wait until user data is loaded
 
-      const db = getFirestore();
-      const userRef = doc(db, "users", user.uid);
-      try {
-        const userSnap = await getDoc(userRef);
-        if (userSnap.exists()) {
-          const userData = userSnap.data();
+  //     const db = getFirestore();
+  //     const userRef = doc(db, "users", user.uid);
+  //     try {
+  //       const userSnap = await getDoc(userRef);
+  //       if (userSnap.exists()) {
+  //         const userData = userSnap.data();
 
-          const recentBuildCardId = localStorage.getItem("recentBuildCardId");
+  //         const recentBuildCardId = localStorage.getItem("recentBuildCardId");
 
-          const buildCard = userData.buildCards.find(
-            (card) => card.id === recentBuildCardId
-          );
+  //         const buildCard = userData.buildCards.find(
+  //           (card) => card.id === recentBuildCardId
+  //         );
 
-          if (buildCard && buildCard.platforms) {
-            // console.log("Found saved platforms:", buildCard.platforms);
-            setSelectedPlatforms(buildCard.platforms);
-          } else {
-            console.log("No saved platforms, fallback");
-            setSelectedPlatforms(["ios"]); // fallback default
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching user buildCard:", error);
-      }
-    };
+  //         const defaultPhases = buildCard?.phases;
 
-    fetchSelectedPlatforms();
-  }, [user]);
+  //         console.log("defaultPhases", defaultPhases);
+
+  //         setPhasesLocally(defaultPhases);
+
+  //         dispatch(setPhases(defaultPhases));
+  //         if (buildCard && buildCard.platforms) {
+  //           // console.log("Found saved platforms:", buildCard.platforms);
+  //           setSelectedPlatforms(buildCard.platforms);
+  //         } else {
+  //           console.log("No saved platforms, fallback");
+  //           setSelectedPlatforms(["ios"]); // fallback default
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user buildCard:", error);
+  //     }
+  //   };
+
+  //   fetchSelectedPlatforms();
+  // }, [user]);
 
   const icons = [
     { id: "android", icon: <TfiAndroid className="text-4xl" /> },
@@ -176,7 +197,7 @@ const MainDelivery = () => {
           <div
             key={id}
             className={`border-[1px] h-20 w-20 cursor-pointer rounded-md flex justify-center items-center border-gray-300 ${
-              selectedPlatforms.includes(id) ? "bg-black" : ""
+              selectedPlatformss.includes(id) ? "bg-black" : ""
             }`}
             onClick={() => handlePlatformClick(id)}
           >

@@ -9,7 +9,7 @@ import spinner from "../../../public/images/spinner1.gif";
 // import { setCurrentFeature } from "../store/reducers/features";
 // import { setRecentBuildCard } from "../store/reducers/buildcard";
 import DashboardHeader from "./DashboardHeader";
-import { sidebarData } from "@/data";
+import { initialPhases, sidebarData } from "@/data";
 import { auth } from "../firebase";
 import { setProfile } from "../store/profileSlice";
 import {
@@ -17,6 +17,7 @@ import {
   changeSpeed,
   setPhases,
   setSelectedFeature,
+  updateInitialPhases,
   updatePlatforms,
   updateRecentBuildCard,
 } from "../store/featureSlice";
@@ -78,10 +79,19 @@ const HeaderLayout = ({ children, lang }) => {
                   ?.filter((item) => item.selected)
                   ?.map((item) => item.id);
 
+                console.log("defaultPhases", defaultPhases);
+
+                const updatedInitialPhases = initialPhases.map((phase) => ({
+                  ...phase,
+                  selected:
+                    defaultPhases?.includes(parseInt(phase.id)) || false,
+                }));
+
                 const defaultPlatforms = incompleteItem.platforms;
 
                 dispatch(setPhases(defaultPhases));
                 dispatch(updatePlatforms(defaultPlatforms));
+                dispatch(updateInitialPhases(updatedInitialPhases));
 
                 const matchedFeatures = mapFeatureIdsToSidebarData(
                   incompleteItem.features,
