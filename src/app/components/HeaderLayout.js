@@ -39,94 +39,89 @@ const HeaderLayout = ({ children, lang }) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        const userDocRef = doc(db, "users", authUser.uid);
+      const fetchUserData = async (uid) => {
+        try {
+          const userDocRef = doc(db, "users", uid);
+          const docSnapshot = await getDoc(userDocRef);
 
-        getDoc(userDocRef)
-          .then(async (docSnapshot) => {
-            if (docSnapshot.exists()) {
-              const userData = docSnapshot.data();
+          if (!docSnapshot.exists()) {
+            console.log("User data not found");
+            setIsLoading(false);
+            return;
+          }
 
-              // console.log("data of user", userData);
+          const userData = docSnapshot.data();
+          dispatch(setProfile(userData));
 
-              // ✅ Set name/email in profile state
-              dispatch(setProfile(userData));
+          const incompleteItem = userData.buildCards?.find(
+            (item) => item.status === "incomplete"
+          );
 
-              const incompleteItem = await userData.buildCards.find(
-                (item) => item.status === "incomplete"
-              );
+          if (!incompleteItem) {
+            console.log("No incomplete build card");
 
-              if (!incompleteItem) {
-                console.log("No incomplete build card");
-
-                if (
-                  pathname.endsWith("delivery") ||
-                  pathname.endsWith("summary")
-                ) {
-                  router.push(`/feature`).then(() => {
-                    dispatch(setProfile(userData));
-                  });
-                  return;
-                } else {
-                  dispatch(setProfile(userData));
-                }
-              } else {
-                console.log("incomplete build card found", incompleteItem);
-
-                dispatch(updateRecentBuildCard(incompleteItem));
-                dispatch(changeSpeed(incompleteItem?.speed));
-
-                const defaultPlatforms = incompleteItem.platforms;
-                const defaultPhases = incompleteItem?.phases
-                  ?.filter((item) => item.selected)
-                  ?.map((item) => parseInt(item.id));
-
-                const updatedInitialPhases = initialPhases.map((phase) => ({
-                  ...phase,
-                  platform: defaultPlatforms,
-                  selected:
-                    defaultPhases?.includes(parseInt(phase.id)) || false,
-                }));
-
-                dispatch(setPhases(defaultPhases));
-                dispatch(updatePlatforms(defaultPlatforms));
-                dispatch(updateInitialPhases(updatedInitialPhases));
-                dispatch(
-                  setCloudAndRange({
-                    cloudEnabled: incompleteItem.cloudEnabled,
-                    cloudRange: incompleteItem.cloudRange,
-                  })
-                );
-
-                const matchedFeatures = mapFeatureIdsToSidebarData(
-                  incompleteItem.features,
-                  sidebarData
-                );
-
-                matchedFeatures.forEach((feature) => {
-                  dispatch(addFeature(feature));
-                });
-
-                const lastFeatureId =
-                  incompleteItem.features[incompleteItem.features.length - 1];
-                const lastFeature = matchedFeatures.find(
-                  (f) => f.id === lastFeatureId
-                );
-                if (lastFeature) {
-                  dispatch(setSelectedFeature(lastFeature));
-                }
-
-                dispatch({ type: "setUser", payload: userData });
-              }
+            if (pathname.endsWith("delivery") || pathname.endsWith("summary")) {
+              router.push(`/feature`);
             } else {
-              console.log("User data not found");
+              setIsLoading(false);
             }
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            setIsLoading(false);
-            console.error("Error fetching user data:", error);
+            return;
+          }
+
+          console.log("Incomplete build card found:", incompleteItem);
+          dispatch(updateRecentBuildCard(incompleteItem));
+          dispatch(changeSpeed(incompleteItem?.speed));
+
+          const defaultPlatforms = incompleteItem.platforms || [];
+          const defaultPhases =
+            incompleteItem?.phases
+              ?.filter((p) => p.selected)
+              .map((p) => parseInt(p.id)) || [];
+
+          const updatedInitialPhases = initialPhases.map((phase) => ({
+            ...phase,
+            platform: defaultPlatforms,
+            selected: defaultPhases.includes(parseInt(phase.id)),
+          }));
+
+          dispatch(setPhases(defaultPhases));
+          dispatch(updatePlatforms(defaultPlatforms));
+          dispatch(updateInitialPhases(updatedInitialPhases));
+          dispatch(
+            setCloudAndRange({
+              cloudEnabled: incompleteItem.cloudEnabled,
+              cloudRange: incompleteItem.cloudRange,
+            })
+          );
+
+          const matchedFeatures = mapFeatureIdsToSidebarData(
+            incompleteItem.features,
+            sidebarData
+          );
+
+          matchedFeatures.forEach((feature) => {
+            dispatch(addFeature(feature));
           });
+
+          const lastFeatureId = incompleteItem.features?.at(-1);
+          const lastFeature = matchedFeatures.find(
+            (f) => f.id === lastFeatureId
+          );
+
+          if (lastFeature) {
+            dispatch(setSelectedFeature(lastFeature));
+          }
+
+          dispatch({ type: "setUser", payload: userData });
+          setIsLoading(false);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          setIsLoading(false);
+        }
+      };
+
+      if (authUser) {
+        fetchUserData(authUser.uid);
       } else {
         router.push("/");
       }

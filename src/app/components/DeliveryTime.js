@@ -21,21 +21,21 @@ const DeliveryTime = () => {
     cloudEnabled,
     cloudRangeIndex,
   } = useSelector((state) => state.feature);
-  const { indicativeDurationInWeeks } = calculateFeatureTotals(
+
+  const { fixedCost, customizationCost, indicativeDurationInWeeks } =
+    calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, 3);
+
+  const data = calculateFeatureTotals(
     allFeatures,
     selectedPhases,
     initialPhases,
-    3
+    speed
   );
-  const features = useSelector((state) => state.feature.allFeatures);
-  const { fixedCost, customizationCost, totalCost } = calculateFeatureTotals(
-    features,
-    selectedPhases,
-    initialPhases,
-    3
-  );
+
   const today = moment();
-  const deliveryDate = today.clone().add(indicativeDurationInWeeks, "weeks");
+  const deliveryDate = today
+    .clone()
+    .add(data?.indicativeDurationInWeeks, "weeks");
 
   const getAdjustedPrice = (adjustment) => {
     const adj = Number(adjustment);
@@ -164,6 +164,7 @@ const DeliveryTime = () => {
           <div
             className="cursor-pointer"
             onClick={() => {
+              dispatch(setCloudRangeIndex(1));
               dispatch(toggleCloud());
             }}
           >

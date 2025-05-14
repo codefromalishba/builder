@@ -50,9 +50,9 @@ const SummaryMain = () => {
   const [enterName, setEnterName] = useState(false);
   const [enterDetails, setEnterDetails] = useState(false);
 
-  const [buildCardName, setBuildCardName] = useState(recentBuildCard.name);
+  const [buildCardName, setBuildCardName] = useState(recentBuildCard?.name);
   const [buildCardDetails, setBuildCardDetails] = useState(
-    recentBuildCard.details
+    recentBuildCard?.details
   );
 
   const inputRef = useRef(null);

@@ -1,18 +1,89 @@
 "use client";
+import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import { setProfile } from "../store/profileSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const UserDetails = ({ setShow }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
+  const [loading, setLoading] = useState(false);
+  const user = useSelector((state) => state.profile);
 
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const db = getFirestore();
   const isButtonDisabled = !name || !email || !company;
 
-  const handleSubmit = () => {
-    // Placeholder for actual submission logic
-    alert(`Saved:\nName: ${name}\nEmail: ${email}\nCompany: ${company}`);
-    setShow(false);
+  // const handleSubmit = () => {
+  //   // Placeholder for actual submission logic
+  //   alert(`Saved:\nName: ${name}\nEmail: ${email}\nCompany: ${company}`);
+  //   setShow(false);
+  // };
+
+  const handleUserDetails = () => {
+    // setLoading(true);
+    const userRef = doc(db, "users", user.uid);
+
+    getDoc(userRef)
+      .then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data();
+
+          userData.buildCards = Array.isArray(userData.buildCards)
+            ? userData.buildCards
+            : [];
+
+          const incompleteBuildCardIndex = userData.buildCards.findIndex(
+            (card) => card.status === "incomplete"
+          );
+
+          console.log("incompleteBuildCardIndex", incompleteBuildCardIndex);
+          if (incompleteBuildCardIndex !== -1) {
+            console.log("updating existing...");
+
+            userData.buildCards[incompleteBuildCardIndex] = {
+              ...userData.buildCards[incompleteBuildCardIndex],
+              customerDetails: {
+                name,
+                email,
+                company,
+              },
+              status: "complete",
+            };
+
+            // Save the id of the updated build card to local storage
+            localStorage.setItem(
+              "recentBuildCardId",
+              userData.buildCards[incompleteBuildCardIndex].id
+            );
+          }
+
+          updateDoc(userRef, { buildCards: userData.buildCards })
+            .then(() => {
+              console.log("Build card completed successfully");
+              router.push(`/summary`);
+              setShow(false);
+              dispatch(setProfile(userData));
+            })
+
+            .catch((error) => {
+              setLoading(false);
+              console.error("Error updating document: ", error);
+            });
+        } else {
+          console.error("User document does not exist");
+
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Error getting document:", error);
+      });
   };
 
   return (
@@ -54,11 +125,11 @@ const UserDetails = ({ setShow }) => {
           </div>
           <button
             disabled={isButtonDisabled}
-            onClick={handleSubmit}
+            onClick={handleUserDetails}
             className={`mt-4 p-3 rounded ${
               isButtonDisabled
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-blue-600 text-white"
+                : "bg-demo text-white"
             }`}
           >
             Save

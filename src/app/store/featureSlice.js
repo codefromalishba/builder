@@ -12,7 +12,7 @@ const featureSlice = createSlice({
     initialPhases: null,
     selectedPlatformss: null,
     cloudEnabled: false,
-    cloudRangeIndex: 3,
+    cloudRangeIndex: 1,
   },
   reducers: {
     setCloudAndRange: (state, action) => {
