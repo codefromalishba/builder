@@ -3,7 +3,6 @@ import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 import React, { useState } from "react";
 import delivery from "../delivery/page";
-import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -105,9 +104,7 @@ const CartFooter = () => {
 
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
-              toast.success(
-                "Build card added/updated successfully! Redirecting..."
-              );
+              toast.success("Build card added/updated successfully!");
               router.push(`/delivery`);
             })
 
@@ -129,18 +126,14 @@ const CartFooter = () => {
   return (
     <div>
       <Link href="/delivery">
-        <motion.div
-          whileTap={{ scale: 0.95 }} // Slight shrink on click
-          transition={{ duration: 0.2, ease: "easeInOut" }} // Smooth transition
-          className="bg-demo flex justify-center py-6 cursor-pointer items-center h-full border border-gray-500 shadow-md"
-        >
+        <div className="bg-demo hover:bg-hdemo duration-150 flex justify-center py-6 cursor-pointer items-center h-full shadow-md">
           <p
             onClick={addIncompleteBuildCard}
-            className="font-semibold text-gray-800 transition-all duration-300"
+            className="text-xl text-white font-semibold transition-all duration-300"
           >
-            Plan delivery
+            {loading ? "Updating..." : "Plan delivery"}
           </p>
-        </motion.div>
+        </div>
       </Link>
     </div>
   );

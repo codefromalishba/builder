@@ -220,7 +220,7 @@ const MainDelivery = () => {
           <button
             onClick={() => setIsOn(!isOn)}
             className={`relative w-12 h-6 rounded-full ${
-              isOn ? "bg-demo" : "bg-gray-400"
+              isOn ? "bg-demo hover:bg-hdemo duration-150" : "bg-gray-400"
             }`}
           >
             <div

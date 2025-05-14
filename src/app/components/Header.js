@@ -37,7 +37,7 @@ const Header = () => {
             Sign in
           </p>
           <p
-            className="text-white cursor-pointer border rounded-8 border-demo bg-demo p-btn hover:bg-black"
+            className="text-white cursor-pointer border rounded-8 border-demo bg-demo hover:bg-hdemo duration-150 p-btn hover:bg-black"
             onClick={handleOpenPopup}
           >
             Get Free Demo

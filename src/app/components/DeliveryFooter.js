@@ -52,7 +52,7 @@ const DeliveryFooter = () => {
   };
 
   const handleUpdateDelivery = () => {
-    // setLoading(true);
+    setLoading(true);
     const userRef = doc(db, "users", user.uid);
 
     getDoc(userRef)
@@ -101,9 +101,7 @@ const DeliveryFooter = () => {
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
               dispatch(setProfile(userData));
-              toast.success(
-                "Build card added/updated successfully! Redirecting..."
-              );
+              toast.success("Build card added/updated successfully!");
               // handleCloseAppNamePopup();
               router.push(`/summary`);
             })
@@ -176,15 +174,18 @@ const DeliveryFooter = () => {
         </div>
         <div
           onClick={handleOpenAppNamePopup}
-          className="bg-demo col-span-1 flex justify-center py-6 cursor-pointer items-center h-full border border-gray-500"
+          className="bg-demo hover:bg-hdemo duration-150 col-span-1 flex justify-center py-6 cursor-pointer items-center h-full"
         >
-          <p>Done</p>
+          <p className="text-xl text-white font-semibold">
+            {loading ? "Updating..." : "Done"}
+          </p>
         </div>
       </div>
       {isAppNamePopupOpen && (
         <AppName
           name={name}
           setName={setName}
+          loading={loading}
           handleCloseAppNamePopup={handleCloseAppNamePopup}
           handleUpdateDelivery={handleUpdateDelivery}
         />

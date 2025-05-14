@@ -57,7 +57,7 @@ const DashboardHeader = () => {
           <div className="relative profile-dropdown">
             <div
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="w-11 h-10 rounded-md bg-demo flex items-center justify-center cursor-pointer"
+              className="w-11 h-10 rounded-md bg-demo hover:bg-hdemo duration-150 flex items-center justify-center cursor-pointer"
             >
               <p className="text-white px-1 font-semibold text-xl">
                 {profile?.name[0]?.toUpperCase()}

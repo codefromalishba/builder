@@ -26,7 +26,7 @@ const UserDetails = ({ setShow }) => {
   // };
 
   const handleUserDetails = () => {
-    // setLoading(true);
+    setLoading(true);
     const userRef = doc(db, "users", user.uid);
 
     getDoc(userRef)
@@ -60,9 +60,7 @@ const UserDetails = ({ setShow }) => {
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
               // dispatch(setProfile(userData));
-              toast.success(
-                "Build card submitted successfully! Redirecting..."
-              );
+              toast.success("Build card submitted successfully!");
               router.push(`/feature`);
             })
 
@@ -83,11 +81,9 @@ const UserDetails = ({ setShow }) => {
 
   return (
     <div className="fixed w-[450px] h-[360px] z-50 bg-white top-[50%] left-1/2 transform -translate-x-[50%] -translate-y-[40%] shadow-lg rounded-md">
-      <div className="p-5 w-full h-full">
-        <h1 className="text-black px-8 font-semibold text-lg mb-2">
-          User Details
-        </h1>
-        <div className="px-8 flex flex-col gap-3">
+      <div className="w-full h-full flex justify-center flex-col px-5">
+        <h1 className="text-black font-semibold text-lg mb-2">User Details</h1>
+        <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
             <label className="text-black font-bold text-sm">Name</label>
             <input
@@ -121,13 +117,13 @@ const UserDetails = ({ setShow }) => {
           <button
             disabled={isButtonDisabled}
             onClick={handleUserDetails}
-            className={`mt-4 p-3 rounded ${
-              isButtonDisabled
+            className={`mt-4 p-3 text-lg rounded text-white ${
+              loading || isButtonDisabled
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-demo text-white"
+                : "bg-demo hover:bg-hdemo duration-150"
             }`}
           >
-            Save
+            {loading ? "Saving..." : "Save"}
           </button>
         </div>
       </div>

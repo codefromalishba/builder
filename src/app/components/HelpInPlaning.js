@@ -27,7 +27,7 @@ const HelpInPlaning = () => {
       </div>
       <div className="flex justify-center ">
         <div
-          className="border w-max p-btn bg-black text-white rounded-8 hover:bg-demo  cursor-pointer"
+          className="border w-max p-btn bg-black text-white rounded-8 hover:bg-demo hover:bg-hdemo duration-150  cursor-pointer"
           onClick={handleOpenPopup}
         >
           <p>Help Me Find A Plan</p>

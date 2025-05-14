@@ -168,7 +168,7 @@ const MainDashboard = () => {
                                 <div
                                   className={`w-7 p-[5px] h-7 rounded-full border-[1px]  items-center justify-center flex cursor-pointer ${
                                     isUnderView
-                                      ? "bg-demo border-none "
+                                      ? "bg-demo hover:bg-hdemo duration-150 border-none "
                                       : "bg-white hover:bg-slate-100"
                                   }`}
                                 >

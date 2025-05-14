@@ -239,7 +239,7 @@ const SummaryMain = () => {
                   <p
                     className={`rounded-md p-2 my-2 ${
                       !showFeatures && !showPhases
-                        ? "bg-demo text-white"
+                        ? "bg-demo hover:bg-hdemo duration-150 text-white"
                         : "bg-white text-black"
                     }`}
                   >
@@ -257,7 +257,7 @@ const SummaryMain = () => {
                   <p
                     className={`rounded-md p-2 my-2 ${
                       showFeatures
-                        ? "bg-demo text-white"
+                        ? "bg-demo hover:bg-hdemo duration-150 text-white"
                         : "bg-white text-black"
                     }`}
                   >
@@ -274,7 +274,9 @@ const SummaryMain = () => {
                 >
                   <p
                     className={`rounded-md p-2 my-2 ${
-                      showPhases ? "bg-demo text-white" : "bg-white text-black"
+                      showPhases
+                        ? "bg-demo hover:bg-hdemo duration-150 text-white"
+                        : "bg-white text-black"
                     }`}
                   >
                     Phases ({selectedPhases?.length || 0})
@@ -326,7 +328,7 @@ const SummaryMain = () => {
                                   setEnterName(true); // enter editing mode
                                 }
                               }}
-                              className="bg-demo p-2 text-white rounded-md text-sm"
+                              className="bg-demo hover:bg-hdemo duration-150 p-2 text-white rounded-md text-sm"
                             >
                               Save
                             </button>
@@ -371,7 +373,7 @@ const SummaryMain = () => {
                                   setEnterDetails(true); // enter editing mode
                                 }
                               }}
-                              className="bg-demo py-2 px-3 text-white rounded-md text-sm"
+                              className="bg-demo hover:bg-hdemo duration-150 py-2 px-3 text-white rounded-md text-sm"
                             >
                               Save
                             </button>
@@ -526,7 +528,7 @@ const SummaryMain = () => {
                   <p className="font-bold">Promo Code</p>
                   {!isPromoVisible && (
                     <p
-                      className="text-white p-2 bg-demo rounded-md cursor-pointer"
+                      className="text-white p-2 bg-demo hover:bg-hdemo duration-150 rounded-md cursor-pointer"
                       onClick={handleApplyPromotionClick}
                     >
                       Apply Promotion
@@ -539,7 +541,7 @@ const SummaryMain = () => {
                     {message && (
                       <div
                         className={`${
-                          message === "valid" ? "bg-demo" : "bg-red-400"
+                          message === "valid" ? "bg-demo hover:bg-hdemo duration-150" : "bg-red-400"
                         } px-4 py-2 rounded-md my-3`}
                       >
                         <p className="text-white text-sm">
@@ -580,7 +582,7 @@ const SummaryMain = () => {
                           onClick={handleApplyClick}
                           disabled={!promoCode || loading}
                           className={`${
-                            promoCode && !loading ? "bg-demo" : "bg-slate-300"
+                            promoCode && !loading ? "bg-demo hover:bg-hdemo duration-150" : "bg-slate-300"
                           } py-2 px-4 text-white rounded-md text-sm`}
                         >
                           {loading ? "Applying..." : "Apply"}
@@ -595,13 +597,25 @@ const SummaryMain = () => {
 
             <div className="relative flex items-center justify-center">
               <button
-                className="w-full max-w-xs text-white p-3 bg-demo rounded-md text-sm"
+                className="w-full font-semibold max-w-xs text-white p-3 bg-demo hover:bg-hdemo duration-150 rounded-md"
                 onClick={() => setShowUserDetails(true)}
               >
                 Submit Your Project
               </button>
+              {showUserDetails && (
+                <>
+                  {/* Overlay */}
+                  <div
+                    onClick={() => setShowUserDetails(false)}
+                    className="fixed inset-0 w-full h-full z-50 bg-black bg-opacity-60 flex justify-center items-center"
+                  />
 
-              {showUserDetails && <UserDetails setShow={setShowUserDetails} />}
+                  {/* Modal content (UserDetails) - higher z-index */}
+                  <div className="fixed inset-0 z-50 flex justify-center items-center">
+                    <UserDetails setShow={setShowUserDetails} />
+                  </div>
+                </>
+              )}{" "}
             </div>
           </div>
         </div>

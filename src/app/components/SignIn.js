@@ -190,7 +190,7 @@ const SignIn = ({ handleClosePopup }) => {
               className={`w-full mt-3 py-3 rounded-lg text-white transition-all duration-300 ${
                 !email || !password
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-demo hover:bg-demo/90"
+                  : "bg-demo hover:bg-hdemo duration-150 hover:bg-demo hover:bg-hdemo duration-150/90"
               }`}
             >
               {isSignIn ? "Sign In" : "Create Account"}

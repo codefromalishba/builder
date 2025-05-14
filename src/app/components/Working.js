@@ -78,7 +78,7 @@ const Working = () => {
           <div className="flex flex-col xs:flex-row  justify-center py-7 sm:py-12 gap-4 sm:gap-9">
             <div className="flex justify-center">
               <div
-                className="border flex justify-center w-max p-btn bg-black text-white rounded-8 hover:bg-demo cursor-pointer"
+                className="border flex justify-center w-max p-btn bg-black text-white rounded-8 hover:bg-demo hover:bg-hdemo duration-150 cursor-pointer"
                 onClick={handleOpenPopup}
               >
                 <p>Speak To An Expert</p>

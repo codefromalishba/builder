@@ -20,6 +20,7 @@ module.exports = {
       },
       colors: {
         demo: "#05cd99",
+        hdemo: "#04c08f",
         footerbg: "#6060607d",
         btnbg: "linear-gradient(116deg,#02e9f9,#0ff57b 99.07%)",
       },

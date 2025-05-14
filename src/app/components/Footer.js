@@ -83,7 +83,7 @@ const Footer = () => {
                 type="email"
                 placeholder="Email address"
               />
-              <button className="color-white bg-demo rounded-r-md px-4 h-12 text-xl">
+              <button className="color-white bg-demo hover:bg-hdemo duration-150 rounded-r-md px-4 h-12 text-xl">
                 <svg
                   className="color-white"
                   stroke="currentColor"
