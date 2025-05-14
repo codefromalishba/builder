@@ -8,10 +8,6 @@ export const calculateFeatureTotals = (
   initialPhases = [],
   speed = 3
 ) => {
-  console.log("features", features);
-  console.log("selectedPhases", selectedPhases);
-  console.log("initialPhases", initialPhases);
-  console.log("speed", speed);
   const pathname = usePathname();
   const isFeaturePage = pathname.includes("feature");
   const speedIndex = Math.max(0, Math.min(speed - 1, speedOptions.length - 1));

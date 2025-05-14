@@ -26,9 +26,7 @@ const SummaryMain = () => {
 
   const { allFeatures, recentBuildCard, initialPhases, selectedPhases, speed } =
     useSelector((state) => state.feature);
-  // const selectedPhases =
-  //   recentBuildCard?.phases?.filter((item) => item.selected) || [];
-  // const { allFeatures } = useSelector((state) => state.feature);
+
   const {
     fixedCost,
     customizationCost,
@@ -431,7 +429,11 @@ const SummaryMain = () => {
                           <div className="rounded-md rounded-b-none p-5 bg-slate-200">
                             <div className="flex p-5 gap-1 py-1">
                               <p className="text-black font-bold text-sm">
-                                {item.name}
+                                {
+                                  initialPhases?.find(
+                                    (phase) => parseInt(phase.id) === item
+                                  )?.name
+                                }
                               </p>
                             </div>
                           </div>
