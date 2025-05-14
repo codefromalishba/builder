@@ -24,24 +24,25 @@ const SummaryMain = () => {
   const router = useRouter();
   const [showUserDetails, setShowUserDetails] = useState(false);
 
-  const { recentBuildCard, initialPhases, speed } = useSelector(
-    (state) => state.feature
-  );
-  const selectedPhases =
-    recentBuildCard?.phases?.filter((item) => item.selected) || [];
-  const { allFeatures } = useSelector((state) => state.feature);
-  const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(
-      allFeatures,
-      recentBuildCard,
-      selectedPhases,
-      initialPhases,
-      speed
-    );
+  const { allFeatures, recentBuildCard, initialPhases, selectedPhases, speed } =
+    useSelector((state) => state.feature);
+  // const selectedPhases =
+  //   recentBuildCard?.phases?.filter((item) => item.selected) || [];
+  // const { allFeatures } = useSelector((state) => state.feature);
+  const {
+    fixedCost,
+    customizationCost,
+    cloudCost,
+    totalCost,
+    indicativeDurationInWeeks,
+  } = calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
 
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;
+  const finalTotalCost = Math.ceil(parseFloat(totalCost) + cloudCost).toFixed(
+    0
+  );
   const today = moment();
   const deliveryDate = today.clone().add(indicativeDurationInWeeks, "weeks");
 
@@ -488,22 +489,28 @@ const SummaryMain = () => {
         </div>
 
         <div className="col-span-1">
-          <div className="m-5 flex flex-col border border-gray-300 rounded-md p-5">
+          <div className="m-5 flex flex-col border border-gray-300 rounded-md p-4">
             <p className="font-semibold">Payment Summary</p>
 
             <div className="py-5">
               <div className="flex justify-between py-1 text-sm">
                 <p>Customization Cost</p>
-                <p>${customizationCost}</p>
+                <p className="font-bold">${Math.ceil(customizationCost)}</p>
               </div>
               <div className="flex justify-between py-1 text-sm">
                 <p>Fixed Cost</p>
-                <p>${fixedCost}</p>
+                <p className="font-bold">${Math.ceil(fixedCost)}</p>
               </div>
+              {cloudCost ? (
+                <div className="flex justify-between py-1 text-sm">
+                  <p>Cloud Cost</p>
+                  <p className="font-bold">${Math.ceil(cloudCost)}</p>
+                </div>
+              ) : null}
               <hr className="my-2" />
               <div className="flex justify-between py-1 text-sm">
                 <p className="font-bold">Total Cost</p>
-                <p>${totalCost}</p>
+                <p className="font-bold">${finalTotalCost}</p>
               </div>
               <hr className="my-2" />
               <div className="flex justify-between py-1 text-sm">
