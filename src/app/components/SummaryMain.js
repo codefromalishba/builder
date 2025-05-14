@@ -51,7 +51,7 @@ const SummaryMain = () => {
   const [enterName, setEnterName] = useState(false);
   const [enterDetails, setEnterDetails] = useState(false);
 
-  const [buildCardName, setBuildCardName] = useState(recentBuildCard.newName);
+  const [buildCardName, setBuildCardName] = useState(recentBuildCard.name);
   const [buildCardDetails, setBuildCardDetails] = useState(
     recentBuildCard.details
   );
@@ -98,7 +98,7 @@ const SummaryMain = () => {
 
             userData.buildCards[incompleteBuildCardIndex] = {
               ...userData.buildCards[incompleteBuildCardIndex],
-              newName: buildCardName,
+              name: buildCardName,
             };
 
             // Save the id of the updated build card to local storage
@@ -598,7 +598,7 @@ const SummaryMain = () => {
                 className="w-full max-w-xs text-white p-3 bg-demo rounded-md text-sm"
                 onClick={() => setShowUserDetails(true)}
               >
-                Save
+                Submit Your Project
               </button>
 
               {showUserDetails && <UserDetails setShow={setShowUserDetails} />}
