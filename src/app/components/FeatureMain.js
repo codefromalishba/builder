@@ -36,8 +36,8 @@ const FeatureMain = ({ isMobile }) => {
   return selectedFeature ? (
     <div
       className={`flex bg-slate-100 rounded-lg ${
-        isMobile ? "flex-row" : "flex-col"
-      } h-[calc(100vh-13rem)] overflow-y-auto custom-scrollbar justify-center px-10 py-5 gap-4 mx-6 mb-6`}
+        isMobile ? "flex-row" : "flex-col pt-10"
+      } h-[calc(100vh-13rem)] items-center overflow-y-auto custom-scrollbar justify-center px-10 py-5 gap-4 mx-6 mb-6`}
     >
       {isMobile ? (
         <>
@@ -47,9 +47,10 @@ const FeatureMain = ({ isMobile }) => {
               alt="MobileImg"
               width={200}
               height={450}
+              className="rounded-lg"
             />
           </div>
-          <div className="w-1/3 pt-3">
+          <div className="w-3/5 pt-3">
             <div className="flex gap-2">
               <p className="text-2xl font-semibold">{selectedFeature?.name}</p>
               <div
@@ -68,13 +69,13 @@ const FeatureMain = ({ isMobile }) => {
                 <p className="whitespace-pre-line">
                   {isExpanded
                     ? selectedFeature?.description
-                    : `${selectedFeature?.description.slice(0, 100)}... `}
+                    : `${selectedFeature?.description.slice(0, 100)}`}
 
                   <button
                     className=" cursor-pointer font-bold hover:underline text-sm"
                     onClick={toggleDescription}
                   >
-                    {isExpanded ? " see less" : " see more"}
+                    {isExpanded ? " see less" : "...see more"}
                   </button>
                 </p>
               </div>
@@ -87,7 +88,7 @@ const FeatureMain = ({ isMobile }) => {
             <Image
               width={450}
               height={300}
-              className="h-[300px] w-[450px] mt-40 border-2 p-2 rounded-xl border-[#A6A6A6]"
+              className="h-[300px] w-[450px] rounded-xl p-2 border-2 flex justify-center items-center border-[#A6A6A6]"
               src={selectedFeature?.web}
             />
           </div>
@@ -110,13 +111,13 @@ const FeatureMain = ({ isMobile }) => {
                 <p className="whitespace-pre-line">
                   {isExpanded
                     ? selectedFeature?.description
-                    : `${selectedFeature?.description.slice(0, 100)}... `}
+                    : `${selectedFeature?.description.slice(0, 100)}`}
 
                   <button
                     className=" cursor-pointer font-bold hover:underline text-sm"
                     onClick={toggleDescription}
                   >
-                    {isExpanded ? " see less" : " see more"}
+                    {isExpanded ? " see less" : "...see more"}
                   </button>
                 </p>
               </div>

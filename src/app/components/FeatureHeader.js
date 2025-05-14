@@ -11,7 +11,7 @@ const FeatureHeader = ({ isMobile, handleDeviceSelection }) => {
           onClick={() => handleDeviceSelection(true)}
           className={`${
             isMobile && "bg-slate-200"
-          } px-4 py-3 border border-gray-200 rounded-bl rounded-tl`}
+          } px-4 py-3 border border-gray-200 cursor-pointer rounded-bl rounded-tl`}
         >
           <FaMobileAlt />
         </div>
@@ -19,15 +19,15 @@ const FeatureHeader = ({ isMobile, handleDeviceSelection }) => {
           onClick={() => handleDeviceSelection(false)}
           className={`${
             !isMobile && "bg-slate-200"
-          } px-4 py-3 border border-gray-200 rounded-br rounded-tr`}
+          } px-4 py-3 border border-gray-200 cursor-pointer rounded-br rounded-tr`}
         >
           <IoDesktopSharp />
         </div>
       </div>
-      <div className="flex items-center gap-2 bg-black px-3 py-2 rounded-md cursor-pointer">
+      {/* <div className="flex items-center gap-2 bg-black px-3 py-2 rounded-md cursor-pointer">
         <RiFunctionAddLine className="text-white " />
         <p className="text-white text-sm">Custom Features</p>
-      </div>
+      </div> */}
     </div>
   );
 };

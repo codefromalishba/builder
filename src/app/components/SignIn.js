@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { setProfile } from "../store/profileSlice";
+import toast from "react-hot-toast";
 
 const SignIn = ({ handleClosePopup }) => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -67,7 +68,8 @@ const SignIn = ({ handleClosePopup }) => {
           dispatch(setProfile(userData));
         }
 
-        alert("Signed in!");
+        toast.success("Signed in!");
+        router.push("/feature");
       } else {
         await createUserWithEmailAndPassword(auth, email, password).then(
           async (authUser) => {
@@ -75,19 +77,19 @@ const SignIn = ({ handleClosePopup }) => {
             createUser({ uid: authUser.user.uid });
           }
         );
-        alert("Account created!");
+        toast.success("Account created!");
       }
 
       handleClosePopup(); // Close popup if needed
       router.push("/feature");
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 
   return (
     <div className="fixed inset-0 w-full h-full z-40 bg-black bg-opacity-60 flex justify-center items-center">
-      <div className="grid sm:grid-cols-2 w-5/6 sm:w-3/6 h-3/4 z-50 bg-white rounded-lg shadow-lg">
+      <div className="grid sm:grid-cols-2 w-5/6 sm:w-4/6 h-3/4 z-50 bg-white rounded-lg shadow-lg">
         {/* Image Section */}
         <div className="bg-gray-100 hidden sm:block">
           <img
