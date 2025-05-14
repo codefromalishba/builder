@@ -528,7 +528,7 @@ const SummaryMain = () => {
               </div>
               <hr className="my-2" />
 
-              <>
+              {/* <>
                 <div className="flex justify-between py-1 text-sm">
                   <p className="font-bold">Promo Code</p>
                   {!isPromoVisible && (
@@ -597,7 +597,7 @@ const SummaryMain = () => {
                   </>
                 )}
               </>
-              <hr className="my-2" />
+              <hr className="my-2" /> */}
             </div>
 
             <div className="relative flex items-center justify-center">

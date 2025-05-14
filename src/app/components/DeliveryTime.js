@@ -197,7 +197,11 @@ const DeliveryTime = () => {
           {/* Header with selected range */}
           <div className="flex justify-between items-center h-8">
             <p className="font-bold">Number of users</p>
-            <p className="font-bold">{userRanges[cloudRangeIndex - 1].value}</p>
+            <p className="font-bold">
+              {cloudRangeIndex > 0 && userRanges?.[cloudRangeIndex - 1]
+                ? userRanges[cloudRangeIndex - 1].value
+                : "N/A"}
+            </p>
           </div>
 
           {/* Slider */}
@@ -231,15 +235,20 @@ const DeliveryTime = () => {
         </div>
         <div className="mt-4">
           <p className="text-black text-2xl">
-            {cloudRangeIndex !== userRanges.length ? (
-              <span className="font-bold">
-                ${userRanges[cloudRangeIndex - 1].minPrice} - $
-                {userRanges[cloudRangeIndex - 1].maxPrice}
-              </span>
+            {cloudRangeIndex > 0 && userRanges?.[cloudRangeIndex - 1] ? (
+              userRanges[cloudRangeIndex - 1].minPrice !== undefined ? (
+                <span className="font-bold">
+                  ${userRanges[cloudRangeIndex - 1].minPrice} - $
+                  {userRanges[cloudRangeIndex - 1].maxPrice}
+                </span>
+              ) : (
+                <span className="font-bold">
+                  ${userRanges[cloudRangeIndex - 1].maxPrice.toLocaleString()} +
+                  *
+                </span>
+              )
             ) : (
-              <span className="font-bold">
-                ${userRanges[cloudRangeIndex - 1].maxPrice.toLocaleString()} + *
-              </span>
+              <span className="font-bold">N/A</span>
             )}{" "}
             /month
           </p>
