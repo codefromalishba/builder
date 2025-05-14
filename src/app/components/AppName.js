@@ -9,6 +9,7 @@ const AppName = ({
   handleUpdateDelivery,
 }) => {
   const { recentBuildCard } = useSelector((state) => state.feature);
+
   const handleInputChange = (e) => {
     setName(e.target.value);
   };

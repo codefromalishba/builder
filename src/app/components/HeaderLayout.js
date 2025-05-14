@@ -75,19 +75,17 @@ const HeaderLayout = ({ children, lang }) => {
                 dispatch(updateRecentBuildCard(incompleteItem));
                 dispatch(changeSpeed(incompleteItem?.speed));
 
+                const defaultPlatforms = incompleteItem.platforms;
                 const defaultPhases = incompleteItem?.phases
                   ?.filter((item) => item.selected)
-                  ?.map((item) => item.id);
-
-                console.log("defaultPhases", defaultPhases);
+                  ?.map((item) => parseInt(item.id));
 
                 const updatedInitialPhases = initialPhases.map((phase) => ({
                   ...phase,
+                  platform: defaultPlatforms,
                   selected:
                     defaultPhases?.includes(parseInt(phase.id)) || false,
                 }));
-
-                const defaultPlatforms = incompleteItem.platforms;
 
                 dispatch(setPhases(defaultPhases));
                 dispatch(updatePlatforms(defaultPlatforms));

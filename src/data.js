@@ -2915,32 +2915,32 @@ export const initialPhases = [
 export const speedOptions = [
   {
     label: "Relaxed",
-    adjustment: -0.025,
-    duration: 0.025,
+    adjustment: -0.04,
+    durationChange: 2, // add 1 week
     description: `Our most budget-friendly option for those who aren't in a hurry`,
   },
   {
     label: "Slow",
-    adjustment: -0.015,
-    duration: 0.015,
+    adjustment: -0.02,
+    durationChange: 1, // add 1 week
     description: `For those with a fixed long-term plan who want to keep costs down`,
   },
   {
     label: "Standard",
     adjustment: 0,
-    duration: 0,
+    durationChange: 0, // no change
     description: `The perfect middle ground for anyone with a modest budget and medium-term deadlines`,
   },
   {
     label: "Fast",
-    adjustment: 0.015,
-    duration: -0.015,
+    adjustment: 0.02,
+    durationChange: -1, // subtract 1 week
     description: `We put your app build on turbo charge for a few extra bucks`,
   },
   {
     label: "Speedy",
-    adjustment: 0.025,
-    duration: -0.025,
+    adjustment: 0.04,
+    durationChange: -2, // subtract 1 week
     description: `We build your app at the speed of light for a premium price`,
   },
 ];

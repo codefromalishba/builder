@@ -8,15 +8,20 @@ import { calculateFeatureTotals } from "../utils/calculateTotal";
 
 const DeliveryFooter = () => {
   const user = useSelector((state) => state.profile);
-  const [name, setName] = useState("");
+  const {
+    allFeatures,
+    selectedPhases,
+    selectedPlatformss,
+    recentBuildCard,
+    initialPhases,
+    speed,
+  } = useSelector((state) => state.feature);
+  const [name, setName] = useState(recentBuildCard?.name);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
   const dispatch = useDispatch();
   const db = getFirestore();
-  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
-    (state) => state.feature
-  );
   const { cloudEnabled, cloudRangeIndex } = useSelector(
     (state) => state.feature
   );
@@ -67,8 +72,6 @@ const DeliveryFooter = () => {
           if (incompleteBuildCardIndex !== -1) {
             console.log("updating existing...");
 
-            const platforms = initialPhases[0].platform;
-
             const phasesSelected = initialPhases.map((phase) => ({
               id: phase.id,
               name: phase.name,
@@ -78,7 +81,7 @@ const DeliveryFooter = () => {
             userData.buildCards[incompleteBuildCardIndex] = {
               ...userData.buildCards[incompleteBuildCardIndex],
               name,
-              platforms: platforms,
+              platforms: selectedPlatformss,
               speed,
               phases: phasesSelected,
               duration: indicativeDurationInWeeks,

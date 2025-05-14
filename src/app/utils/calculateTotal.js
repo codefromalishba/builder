@@ -12,9 +12,7 @@ export const calculateFeatureTotals = (
   const isFeaturePage = pathname.includes("feature");
   const speedIndex = Math.max(0, Math.min(speed - 1, speedOptions.length - 1));
   const speedAdjustment = speedOptions[speedIndex]?.adjustment || 0;
-  const speedDurationAdjustment = speedOptions[speedIndex]?.duration || 0;
-
-  console.log("speedAdjustment", speedAdjustment, speedOptions[speedIndex]);
+  const speedDurationAdjustment = speedOptions[speedIndex]?.durationChange || 0;
 
   const { cloudEnabled, cloudRangeIndex } = useSelector(
     (state) => state.feature
@@ -45,9 +43,9 @@ export const calculateFeatureTotals = (
 
   const durationInWeeks = Math.ceil(totalTimeline / 7);
 
-  const speedDuration = durationInWeeks * speedDurationAdjustment;
-
-  const indicativeDurationInWeeks = Math.ceil(durationInWeeks + speedDuration);
+  const indicativeDurationInWeeks = Math.ceil(
+    durationInWeeks + speedDurationAdjustment
+  );
 
   // Bonuses for selected phases
   const bonusModifiers = {

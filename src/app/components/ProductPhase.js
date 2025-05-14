@@ -25,9 +25,6 @@ const ProductPhase = ({ isOn }) => {
     (state) => state.feature
   );
 
-  // console.log("initialPhases in ProductPhase", initialPhases);
-  // console.log("selectedPhases", selectedPhases);
-
   useEffect(() => {
     if (initialPhases?.length > 0) {
       const initialState = {};

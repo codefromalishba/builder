@@ -23,9 +23,9 @@ const DeliveryTime = () => {
     initialPhases,
     3
   );
-  const [step2, setStep2] = useState(4); // Default step is "50k+"
+  const [step2, setStep2] = useState(4);
   const features = useSelector((state) => state.feature.allFeatures);
-  const { totalCost } = calculateFeatureTotals(
+  const { fixedCost, customizationCost, totalCost } = calculateFeatureTotals(
     features,
     selectedPhases,
     initialPhases,
@@ -34,19 +34,16 @@ const DeliveryTime = () => {
   const today = moment();
   const deliveryDate = today.clone().add(indicativeDurationInWeeks, "weeks");
 
-  const getAdjustedPrice = (basePrice, adjustment) => {
-    const price = Number(basePrice);
+  const getAdjustedPrice = (adjustment) => {
     const adj = Number(adjustment);
 
-    if (isNaN(price) || isNaN(adj)) {
-      console.error("Invalid input to getAdjustedPrice", {
-        basePrice,
-        adjustment,
-      });
-      return "0";
-    }
+    const speedFixedCost = fixedCost * adj;
+    const speedCustomizationCost = customizationCost * adj;
 
-    return Math.ceil(price + price * adj).toString(); // returns a string like "123"
+    const totalCostAfterSpeed =
+      fixedCost + speedFixedCost + (customizationCost + speedCustomizationCost);
+
+    return Math.ceil(totalCostAfterSpeed).toString();
   };
 
   const handleChange = (event) => {
@@ -56,7 +53,7 @@ const DeliveryTime = () => {
   const handleChange2 = (event) => {
     const index = Number(event.target.value);
     setStep2(index);
-    dispatch(setCloudRangeIndex(index - 1)); // adjust for 0-based index
+    dispatch(setCloudRangeIndex(index - 1));
   };
 
   return (
@@ -104,17 +101,16 @@ const DeliveryTime = () => {
                           : "text-black"
                       }`}
                     >
-                      <p>${getAdjustedPrice(totalCost, option.adjustment)}</p>
+                      <p>${getAdjustedPrice(option.adjustment)}</p>
                       <p className="pt-1">
                         {Math.max(
-                          0,
-                          Math.ceil(
-                            indicativeDurationInWeeks * (1 - option.adjustment)
-                          )
+                          1,
+                          indicativeDurationInWeeks +
+                            (option.durationChange ?? 0)
                         )}{" "}
-                        {Math.ceil(
-                          indicativeDurationInWeeks * (1 - option.adjustment)
-                        ) === 1
+                        {indicativeDurationInWeeks +
+                          (option.durationChange ?? 0) ===
+                        1
                           ? "Week"
                           : "Weeks"}
                       </p>

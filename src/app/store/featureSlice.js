@@ -38,7 +38,6 @@ const featureSlice = createSlice({
     },
 
     updateInitialPhases: (state, action) => {
-      // console.log("initialPhases", action.payload);
       state.initialPhases = action.payload;
     },
 
