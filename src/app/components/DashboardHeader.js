@@ -2,12 +2,17 @@
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../firebase";
+import { resetProfile } from "../store/profileSlice";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const DashboardHeader = () => {
   const profile = useSelector((state) => state.profile);
+  const router = useRouter();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dispatch = useDispatch();
 
   // Close dropdown on outside click (optional for UX)
   useEffect(() => {
@@ -24,11 +29,9 @@ const DashboardHeader = () => {
     localStorage.removeItem("recentBuildCardId");
     signOut(auth)
       .then(() => {
-        dispatch(deleteUser());
-        dispatch(deleteFeatures());
-        dispatch(deleteBuildCard());
+        dispatch(resetProfile());
+        toast.success("Logged out successfully");
         router.push("/");
-        console.log("Signed out successfully");
       })
       .catch((error) => {
         console.log(error);
@@ -43,11 +46,13 @@ const DashboardHeader = () => {
     <div>
       <div className="bg-black p-3 h-[4.5rem] flex items-center justify-between">
         <div className="flex items-center sm:gap-[7rem]">
-          <img
-            className="w-[140px] h-7"
-            src="./images/LaunchSwiftLogo.avif"
-            alt="logo"
-          />
+          <Link href="/">
+            <img
+              className="w-[140px] h-7 cursor-pointer"
+              src="./images/LaunchSwiftLogo.avif"
+              alt="logo"
+            />
+          </Link>
           <div>
             <p className="text-white font-bold">{currentAppName}</p>
           </div>

@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 
 const SignIn = ({ handleClosePopup }) => {
   const [isSignIn, setIsSignIn] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -51,6 +52,8 @@ const SignIn = ({ handleClosePopup }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
+
     try {
       if (isSignIn) {
         const userCredential = await signInWithEmailAndPassword(
@@ -63,27 +66,30 @@ const SignIn = ({ handleClosePopup }) => {
         const userDocRef = doc(db, "users", user.uid);
         const userSnapshot = await getDoc(userDocRef);
 
+        handleClosePopup();
         if (userSnapshot.exists()) {
           const userData = userSnapshot.data();
           dispatch(setProfile(userData));
         }
 
-        toast.success("Signed in!");
         router.push("/feature");
+        toast.success("Signed in successfully!!");
       } else {
-        await createUserWithEmailAndPassword(auth, email, password).then(
-          async (authUser) => {
-            clearAllFields();
-            createUser({ uid: authUser.user.uid });
-          }
+        const authUser = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
         );
-        toast.success("Account created!");
+        clearAllFields();
+        await createUser({ uid: authUser.user.uid });
+        handleClosePopup();
+        toast.success("Account created successfully!");
+        router.push("/feature");
       }
-
-      handleClosePopup(); // Close popup if needed
-      router.push("/feature");
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -188,12 +194,12 @@ const SignIn = ({ handleClosePopup }) => {
               onClick={handleSubmit}
               disabled={!email || !password}
               className={`w-full mt-3 py-3 rounded-lg text-white transition-all duration-300 ${
-                !email || !password
+                !email || !password || loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-demo hover:bg-hdemo duration-150 hover:bg-demo hover:bg-hdemo duration-150/90"
+                  : "bg-demo hover:bg-hdemo duration-150 duration-150/90"
               }`}
             >
-              {isSignIn ? "Sign In" : "Create Account"}
+              {loading ? "Loading..." : isSignIn ? "Sign In" : "Create Account"}
             </button>
             {/* </form> */}
 

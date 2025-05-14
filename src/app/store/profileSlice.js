@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  name: "",
+  email: "",
+  uid: "",
+  buildCards: [],
+};
+
 const profileSlice = createSlice({
   name: "profile",
-  initialState: {
-    name: "",
-    email: "",
-    uid: "",
-    buildCards: [],
-  },
+  initialState,
   reducers: {
     updateProfile: (state, action) => {
       const { name, email } = action.payload;
@@ -21,8 +23,9 @@ const profileSlice = createSlice({
       state.uid = uid;
       state.buildCards = buildCards;
     },
+    resetProfile: () => initialState,
   },
 });
 
-export const { updateProfile, setProfile } = profileSlice.actions;
+export const { updateProfile, setProfile, resetProfile } = profileSlice.actions;
 export default profileSlice.reducer;
