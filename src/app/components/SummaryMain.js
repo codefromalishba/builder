@@ -507,7 +507,7 @@ const SummaryMain = () => {
               </div>
               <hr className="my-2" />
               <div className="flex justify-between py-1 text-sm">
-                <p>Indicative Development Duration</p>
+                <p>Indicative Duration</p>
                 <p className="font-bold">{durationLabel}</p>
               </div>
               <div className="flex justify-between py-1 text-sm">
