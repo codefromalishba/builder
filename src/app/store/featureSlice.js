@@ -58,6 +58,9 @@ const featureSlice = createSlice({
         state.allFeatures.push(action.payload);
       }
     },
+    removeAllFeatures: (state) => {
+      state.allFeatures = [];
+    },
     removeFeature: (state, action) => {
       state.allFeatures = state.allFeatures.filter(
         (feature) => feature.id !== action.payload
@@ -78,6 +81,7 @@ const featureSlice = createSlice({
 
 export const {
   setSelectedFeature,
+  removeAllFeatures,
   updateRecentBuildCard,
   addFeature,
   removeFeature,

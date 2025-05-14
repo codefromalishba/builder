@@ -5,6 +5,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { setProfile } from "../store/profileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const UserDetails = ({ setShow }) => {
   const [name, setName] = useState("");
@@ -54,35 +55,29 @@ const UserDetails = ({ setShow }) => {
               },
               status: "complete",
             };
-
-            // Save the id of the updated build card to local storage
-            localStorage.setItem(
-              "recentBuildCardId",
-              userData.buildCards[incompleteBuildCardIndex].id
-            );
           }
 
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
-              console.log("Build card completed successfully");
-              router.push(`/summary`);
-              setShow(false);
-              dispatch(setProfile(userData));
+              // dispatch(setProfile(userData));
+              toast.success(
+                "Build card submitted successfully! Redirecting..."
+              );
+              router.push(`/feature`);
             })
 
             .catch((error) => {
               setLoading(false);
-              console.error("Error updating document: ", error);
+              toast.error("Something went wrong!");
             });
         } else {
-          console.error("User document does not exist");
-
+          toast.error("Something went wrong!");
           setLoading(false);
         }
       })
       .catch((error) => {
         setLoading(false);
-        console.error("Error getting document:", error);
+        toast.error("Something went wrong!");
       });
   };
 

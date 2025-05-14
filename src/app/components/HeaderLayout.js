@@ -15,6 +15,7 @@ import { setProfile } from "../store/profileSlice";
 import {
   addFeature,
   changeSpeed,
+  removeAllFeatures,
   setCloudAndRange,
   setPhases,
   setSelectedFeature,
@@ -60,6 +61,8 @@ const HeaderLayout = ({ children, lang }) => {
           if (!incompleteItem) {
             console.log("No incomplete build card");
 
+            dispatch(removeAllFeatures());
+            dispatch(setSelectedFeature(null));
             if (pathname.endsWith("delivery") || pathname.endsWith("summary")) {
               router.push(`/feature`);
             } else {

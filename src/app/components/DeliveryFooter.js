@@ -5,6 +5,7 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { setProfile } from "../store/profileSlice";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
+import toast from "react-hot-toast";
 
 const DeliveryFooter = () => {
   const user = useSelector((state) => state.profile);
@@ -95,36 +96,33 @@ const DeliveryFooter = () => {
                 : {}),
               updatedAt: new Date().toISOString(),
             };
-
-            // Save the id of the updated build card to local storage
-            localStorage.setItem(
-              "recentBuildCardId",
-              userData.buildCards[incompleteBuildCardIndex].id
-            );
           }
 
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
-              console.log("Build card added/updated successfully");
-              handleCloseAppNamePopup();
-              router.push(`/summary`);
               dispatch(setProfile(userData));
+              toast.success(
+                "Build card added/updated successfully! Redirecting..."
+              );
+              // handleCloseAppNamePopup();
+              router.push(`/summary`);
             })
 
             .catch((error) => {
               setLoading(false);
-              console.error("Error updating document: ", error);
               handleCloseAppNamePopup();
+              toast.error("Something went wrong!");
             });
         } else {
-          console.error("User document does not exist");
-          handleCloseAppNamePopup();
           setLoading(false);
+          handleCloseAppNamePopup();
+          toast.error("Something went wrong!");
         }
       })
       .catch((error) => {
         setLoading(false);
-        console.error("Error getting document:", error);
+        handleCloseAppNamePopup();
+        toast.error("Something went wrong!");
       });
   };
 

@@ -15,6 +15,8 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { setProfile } from "../store/profileSlice";
 import UserDetails from "./UserDetails";
+import toast from "react-hot-toast";
+import { updateRecentBuildCard } from "../store/featureSlice";
 
 const SummaryMain = () => {
   const user = useSelector((state) => state.profile);
@@ -91,42 +93,38 @@ const SummaryMain = () => {
             (card) => card.status === "incomplete"
           );
 
-          console.log("incompleteBuildCardIndex", incompleteBuildCardIndex);
+          console.log(
+            "inSomething went wrong!completeBuildCardIndex",
+            incompleteBuildCardIndex
+          );
           if (incompleteBuildCardIndex !== -1) {
-            console.log("updating existing...");
+            console.log("upSomething went wrong!dating existing...");
 
             userData.buildCards[incompleteBuildCardIndex] = {
               ...userData.buildCards[incompleteBuildCardIndex],
               name: buildCardName,
             };
-
-            // Save the id of the updated build card to local storage
-            localStorage.setItem(
-              "recentBuildCardId",
-              userData.buildCards[incompleteBuildCardIndex].id
-            );
           }
 
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
-              console.log("Build card added/updated successfully");
-              router.push(`/summary`);
               dispatch(setProfile(userData));
+              toast.success("Build card name updated successfully!");
             })
 
             .catch((error) => {
               setLoading(false);
-              console.error("Error updating document: ", error);
+              toast.error("Something went wrong!");
             });
         } else {
-          console.error("User document does not exist");
+          toast.error("Something went wrong!");
 
           setLoading(false);
         }
       })
       .catch((error) => {
         setLoading(false);
-        console.error("Error getting document:", error);
+        toast.error("Something went wrong!");
       });
   };
 
@@ -147,7 +145,7 @@ const SummaryMain = () => {
             (card) => card.status === "incomplete"
           );
 
-          console.log("incompleteBuildCardIndex", incompleteBuildCardIndex);
+          console.log("completeBuildCardIndex", incompleteBuildCardIndex);
           if (incompleteBuildCardIndex !== -1) {
             console.log("updating existing...");
 
@@ -155,34 +153,27 @@ const SummaryMain = () => {
               ...userData.buildCards[incompleteBuildCardIndex],
               details: buildCardDetails,
             };
-
-            // Save the id of the updated build card to local storage
-            localStorage.setItem(
-              "recentBuildCardId",
-              userData.buildCards[incompleteBuildCardIndex].id
-            );
           }
 
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
-              console.log("Build card added/updated successfully");
-              router.push(`/summary`);
               dispatch(setProfile(userData));
+              toast.success("Build card details updated successfully!");
             })
 
             .catch((error) => {
               setLoading(false);
-              console.error("Error updating document: ", error);
+              toast.error("Something went wrong!");
             });
         } else {
-          console.error("User document does not exist");
+          toast.error("Something went wrong!");
 
           setLoading(false);
         }
       })
       .catch((error) => {
         setLoading(false);
-        console.error("Error getting document:", error);
+        toast.error("Something went wrong!");
       });
   };
 

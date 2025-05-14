@@ -9,6 +9,7 @@ import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { calculateFeatureTotals } from "../utils/calculateTotal";
 import { setProfile } from "../store/profileSlice";
+import toast from "react-hot-toast";
 
 const CartFooter = () => {
   const allFeatures = useSelector((state) => state.feature.allFeatures);
@@ -70,7 +71,6 @@ const CartFooter = () => {
       updatedAt: new Date().toISOString(),
       details: "",
     };
-    console.log("newBuildCard", newBuildCard);
 
     getDoc(userRef)
       .then((docSnapshot) => {
@@ -85,7 +85,6 @@ const CartFooter = () => {
             (card) => card.status === "incomplete"
           );
 
-          console.log("incompleteBuildCardIndex", incompleteBuildCardIndex);
           if (incompleteBuildCardIndex !== -1) {
             console.log("updating existing...");
 
@@ -100,40 +99,30 @@ const CartFooter = () => {
               totalCost: totalCost,
               details: "",
             };
-
-            // Save the id of the updated build card to local storage
-            localStorage.setItem(
-              "recentBuildCardId",
-              userData.buildCards[incompleteBuildCardIndex].id
-            );
           } else {
-            // Add a new incomplete build card
             userData.buildCards.push(newBuildCard);
-
-            // Save the id of the newly added build card to local storage
-            localStorage.setItem("recentBuildCardId", newBuildCard.id);
           }
 
           updateDoc(userRef, { buildCards: userData.buildCards })
             .then(() => {
-              console.log("Build card added/updated successfully");
+              toast.success(
+                "Build card added/updated successfully! Redirecting..."
+              );
               router.push(`/delivery`);
-              // .then(() => setLoading(false));
-              // dispatch(setProfile(userData));
             })
 
             .catch((error) => {
+              toast.error("Something went wrong!");
               setLoading(false);
-              console.error("Error updating document: ", error);
             });
         } else {
-          console.error("User document does not exist");
+          toast.error("Something went wrong!");
           setLoading(false);
         }
       })
       .catch((error) => {
+        toast.error("Something went wrong!");
         setLoading(false);
-        console.error("Error getting document:", error);
       });
   };
 
