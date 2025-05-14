@@ -15,6 +15,7 @@ import { setProfile } from "../store/profileSlice";
 import {
   addFeature,
   changeSpeed,
+  setCloudAndRange,
   setPhases,
   setSelectedFeature,
   updateInitialPhases,
@@ -90,6 +91,12 @@ const HeaderLayout = ({ children, lang }) => {
                 dispatch(setPhases(defaultPhases));
                 dispatch(updatePlatforms(defaultPlatforms));
                 dispatch(updateInitialPhases(updatedInitialPhases));
+                dispatch(
+                  setCloudAndRange({
+                    cloudEnabled: incompleteItem.cloudEnabled,
+                    cloudRange: incompleteItem.cloudRange,
+                  })
+                );
 
                 const matchedFeatures = mapFeatureIdsToSidebarData(
                   incompleteItem.features,

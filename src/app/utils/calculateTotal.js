@@ -103,8 +103,8 @@ export const calculateFeatureTotals = (
     baseCustomizationCost + speedCustomizationBonus;
 
   let cloudCost = 0;
-  if (!isFeaturePage && cloudEnabled && userRanges[cloudRangeIndex]) {
-    cloudCost = userRanges[cloudRangeIndex].maxPrice || 0;
+  if (!isFeaturePage && cloudEnabled && userRanges[cloudRangeIndex - 1]) {
+    cloudCost = userRanges[cloudRangeIndex - 1].maxPrice || 0;
   }
 
   return {

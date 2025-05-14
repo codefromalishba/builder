@@ -15,6 +15,11 @@ const featureSlice = createSlice({
     cloudRangeIndex: 3,
   },
   reducers: {
+    setCloudAndRange: (state, action) => {
+      const { cloudEnabled, cloudRange } = action.payload;
+      state.cloudEnabled = cloudEnabled;
+      state.cloudRangeIndex = cloudRange;
+    },
     toggleCloud: (state) => {
       state.cloudEnabled = !state.cloudEnabled;
     },
@@ -84,5 +89,6 @@ export const {
   removePhase,
   toggleCloud,
   setCloudRangeIndex,
+  setCloudAndRange,
 } = featureSlice.actions;
 export default featureSlice.reducer;

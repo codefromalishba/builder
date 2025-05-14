@@ -15,6 +15,8 @@ const DeliveryFooter = () => {
     recentBuildCard,
     initialPhases,
     speed,
+    cloudEnabled,
+    cloudRangeIndex,
   } = useSelector((state) => state.feature);
   const [name, setName] = useState(recentBuildCard?.name);
   const router = useRouter();
@@ -22,9 +24,6 @@ const DeliveryFooter = () => {
   const [isAppNamePopupOpen, setIsAppNamePopupOpen] = useState(false);
   const dispatch = useDispatch();
   const db = getFirestore();
-  const { cloudEnabled, cloudRangeIndex } = useSelector(
-    (state) => state.feature
-  );
 
   const {
     fixedCost,
@@ -88,6 +87,12 @@ const DeliveryFooter = () => {
               fixedCost: fixedCost,
               customizationCost: customizationCost,
               totalCost: totalCost,
+              cloudEnabled,
+              ...(cloudEnabled
+                ? {
+                    cloudRange: cloudRangeIndex,
+                  }
+                : {}),
               updatedAt: new Date().toISOString(),
             };
 

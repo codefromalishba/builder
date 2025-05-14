@@ -12,18 +12,21 @@ import {
 import moment from "moment";
 
 const DeliveryTime = () => {
-  const [isSelected, setIsSelected] = useState(false);
   const dispatch = useDispatch();
-  const { allFeatures, selectedPhases, initialPhases, speed } = useSelector(
-    (state) => state.feature
-  );
+  const {
+    allFeatures,
+    selectedPhases,
+    initialPhases,
+    speed,
+    cloudEnabled,
+    cloudRangeIndex,
+  } = useSelector((state) => state.feature);
   const { indicativeDurationInWeeks } = calculateFeatureTotals(
     allFeatures,
     selectedPhases,
     initialPhases,
     3
   );
-  const [step2, setStep2] = useState(4);
   const features = useSelector((state) => state.feature.allFeatures);
   const { fixedCost, customizationCost, totalCost } = calculateFeatureTotals(
     features,
@@ -50,10 +53,9 @@ const DeliveryTime = () => {
     dispatch(changeSpeed(Number(event.target.value)));
   };
 
-  const handleChange2 = (event) => {
+  const handleCloudRange = (event) => {
     const index = Number(event.target.value);
-    setStep2(index);
-    dispatch(setCloudRangeIndex(index - 1));
+    dispatch(setCloudRangeIndex(index));
   };
 
   return (
@@ -162,11 +164,10 @@ const DeliveryTime = () => {
           <div
             className="cursor-pointer"
             onClick={() => {
-              setIsSelected((prev) => !prev);
               dispatch(toggleCloud());
             }}
           >
-            {isSelected ? (
+            {cloudEnabled ? (
               <IoIosCheckmarkCircle className="text-2xl text-demo" />
             ) : (
               <FaRegCircle className="text-xl text-gray-400" />
@@ -196,7 +197,7 @@ const DeliveryTime = () => {
           {/* Header with selected range */}
           <div className="flex justify-between items-center h-8">
             <p className="font-bold">Number of users</p>
-            <p className="font-bold">{userRanges[step2 - 1].value}</p>
+            <p className="font-bold">{userRanges[cloudRangeIndex - 1].value}</p>
           </div>
 
           {/* Slider */}
@@ -206,8 +207,8 @@ const DeliveryTime = () => {
               min="1"
               max="4"
               step="1"
-              value={step2}
-              onChange={handleChange2}
+              value={cloudRangeIndex}
+              onChange={handleCloudRange}
               className="slider w-full outline-none border-none rounded-md cursor-pointer bg-gray-300 relative"
             />
           </div>
@@ -218,7 +219,9 @@ const DeliveryTime = () => {
               <p
                 key={index}
                 className={`text-xs mt-4 text-center ${
-                  step2 === index + 1 ? "text-demo font-semibold" : "text-black"
+                  cloudRangeIndex === index + 1
+                    ? "text-demo font-semibold"
+                    : "text-black"
                 }`}
               >
                 {range.label}
@@ -228,14 +231,14 @@ const DeliveryTime = () => {
         </div>
         <div className="mt-4">
           <p className="text-black text-2xl">
-            {step2 !== userRanges.length ? (
+            {cloudRangeIndex !== userRanges.length ? (
               <span className="font-bold">
-                ${userRanges[step2 - 1].minPrice} - $
-                {userRanges[step2 - 1].maxPrice}
+                ${userRanges[cloudRangeIndex - 1].minPrice} - $
+                {userRanges[cloudRangeIndex - 1].maxPrice}
               </span>
             ) : (
               <span className="font-bold">
-                ${userRanges[step2 - 1].maxPrice.toLocaleString()} + *
+                ${userRanges[cloudRangeIndex - 1].maxPrice.toLocaleString()} + *
               </span>
             )}{" "}
             /month

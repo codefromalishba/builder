@@ -59,7 +59,6 @@ const CartFooter = () => {
       fixedCost: fixedCost,
       customizationCost: customizationCost,
       totalCost: totalCost,
-      cloudServiceCost: null,
       platforms: ["web"],
       speed: 3,
       duration: indicativeDurationInWeeks,
@@ -99,7 +98,6 @@ const CartFooter = () => {
               fixedCost: fixedCost,
               customizationCost: customizationCost,
               totalCost: totalCost,
-              cloudServiceCost: 0,
               details: "",
             };
 
