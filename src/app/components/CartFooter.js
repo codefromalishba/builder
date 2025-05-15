@@ -6,7 +6,7 @@ import delivery from "../delivery/page";
 import { useSelector } from "react-redux";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { useFeatureTotals } from "../utils/calculateTotal";
 import { setProfile } from "../store/profileSlice";
 import toast from "react-hot-toast";
 
@@ -20,7 +20,7 @@ const CartFooter = () => {
   const router = useRouter();
 
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(allFeatures);
+    useFeatureTotals(allFeatures);
 
   const defaultPhases = [
     {

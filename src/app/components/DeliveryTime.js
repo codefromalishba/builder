@@ -3,7 +3,7 @@ import { FaRegCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { speedOptions, userRanges } from "@/data";
-import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { useFeatureTotals } from "../utils/calculateTotal";
 import {
   changeSpeed,
   setCloudRangeIndex,
@@ -23,9 +23,9 @@ const DeliveryTime = () => {
   } = useSelector((state) => state.feature);
 
   const { fixedCost, customizationCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, 3);
+    useFeatureTotals(allFeatures, selectedPhases, initialPhases, 3);
 
-  const data = calculateFeatureTotals(
+  const data = useFeatureTotals(
     allFeatures,
     selectedPhases,
     initialPhases,

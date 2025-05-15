@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { useFeatureTotals } from "../utils/calculateTotal";
 
 const FeatureFooter = () => {
   const { allFeatures, selectedFeature } = useSelector(
@@ -15,7 +15,7 @@ const FeatureFooter = () => {
       : [];
 
   const { fixedCost, customizationCost, totalCost, indicativeDurationInWeeks } =
-    calculateFeatureTotals(featuresToPass);
+    useFeatureTotals(featuresToPass);
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"
   }`;

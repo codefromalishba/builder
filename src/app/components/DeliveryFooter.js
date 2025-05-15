@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { setProfile } from "../store/profileSlice";
-import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { useFeatureTotals } from "../utils/calculateTotal";
 import toast from "react-hot-toast";
 
 const DeliveryFooter = () => {
@@ -32,7 +32,7 @@ const DeliveryFooter = () => {
     totalCost,
     indicativeDurationInWeeks,
     cloudCost,
-  } = calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
+  } = useFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
 
   const finalTotalCost = (parseFloat(totalCost) + cloudCost).toFixed(0);
   const displayTotalCost = cloudEnabled ? finalTotalCost : totalCost;

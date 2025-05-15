@@ -7,7 +7,7 @@ import { TfiAndroid } from "react-icons/tfi";
 import { FaApple } from "react-icons/fa";
 import { MdWeb } from "react-icons/md";
 import { IoDesktop } from "react-icons/io5";
-import { calculateFeatureTotals } from "../utils/calculateTotal";
+import { useFeatureTotals } from "../utils/calculateTotal";
 import moment from "moment";
 import { IoMdPricetags } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
@@ -35,7 +35,7 @@ const SummaryMain = () => {
     cloudCost,
     totalCost,
     indicativeDurationInWeeks,
-  } = calculateFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
+  } = useFeatureTotals(allFeatures, selectedPhases, initialPhases, speed);
 
   const durationLabel = `${indicativeDurationInWeeks} ${
     indicativeDurationInWeeks === 1 ? "week" : "weeks"

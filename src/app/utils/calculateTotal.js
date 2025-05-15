@@ -1,8 +1,8 @@
-import { speedOptions, userRanges } from "@/data";
 import { usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
+import { speedOptions, userRanges } from "@/data";
 
-export const calculateFeatureTotals = (
+export const useFeatureTotals = (
   features,
   selectedPhases = [],
   initialPhases = [],
@@ -10,6 +10,7 @@ export const calculateFeatureTotals = (
 ) => {
   const pathname = usePathname();
   const isFeaturePage = pathname.includes("feature");
+
   const speedIndex = Math.max(0, Math.min(speed - 1, speedOptions.length - 1));
   const speedAdjustment = speedOptions[speedIndex]?.adjustment || 0;
   const speedDurationAdjustment = speedOptions[speedIndex]?.durationChange || 0;
