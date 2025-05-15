@@ -88,7 +88,7 @@ const DeliveryFooter = () => {
               fixedCost: fixedCost,
               customizationCost: customizationCost,
               totalCost: totalCost,
-              cloudEnabled,
+              cloudEnabled: cloudEnabled ? true : false,
               ...(cloudEnabled
                 ? {
                     cloudRange: cloudRangeIndex,
@@ -109,18 +109,18 @@ const DeliveryFooter = () => {
             .catch((error) => {
               setLoading(false);
               handleCloseAppNamePopup();
-              toast.error("Something went wrong!");
+              toast.error("Something went wrong here1!");
             });
         } else {
           setLoading(false);
           handleCloseAppNamePopup();
-          toast.error("Something went wrong!");
+          toast.error("Something went wrong here2!");
         }
       })
       .catch((error) => {
         setLoading(false);
         handleCloseAppNamePopup();
-        toast.error("Something went wrong!");
+        toast.error("Something went wrong here3!");
       });
   };
 
